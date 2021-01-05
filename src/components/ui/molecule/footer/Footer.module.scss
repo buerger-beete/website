@@ -1,0 +1,47 @@
+@import "src/styles/variables";
+
+
+.links {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+
+	a {
+		position: relative;
+
+		margin-right: 2rem;
+
+		color: $title-color;
+		font-weight: bold;
+
+		&:hover {
+			color: $primary;
+
+			&:after {
+				width: 100%;
+			}
+		}
+
+		&:after {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+
+			width: 0;
+			height: 2px;
+
+			content: "";
+
+			background: $primary;
+
+			transform: translateY(-2px);
+
+			transition: width 200ms ease-in-out;
+		}
+	}
+}
+
+.copyright {
+	margin-left: auto !important;
+	margin-right: 0 !important;
+}

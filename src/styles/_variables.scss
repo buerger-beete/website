@@ -1,0 +1,38 @@
+// IMPORT BULMA VARIABLES
+@import "~bulma/sass/utilities/initial-variables";
+
+
+$icon-font-base-path: "./fonts/icon";
+$pt-serif-font-base-path: "./fonts/pt-serif";
+$pt-sans-font-base-path: "./fonts/pt-sans";
+
+// SHADOWS
+$shadow-huge: 0 0.1rem 0.25rem rgba($black, 0.1), 0 0.25rem 1rem rgba($black, 0.3);
+
+
+// BULMA
+$primary: #05A054;
+$primary-light: #E7F5EE;
+
+$text: #022011;
+$text-invert: $white;
+$dark: #121D12;
+
+$button-border-width: 2px;
+$button-padding-vertical: 1.5rem;
+$button-padding-horizontal: 1.5rem;
+
+// FONTS
+$family-primary: "PT Serif", serif;
+$family-secondary: "PT Sans", sans-serif;
+
+$title-line-height: 1.4;
+$body-font-size: 1.25rem;
+$body-family: $family-secondary;
+
+$title-color: #344A3F;
+$title-family: $family-primary;
+$subtitle-family: $family-secondary;
+
+// IMPORT BULMA
+@import "~bulma/sass/utilities/all";

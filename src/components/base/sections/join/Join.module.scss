@@ -1,0 +1,21 @@
+@import "src/styles/variables";
+
+
+.columns {
+	@include from($desktop) {
+		min-height: 20rem;
+	}
+}
+
+.icon {
+	width: 100%;
+	max-width: 10rem;
+
+	margin: 0 auto 1rem;
+
+	display: block;
+}
+
+.description {
+	margin-bottom: 3rem;
+}

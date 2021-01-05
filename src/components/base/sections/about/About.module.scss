@@ -1,0 +1,26 @@
+@import "src/styles/variables";
+
+
+.columns {
+	@include from($desktop) {
+		min-height: 40rem;
+	}
+}
+
+.image {
+	height: 100%;
+
+	border-radius: 1.5rem;
+
+	box-shadow: $shadow-huge;
+}
+
+.description {
+	@include from($tablet) {
+		padding-left: 3rem;
+	}
+
+	.button {
+		margin-top: 2rem;
+	}
+}

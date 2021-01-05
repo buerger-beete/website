@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="72px" viewBox="0 0 1440 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>assets/interferer/bottom</title>
+    <g id="00-Assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" fill="#E7F5EE" transform="translate(720.000000, 36.000000) scale(1, -1) translate(-720.000000, -36.000000) ">
+            <path d="M0,0 C240,17.1165644 480,25.6748466 720,25.6748466 C960,25.6748466 1200,17.1165644 1440,0 L1440,72 L0,72 L0,0 Z" id="Rectangle"></path>
+        </g>
+    </g>
+</svg>

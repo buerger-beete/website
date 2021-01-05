@@ -1,0 +1,44 @@
+.section {
+	position: relative;
+
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+
+	&.hasTransitionTop,
+	&.hasTransitionBottom {
+		&:before,
+		&:after {
+			position: absolute;
+			left: 0;
+
+			width: 100%;
+
+			content: "";
+
+			background: transparent center center no-repeat;
+		}
+	}
+
+	&.hasTransitionTop {
+		margin-top: 8rem;
+
+		&:before {
+			top: 0;
+
+			height: 14.875rem;
+			background-image: url("../../../../assets/interferer/flower-top.svg");
+
+			transform: translateY(-100%);
+		}
+	}
+
+	&.hasTransitionBottom:after {
+		bottom: 0;
+
+		height: 4.5rem;
+		background-image: url("../../../../assets/interferer/bottom.svg");
+
+		transform: translateY(100%);
+	}
+}
+

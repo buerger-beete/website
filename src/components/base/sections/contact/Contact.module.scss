@@ -1,0 +1,33 @@
+@import "src/styles/variables";
+
+
+.columns {
+	margin-top: 3rem;
+}
+
+.icon {
+	width: 100%;
+	max-width: 14rem;
+
+	margin: 0 auto 1rem;
+
+	display: block;
+}
+
+.description {
+	margin-bottom: 3rem;
+
+	.text {
+		max-width: 28rem;
+
+		margin: 0 auto 2rem;
+
+		a {
+			color: $primary;
+
+			&:hover {
+				color: darken($primary, 10%);
+			}
+		}
+	}
+}
