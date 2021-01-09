@@ -17,10 +17,11 @@ const InfoTile = ({ icon, iconAlt, title, className, children, ...props }) => {
             className={ cn(Styles.item, className) }
             { ...props }>
 
-            <img
+            <div
                 className={ Styles.icon }
-                src={ ICONS[icon] }
-                alt={`Icon: ${ iconAlt }`}
+                style={ {
+                    backgroundImage: `url(${ ICONS[icon] })`
+                } }
             />
 
             <Heading
@@ -46,6 +47,7 @@ InfoTile.propTypes = {
         "patch-raw",
         "seed-bag",
         "sow",
+        "potsdam"
     ]).isRequired,
     title: PropTypes.string.isRequired
 };

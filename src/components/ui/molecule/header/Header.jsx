@@ -22,7 +22,7 @@ import Styles from "./Header.module.scss";
 const Header = () => {
     const query = useStaticQuery(graphql`
         query {
-            fileName: file(relativePath: { eq: "teaser/slide-1.png" }) {
+            fileName: file(relativePath: { eq: "images/teaser/slide-1.jpg" }) {
                 childImageSharp {
                     fluid(maxWidth: 1920, maxHeight: 1080) {
                         ...GatsbyImageSharpFluid

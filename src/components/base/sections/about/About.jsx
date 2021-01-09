@@ -18,9 +18,9 @@ import Styles from "./About.module.scss";
 const About = () => {
     const query = useStaticQuery(graphql`
         query {
-            fileName: file(relativePath: { eq: "about/flower-pots.png" }) {
+            fileName: file(relativePath: { eq: "images/about/tree-bed.jpg" }) {
                 childImageSharp {
-                    fluid(maxWidth: 906, maxHeight: 1206) {
+                    fluid(maxWidth: 1920, maxHeight: 1080) {
                         ...GatsbyImageSharpFluid
                     }
                 }
@@ -45,6 +45,8 @@ const About = () => {
 
                     <GatsbyImage
                         className={ Styles.image }
+                        objectFit="cover"
+                        objectPosition="50% 50%"
                         fluid={ query.fileName.childImageSharp.fluid }
                     />
                 </Column>

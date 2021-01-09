@@ -62,29 +62,30 @@ const Join = () => {
             </Columns>
 
             <Columns centered>
-                <Tile
-                    title={ "Brachfläche wählen" }
-                    icon={ "patch-raw" }>
-                    <p>Wähle eine Brachfläche auf dem Bassinplatz aus und teile sie uns mit … oder lass dir einfach eine von uns zuweisen.</p>
-                </Tile>
 
                 <Tile
-                    title={ "Saatgut wählen" }
+                    title={ "Samen wählen" }
                     icon={ "seed-bag" }>
-                    <p>Du hast eigene Samen? Super! Sprech sie kurz mit uns ab. Oder noch keine Idee? Wir haben für dich eine große Auswahl in petto!</p>
+                    <p>Spreche mit uns über E-Mail ab, was du gerne säen möchtest. Der <i>Bereich Grünflächen</i> sponsert dir gern auch Samen.</p>
                 </Tile>
 
                 <Tile
                     title={ "Pachtvertrag unterz." }
                     icon={ "contract" }>
-                    <p>Keine Sorge, dieser Vertrag legt lediglich fest, dass du die gewählte Brachfläche begrünen darfst und kann binnen 4 Wochen aufgelöst werden.</p>
+                    <p>Der Vertrag legt fest, dass du die Pflege für deine Brachfläche übernimmst und berechtigt dich zum Begrünen des Areals.</p>
                 </Tile>
 
                 <Tile
-                    title={ "Säet und Staunet!" }
+                    title={ "Beet Aufbereitung" }
+                    icon={ "potsdam" }>
+                    <p>Der <i>Bereich Grünflächen</i> bereitet deine gewählte Brachfläche auf, füllt Blumenerde auf und baut ein kleines Zäunchen für dich.</p>
+                </Tile>
+
+                <Tile
+                    title={ "Säe und Staune!" }
                     icon={ "sow" }>
                     <p>
-                        <strong>Anfang April ’21</strong> gehen wir zusammen auf den Bassinplatz und bepflanzen die Beete zusammen mit dem <i>Bereich Grünfächen.</i>
+                        <strong>April 2021:</strong> Der beste Zeitpunkt deine Pflanzen und Samen auf deinem vorbereitetem Beet einzupflanzen 🌻
                     </p>
                 </Tile>
             </Columns>

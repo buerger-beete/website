@@ -24,7 +24,7 @@ const Footer = () => {
                         <Columns>
                             <Column className={ Styles.links }>
                                 <Link to={ "/impressum" }>Impressum</Link>
-                                <Link to={ "/datenschutzhinweise" }>Datenschutzhinweise</Link>
+                                <Link to={ "/datenschutz" }>Datenschutzhinweise</Link>
 
                                 <Link
                                     to={ "https://www.coderwelsch.com" }
