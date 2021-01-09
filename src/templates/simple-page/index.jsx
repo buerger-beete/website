@@ -10,8 +10,6 @@ import SEO from "../../components/base/seo/SEO"
 
 
 const SimplePage = ({ pageContext }) => {
-	console.log(pageContext);
-
 	return (
 		<Layout>
 
