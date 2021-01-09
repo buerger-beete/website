@@ -71,7 +71,7 @@ const About = () => {
                         </p>
 
                         <p>
-                            Wir haben einen Deal mit der Stadt ausgehandelt  und bekommen Brachflächen wie Baumareale und ungenutzte Beete aufbereitet, die wir an interessierte Bürger zur freien Bepflanzung vergeben.
+                            Wir haben einen Deal mit der Stadt ausgehandelt und bekommen von ihnen Brachflächen und Baumareale aufbereitet, die wir an interessierte Bürger zur freien Bepflanzung vergeben.
                         </p>
 
                         <p>
