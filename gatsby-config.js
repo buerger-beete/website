@@ -26,7 +26,7 @@ module.exports = {
                 background_color: `#663399`,
                 theme_color: `#663399`,
                 display: `minimal-ui`,
-                icon: `src/images/favicon/favicon.png`,
+                icon: `src/assets/logos/buerger-beete-favicon.svg`,
             },
         },
         // `gatsby-plugin-offline`,

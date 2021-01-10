@@ -70,9 +70,9 @@ const Join = () => {
                 </Tile>
 
                 <Tile
-                    title={ "Pachtvertrag unterz." }
+                    title={ "Pflegevereinbarung" }
                     icon={ "contract" }>
-                    <p>Der Vertrag legt fest, dass du die Pflege für deine Brachfläche übernimmst und berechtigt dich zum Begrünen des Areals.</p>
+                    <p>Die Vereinbarung legt fest, dass du die Pflege für deine Brachfläche übernimmst und berechtigt dich zum Begrünen des Areals.</p>
                 </Tile>
 
                 <Tile
