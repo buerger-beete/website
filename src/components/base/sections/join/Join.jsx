@@ -12,10 +12,11 @@ import Interferer from "../../../ui/molecule/interferer/Interferer";
 import InfoTile from "../../../ui/molecule/info-tile/InfoTile";
 
 
-const Tile = ({ title, icon, children }) =>
+const Tile = ({ title, icon, primary, children }) =>
     <InfoTile
         title={ title }
         icon={ icon }
+        primary={ primary }
         tablet={ {
             size: 3
         } }>
@@ -61,12 +62,14 @@ const Join = () => {
 
             </Columns>
 
-            <Columns centered>
+            <Columns
+                className={ Styles.columns }
+                centered>
 
                 <Tile
-                    title={ "Samen wählen" }
+                    title={ "Samen & Areal" }
                     icon={ "seed-bag" }>
-                    <p>Spreche mit uns über E-Mail ab, was du gerne säen möchtest. Der <i>Bereich Grünflächen</i> sponsert dir gern auch Samen.</p>
+                    <p>Spreche mit uns über E-Mail ab, was und wo du gerne säen möchtest. Der <i>Bereich Grünflächen</i> sponsert dir gern auch Samen.</p>
                 </Tile>
 
                 <Tile
@@ -83,7 +86,8 @@ const Join = () => {
 
                 <Tile
                     title={ "Säe und Staune!" }
-                    icon={ "sow" }>
+                    icon={ "sow" }
+                    primary>
                     <p>
                         <strong>April 2021:</strong> Der beste Zeitpunkt deine Pflanzen und Samen auf deinem vorbereitetem Beet einzupflanzen 🌻
                     </p>

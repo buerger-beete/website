@@ -7,21 +7,9 @@ import Footer from "../../ui/molecule/footer/Footer";
 
 
 const Layout = ({children}) => {
-    const data = useStaticQuery(graphql`
-        query SiteTitleQuery {
-            site {
-                siteMetadata {
-                    title
-                }
-            }
-        }
-    `)
-
     return (
         <>
-            <Navigation
-                siteTitle={data.site.siteMetadata?.title || `Title`}
-            />
+            <Navigation />
 
             { children }
 

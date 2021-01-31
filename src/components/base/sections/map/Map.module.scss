@@ -1,0 +1,57 @@
+@import "src/styles/variables";
+
+
+.wrapper {
+	max-width: 120rem !important;
+}
+
+.section {
+	margin-top: 10rem;
+
+	.container {
+		overflow: hidden;
+		border-radius: 1.5rem;
+
+		background: $white;
+
+		box-shadow: $shadow-huge;
+
+		.tile {
+			min-width: 20rem;
+			max-height: 80vh;
+			overflow: scroll;
+
+			padding: 0;
+
+			@include until($tablet) {
+				&:first-child {
+					max-height: 40vh;
+				}
+			}
+		}
+	}
+}
+
+
+.columns {
+	max-width: 110rem;
+
+	margin: 0 auto;
+
+	@include from($desktop) {
+		min-height: 20rem;
+	}
+}
+
+.icon {
+	width: 100%;
+	max-width: 10rem;
+
+	margin: 0 auto 1rem;
+
+	display: block;
+}
+
+.description {
+	margin-bottom: 3rem;
+}

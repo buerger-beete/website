@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 
 import Container from "react-bulma-components/lib/components/container/container";
 import Navbar from "react-bulma-components/lib/components/navbar/navbar";
@@ -13,7 +12,7 @@ import Styles from "./Navigation.module.scss"
 import ContactButton from "../../atom/contact-button/ContactButton";
 
 
-const Navigation = ({siteTitle}) => (
+const Navigation = () => (
     <div className={ Styles.navContainer }>
         <Container>
             <Navbar className={ Styles.nav }>
@@ -48,12 +47,8 @@ const Navigation = ({siteTitle}) => (
     </div>
 )
 
-Navigation.propTypes = {
-    siteTitle: PropTypes.string,
-}
+Navigation.propTypes = {};
 
-Navigation.defaultProps = {
-    siteTitle: ``,
-}
+Navigation.defaultProps = {};
 
 export default Navigation

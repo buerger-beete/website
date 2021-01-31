@@ -67,11 +67,11 @@ const About = () => {
 
                     <Content>
                         <p>
-                            … möchten wir, die Initiative Go ’n’ Grow, unsere graue Stadt Potsdam in ein blühendes Blumenparadies verwandeln. Dafür brauchen wir deine Hilfe. Je mehr mitmachen, desto besser!
+                            … möchten wir, die Initiative Bürger:Beete, unsere graue Stadt Potsdam in ein blühendes Blumenparadies verwandeln. Dafür brauchen wir deine Hilfe. Je mehr mitmachen, desto besser!
                         </p>
 
                         <p>
-                            Wir haben einen Deal mit der Stadt ausgehandelt und bekommen von ihnen Brachflächen und Baumareale aufbereitet, die wir an interessierte Bürger zur freien Bepflanzung vergeben.
+                            Wir haben einen Deal mit der Stadt ausgehandelt und bekommen von ihnen Brachflächen und Baumareale aufbereitet, die wir an interessierte Bürger:innen zur freien Bepflanzung vergeben.
                         </p>
 
                         <p>

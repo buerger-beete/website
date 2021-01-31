@@ -6,7 +6,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	const mdTemplate = path.resolve(`src/templates/simple-page/index.jsx`);
 	const result = await graphql(`
 		{
-			allMarkdownRemark (filter: { fileAbsolutePath: { regex: "//content/markdown-pages/.+md/"} }) {
+			allMarkdownRemark (filter: { 
+				fileAbsolutePath: { 
+					regex: "//content/markdown-pages/[^/]+\\\\.md/" 
+					} 
+				} 
+			) {
 				edges {
 					node {
 						frontmatter {

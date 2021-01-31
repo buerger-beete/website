@@ -13,7 +13,7 @@ const SimplePage = ({ pageContext }) => {
 	return (
 		<Layout>
 
-			<SEO title="Impressum" />
+			<SEO title={ pageContext.frontmatter.title } />
 
 			<Section style={ { marginTop: "9rem" } }>
 				<Columns centered>

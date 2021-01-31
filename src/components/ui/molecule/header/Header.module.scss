@@ -10,6 +10,10 @@
 }
 
 .hero {
+	@include until($tablet) {
+		min-height: 80vh;
+	}
+
 	.body {
 		.overlay {
 			position: absolute;
@@ -41,6 +45,10 @@
 		.image {
 			position: relative;
 			z-index: 0;
+
+			@include until($tablet) {
+				min-height: 80vh;
+			}
 
 			&:before,
 			&:after {

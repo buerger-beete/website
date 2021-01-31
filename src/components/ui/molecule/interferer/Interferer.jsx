@@ -13,6 +13,7 @@ const Interferer = ({
     hasTransitionBottom = false,
     fullSize = false,
     children,
+    containerClassName,
     className,
     ...props
 }) => {
@@ -28,7 +29,7 @@ const Interferer = ({
             { ...props }>
             { fullSize ?
                 children:
-                <Container>
+                <Container className={ containerClassName }>
                     { children }
                 </Container>
             }

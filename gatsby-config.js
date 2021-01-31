@@ -1,6 +1,6 @@
 module.exports = {
     siteMetadata: {
-        title: `Bürger:Beete – Bürger begrünen den Potsdamer Bassinplatz`,
+        title: `Bürger:Beete – Bürger:innen begrünen den Potsdamer Bassinplatz`,
         description: `Bürger:Beete. Wir verbinden engagierte Potsdamer mit der Begrünung von Brachflächen in der Stadt.`,
         author: `@coderwelsch`,
     },

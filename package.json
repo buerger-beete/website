@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.11.1",
+    "axios": "^0.21.1",
     "bulma": "^0.9.1",
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.5.0",

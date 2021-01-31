@@ -2,6 +2,10 @@
 
 
 .columns {
+	max-width: 110rem;
+
+	margin: 0 auto;
+
 	@include from($desktop) {
 		min-height: 20rem;
 	}

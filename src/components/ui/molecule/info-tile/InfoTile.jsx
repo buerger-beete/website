@@ -11,10 +11,14 @@ import Styles from "./InfoTile.module.scss";
 import {cn} from "reusable-components/dist/helper";
 
 
-const InfoTile = ({ icon, iconAlt, title, className, children, ...props }) => {
+const InfoTile = ({ icon, iconAlt, title, className, primary, children, ...props }) => {
     return (
         <Column
-            className={ cn(Styles.item, className) }
+            className={ cn(
+                Styles.item,
+                primary && Styles.primary,
+                className
+            ) }
             { ...props }>
 
             <div

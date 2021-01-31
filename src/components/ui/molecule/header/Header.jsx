@@ -54,7 +54,7 @@ const Header = () => {
                                 textColor={ "white" }
                                 textWeight={ "bold" }
                                 size={ "large" }>
-                                Bürger begrünen Bassinplatz
+                                Bürger:innen begrünen Bassinplatz
                             </Tag>
                         </Tags>
 

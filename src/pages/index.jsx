@@ -1,6 +1,7 @@
 import React from "react"
 
 import Layout from "../components/base/layout/Layout"
+import Map from "../components/base/sections/map/Map";
 import SEO from "../components/base/seo/SEO"
 import Header from "../components/ui/molecule/header/Header";
 
@@ -18,6 +19,7 @@ const IndexPage = () => {
 
             <About />
             <Join />
+            <Map />
             <Contact />
 
         </Layout>

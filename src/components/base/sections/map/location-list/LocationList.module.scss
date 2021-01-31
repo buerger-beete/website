@@ -1,0 +1,51 @@
+@import "../../../../../styles/variables";
+
+
+.list {
+	display: flex;
+	flex-direction: column;
+
+	.item {
+		padding: 2.75rem;
+
+		cursor: pointer;
+
+		border-bottom: 1px solid grey;
+
+		@include until($tablet) {
+			padding: 1.5rem;
+		}
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+
+		&:hover {
+			background: rgba($black, 0.05);
+		}
+
+		&.active {
+			color: $white;
+			background: rgba($primary, 1);
+
+			* {
+				color: inherit;
+			}
+		}
+
+		.title {
+			margin-bottom: 0;
+		}
+
+		.content {
+			margin-top: 2rem;
+
+			opacity: 0.7;
+
+			@include until($desktop) {
+				display: none;
+			}
+		}
+	}
+}
