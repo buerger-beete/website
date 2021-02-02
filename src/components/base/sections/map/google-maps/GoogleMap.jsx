@@ -7,11 +7,11 @@ import Styles from "./GoogleMap.module.scss";
 
 export default class GoogleMap extends Component {
 	static DEFAULT_SHAPE_STYLE = {
-		strokeColor: "#FF0000",
+		strokeColor: "#FFFFFF",
 		strokeOpacity: 0.8,
 		strokeWeight: 2,
-		fillColor: "#FF0000",
-		fillOpacity: 0.4
+		fillColor: "#FFFFFF",
+		fillOpacity: 0.5
 	};
 
 	static ACTIVE_SHAPE_STYLE = {
@@ -21,6 +21,15 @@ export default class GoogleMap extends Component {
 		fillColor: "#05a054",
 		fillOpacity: 0.4
 	};
+
+	static MAP_STYLES = [
+		{
+			"featureType": "poi",
+			"stylers": [
+				{ "visibility": "off" }
+			]
+		}
+	];
 
 	static propTypes = {
 		selectedLocationIndex: PropTypes.number,
@@ -37,44 +46,49 @@ export default class GoogleMap extends Component {
 	static defaultProps = {};
 
 	mapRef = React.createRef();
-
 	_map = null;
 	_kmlLayer = null;
-	_shapes = [];
 
+	_shapes = [];
 	state = {
 		mapLoaded: false
 	};
 
 	async componentDidMount () {
 		await this.loadMap();
-
 		this.addPolygons();
+		this.navigateToLocation(this.props.selectedLocationIndex);
 	}
 
 	componentDidUpdate (prevProps, prevState, snapshot) {
 		const currIndex = this.props.selectedLocationIndex;
 
 		if (currIndex !== null && prevProps.selectedLocationIndex !== currIndex) {
+			this.resetPolygonStyles();
 			this.navigateToLocation(currIndex);
+		}
+	}
+
+	resetPolygonStyles () {
+		for (let i = 0; i < this._shapes.length; i++) {
+			this._shapes[i].setOptions({
+				...GoogleMap.DEFAULT_SHAPE_STYLE
+			});
 		}
 	}
 
 	navigateToLocation (index) {
 		const location = this.props.locations[index];
 
-		for (let i = 0; i < this._shapes.length; i++) {
-			this._shapes[i].setOptions({
-				...GoogleMap.DEFAULT_SHAPE_STYLE
-			});
-		}
-
+		// set styles for active shape
 		this._shapes[index].setOptions({
 			...GoogleMap.ACTIVE_SHAPE_STYLE
 		});
 
+		// navigate to location
 		this._map.panTo(location.center);
 
+		// zoom in
 		if (this._map.getZoom() < 19) {
 			this._map.setZoom(19);
 		}
@@ -93,9 +107,9 @@ export default class GoogleMap extends Component {
 		// load map
 		await loader.load();
 
-		let center = defaultLocation;
+		let center = { ...defaultLocation };
 
-		// recenter when location was initially set
+		// recenter to a location when location is already set
 		const selectedLocationIndex = this.props.selectedLocationIndex;
 		if (selectedLocationIndex && this.props.locations[selectedLocationIndex]) {
 			center = this.props.locations[selectedLocationIndex].position;
@@ -105,14 +119,9 @@ export default class GoogleMap extends Component {
 			center,
 			zoom: 18,
 			mapTypeId: "satellite",
-			styles: [
-				{
-					"featureType": "poi",
-					"stylers": [
-						{ "visibility": "off" }
-					]
-				}
-			]
+			mapTypeControl: false,
+			streetViewControl: false,
+			styles: GoogleMap.MAP_STYLES
 		});
 
 		this._map.setTilt(20);
@@ -131,9 +140,7 @@ export default class GoogleMap extends Component {
 				...GoogleMap.DEFAULT_SHAPE_STYLE
 			});
 
-			area.addListener("click", () => {
-				this.props.onSelect(i);
-			});
+			area.addListener("click", () => this.props.onSelect(i));
 
 			area.setMap(this._map);
 			this._shapes.push(area);

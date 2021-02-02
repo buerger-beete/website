@@ -6,28 +6,46 @@
 	flex-direction: column;
 
 	.item {
-		padding: 2.75rem;
+		margin: 1.5rem 1.5rem 0.25rem;
+		padding: 1rem;
+		padding-left: 1.3rem;
+
+		border: 1px solid rgba($primary, 0.25);
+		border-radius: 0.75rem;
 
 		cursor: pointer;
 
-		border-bottom: 1px solid grey;
+		box-shadow:
+			0 0.1rem 0.5rem rgba($black, 0.1),
+			0 2px 4px rgba($black, 0.2);
 
 		@include until($tablet) {
-			padding: 1.5rem;
+			padding: 0.75rem;
+			margin: 0.75rem 0.75rem 0.25em;
 		}
 
 		&:last-child {
 			border-bottom: none;
+			margin-bottom: 1.5rem;
+
+			@include until($tablet) {
+				margin-bottom: 0.75rem;
+			}
+		}
+
+		&:nth-child(odd) {
+			background: rgba($primary, 0.05);
 		}
 
 
-		&:hover {
-			background: rgba($black, 0.05);
-		}
-
+		&:hover,
 		&.active {
 			color: $white;
 			background: rgba($primary, 1);
+
+			.content {
+				opacity: 0.9;
+			}
 
 			* {
 				color: inherit;
@@ -36,10 +54,16 @@
 
 		.title {
 			margin-bottom: 0;
+
+			@include until($tablet) {
+				font-size: $size-6;
+			}
 		}
 
 		.content {
-			margin-top: 2rem;
+			margin-top: 1rem;
+
+			hyphens: auto;
 
 			opacity: 0.7;
 

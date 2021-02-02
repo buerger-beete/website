@@ -7,8 +7,11 @@
 
 .section {
 	margin-top: 10rem;
+	padding: 0 2rem;
 
 	.container {
+		position: relative;
+
 		overflow: hidden;
 		border-radius: 1.5rem;
 
@@ -17,7 +20,6 @@
 		box-shadow: $shadow-huge;
 
 		.tile {
-			min-width: 20rem;
 			max-height: 80vh;
 			overflow: scroll;
 
@@ -26,6 +28,31 @@
 			@include until($tablet) {
 				&:first-child {
 					max-height: 40vh;
+				}
+			}
+
+			&.locationList {
+				position: absolute;
+				top: 2rem;
+				bottom: 2rem;
+				left: 2rem;
+				z-index: 1;
+
+				max-width: 25rem;
+
+				border-radius: 1rem;
+
+				background: $white;
+
+				box-shadow: 0 0 1rem rgba($black, 1);
+
+				@include until($tablet) {
+					top: initial;
+					left: 1rem;
+					right: 1rem;
+					bottom: 1rem;
+
+					max-height: 10rem;
 				}
 			}
 		}

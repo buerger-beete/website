@@ -24,7 +24,8 @@
     "react-bulma-components": "^3.4.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
-    "reusable-components": "Coderwelsch/reusable-components"
+    "reusable-components": "Coderwelsch/reusable-components",
+    "smooth-scroll-into-view-if-needed": "^1.1.29"
   },
   "devDependencies": {
     "prettier": "2.2.1"

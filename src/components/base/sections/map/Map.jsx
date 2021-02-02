@@ -6,6 +6,7 @@ import Columns from "react-bulma-components/lib/components/columns/columns";
 import Column from "react-bulma-components/lib/components/columns/components/column";
 import Heading from "react-bulma-components/lib/components/heading/heading";
 import Content from "react-bulma-components/lib/components/content/content";
+import { cn } from "reusable-components/dist/helper";
 
 import MAP_ICON_SRC from "../../../../assets/icons/map.svg";
 import { findPolygonCenter } from "../../../../helper";
@@ -17,7 +18,7 @@ import Styles from "./Map.module.scss";
 
 
 function getLocations (kmlData) {
-	const locations = [];
+	let locations = [];
 
 	if (kmlData) {
 		const placemarks = kmlData.querySelectorAll("Folder > Placemark");
@@ -47,6 +48,8 @@ function getLocations (kmlData) {
 				shapePoints
 			});
 		});
+
+		locations = locations.sort((a, b) => a.title > b.title);
 	}
 
 	return locations;
@@ -129,8 +132,10 @@ const Map = () => {
 				className={ Styles.container }>
 
 				<Column
-					className={ Styles.tile }
-					size={ 3 }>
+					className={ cn(
+						Styles.tile,
+						Styles.locationList
+					) }>
 
 					<LocationList
 						selectedLocation={ selectedLocation }
