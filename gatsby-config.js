@@ -29,6 +29,14 @@ module.exports = {
                 icon: `src/assets/logos/buerger-beete-favicon.svg`,
             },
         },
+        {
+            resolve: 'gatsby-plugin-matomo',
+            options: {
+                siteId: '2',
+                matomoUrl: 'https://matomo.go-n-grow.org',
+                siteUrl: 'https://buerger-beete.de'
+            }
+        }
         // `gatsby-plugin-offline`,
     ],
 }

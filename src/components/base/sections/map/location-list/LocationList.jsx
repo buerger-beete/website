@@ -31,6 +31,7 @@ export default class LocationList extends React.Component {
 				behavior: "smooth",
 				block: "nearest",
 				scrollMode: "if-needed",
+				boundary: document.querySelector("#map")
 			});
 		}
 	}

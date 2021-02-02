@@ -102,10 +102,14 @@ const Map = () => {
 
 				<Column
 					className={ Styles.description }
+					size={ 6 }
 					tablet={ {
-						size: 6
+						size: 8
 					} }
 					desktop={ {
+						size: 5
+					} }
+					fullhd={ {
 						size: 3
 					} }>
 
