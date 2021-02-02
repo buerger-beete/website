@@ -11,6 +11,7 @@ const ContactButton = ({ label = "Mehr Infos", size, ...props }) => {
         <Button
             color={ "primary" }
             size={ _size }
+            textSize={ 5 }
             renderAs={ "a" }
             href={ getMailLink() }
             { ...props }>

@@ -36,9 +36,7 @@ export default class LocationList extends React.Component {
 	}
 
 	componentDidUpdate (prevProps, prevState, snapshot) {
-		if (prevProps.selectedLocation !== this.props.selectedLocation) {
-			this.scrollIntoView(this.props.selectedLocation);
-		}
+		this.scrollIntoView(this.props.selectedLocation);
 	}
 
 	render () {
