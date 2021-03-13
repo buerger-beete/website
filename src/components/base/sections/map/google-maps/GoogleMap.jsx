@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
 import { Loader } from "@googlemaps/js-api-loader";
+import MarkerClusterer from "@googlemaps/markerclustererplus";
 
 import Styles from "./GoogleMap.module.scss";
 
@@ -47,6 +48,7 @@ export default class GoogleMap extends Component {
 
 	mapRef = React.createRef();
 	_map = null;
+	_markers = [];
 	_kmlLayer = null;
 
 	_shapes = [];
@@ -57,7 +59,11 @@ export default class GoogleMap extends Component {
 	async componentDidMount () {
 		await this.loadMap();
 		this.addPolygons();
-		this.navigateToLocation(this.props.selectedLocationIndex);
+		this.fitMarkersIntoView();
+
+		new MarkerClusterer(this._map, this._markers, {
+			imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+		});
 	}
 
 	componentDidUpdate (prevProps, prevState, snapshot) {
@@ -66,6 +72,7 @@ export default class GoogleMap extends Component {
 		if (currIndex !== null && prevProps.selectedLocationIndex !== currIndex) {
 			this.resetPolygonStyles();
 			this.navigateToLocation(currIndex);
+			this.openInfoWindow(currIndex);
 		}
 	}
 
@@ -133,8 +140,10 @@ export default class GoogleMap extends Component {
 	}
 
 	addPolygons () {
+		this._markers = new Array(this.props.locations.length);
+
 		for (let i = 0; i < this.props.locations.length; i++) {
-			const { shapePoints } = this.props.locations[i];
+			const { shapePoints, center, title } = this.props.locations[i];
 			const area = new window.google.maps.Polygon({
 				paths: shapePoints,
 				...GoogleMap.DEFAULT_SHAPE_STYLE
@@ -144,7 +153,22 @@ export default class GoogleMap extends Component {
 
 			area.setMap(this._map);
 			this._shapes.push(area);
+
+			// save markers for later
+			this._markers[i] = this.addMarker(center, title, i);
 		}
+	}
+
+	addMarker (position, title, index) {
+		const marker = new window.google.maps.Marker({
+			position,
+			title
+		});
+
+		marker.addListener("click", () => this.props.onSelect(index));
+		marker.setMap(this._map);
+
+		return marker;
 	}
 
 	render () {
@@ -154,5 +178,41 @@ export default class GoogleMap extends Component {
 				className={ Styles.map }
 			/>
 		);
+	}
+
+	fitMarkersIntoView () {
+		let padding = 10;
+
+		if (window.innerWidth > 769) {
+			padding = { left: 300 };
+		}
+
+		const bounds = new window.google.maps.LatLngBounds();
+
+		for (const { center } of this.props.locations) {
+			bounds.extend(
+				new window.google.maps.LatLng(center)
+			);
+		}
+
+		this._map.fitBounds(
+			bounds,
+			padding
+		);
+	}
+
+	openInfoWindow (locationIndex) {
+		const {
+			center,
+			title
+		} = this.props.locations[locationIndex];
+
+		const infoWindow = new window.google.maps.InfoWindow({
+			content: `
+				<h1>${ title }</h1>
+			`,
+		});
+
+		infoWindow.open(this._map, center);
 	}
 }

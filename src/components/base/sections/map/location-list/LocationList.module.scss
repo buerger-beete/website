@@ -5,6 +5,10 @@
 	display: flex;
 	flex-direction: column;
 
+	@include until ($tablet) {
+		display: none;
+	}
+
 	.item {
 		margin: 1.5rem 1.5rem 0.25rem;
 		padding: 1rem;

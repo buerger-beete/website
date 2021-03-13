@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.11.1",
+    "@googlemaps/markerclustererplus": "^1.0.3",
     "axios": "^0.21.1",
     "bulma": "^0.9.1",
     "gatsby": "^2.26.1",
