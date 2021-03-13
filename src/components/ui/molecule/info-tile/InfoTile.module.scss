@@ -2,6 +2,7 @@
 
 
 .item {
+	margin-bottom: 3rem;
 	padding: 0 3rem;
 
 	display: flex;
@@ -14,6 +15,7 @@
 	}
 
 	&.primary {
+		padding-bottom: 3rem;
 		border-radius: 1rem;
 
 		background: $white;
@@ -21,7 +23,7 @@
 		box-shadow: 0 0.25rem 2.5rem rgba(0, 0, 0, 0.1);
 
 		@include until($tablet) {
-			padding-bottom: 2rem;
+			padding-bottom: 3rem;
 		}
 	}
 }

@@ -67,12 +67,12 @@ export default class LocationList extends React.Component {
 						</Heading>
 
 						{ location.description &&
-						<Content
-							renderAs={ "p" }
-							textSize={ 6 }
-							className={ Styles.content }>
-							{ location.description }
-						</Content>
+							<Content
+								renderAs={ "p" }
+								textSize={ 6 }
+								className={ Styles.content }>
+								{ location.description }
+							</Content>
 						}
 					</li>
 				) }

@@ -17,8 +17,11 @@ const Tile = ({ title, icon, primary, children }) =>
         title={ title }
         icon={ icon }
         primary={ primary }
-        tablet={ {
+        desktop={ {
             size: 3
+        } }
+        tablet={ {
+            size: 4
         } }>
         { children }
     </InfoTile>;
@@ -64,24 +67,26 @@ const Join = () => {
 
             <Columns
                 className={ Styles.columns }
+                multiline
                 centered>
 
                 <Tile
                     title={ "Samen & Areal" }
                     icon={ "seed-bag" }>
-                    <p>Spreche mit uns über E-Mail ab, was und wo du gerne säen möchtest. Der <i>Bereich Grünflächen</i> sponsert dir gern auch Samen.</p>
+                    <p>Spreche mit uns über E-Mail ab, was und wo du gerne säen möchtest. Der <i>Bereich Grünflächen</i> sponsert dir nach Absprache auch Samen.</p>
                 </Tile>
 
                 <Tile
                     title={ "Pflegevereinbarung" }
                     icon={ "contract" }>
-                    <p>Die Vereinbarung legt fest, dass du die Pflege für deine Brachfläche übernimmst und berechtigt dich zum Begrünen des Areals.</p>
+                    <p>Unterschreibe die von uns zugeschickte Vereinbarung. Sie berechtigt dich zum Begrünen des Areals. <a href={ "/files/pdf/Pflegevereinbarung-Muster.pdf" } download>→
+                        Mustervertrag</a></p>
                 </Tile>
 
                 <Tile
                     title={ "Beet Aufbereitung" }
                     icon={ "potsdam" }>
-                    <p>Der <i>Bereich Grünflächen</i> bereitet deine gewählte Brachfläche auf, füllt Blumenerde auf und baut ein kleines Zäunchen für dich.</p>
+                    <p>Der <i>Bereich Grünflächen</i> bereitet deine gewählte Brachfläche auf und baut eine kleine Beetbegrenzung für dich – du kannst dir auch ein eigenes Zäunchen bauen!</p>
                 </Tile>
 
                 <Tile

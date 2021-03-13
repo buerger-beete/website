@@ -1,6 +1,5 @@
 import { graphql, useStaticQuery } from "gatsby";
-import React, { useEffect, useState } from "react";
-import Axios from "axios";
+import React, { useState } from "react";
 
 import Columns from "react-bulma-components/lib/components/columns/columns";
 import Column from "react-bulma-components/lib/components/columns/components/column";
@@ -9,51 +8,13 @@ import Content from "react-bulma-components/lib/components/content/content";
 import { cn } from "reusable-components/dist/helper";
 
 import MAP_ICON_SRC from "../../../../assets/icons/map.svg";
-import { findPolygonCenter } from "../../../../helper";
 
 import Interferer from "../../../ui/molecule/interferer/Interferer";
-import GoogleMap from "./google-maps/GoogleMap";
 import LocationList from "./location-list/LocationList";
+import Mapbox from "./mapbox/Mapbox";
+
 import Styles from "./Map.module.scss";
 
-
-function getLocations (kmlData) {
-	let locations = [];
-
-	if (kmlData) {
-		const placemarks = kmlData.querySelectorAll("Folder > Placemark");
-
-		placemarks.forEach(mark => {
-			const title = mark.querySelector("name")?.firstChild?.wholeText?.trim();
-			const description = mark.querySelector("description")?.firstChild?.wholeText?.trim();
-			const shapePoints = mark.querySelector("coordinates")?.firstChild?.wholeText
-				.replaceAll(" ", "")
-				.split("\n")
-				.filter(row => row.length)
-				.map(row => {
-					const [lng, lat] = row.split(",");
-
-					return {
-						lng: Number.parseFloat(lng),
-						lat: Number.parseFloat(lat),
-					};
-				});
-
-			const center  = findPolygonCenter(shapePoints);
-
-			locations.push({
-				title,
-				description,
-				center,
-				shapePoints
-			});
-		});
-
-		locations = locations.sort((a, b) => a.title > b.title);
-	}
-
-	return locations;
-}
 
 const Map = () => {
 	const { markdownRemark } = useStaticQuery(graphql`
@@ -61,33 +22,26 @@ const Map = () => {
             markdownRemark(fileAbsolutePath: {regex: "//content/markdown-pages/map/locations.md/"}) {
                 frontmatter {
                     title
-                    kmlSource
+                    
                     defaultLocation {
 	                    lat
 	                    lng
                     }
+					
+					locations {
+						title
+						description
+						location
+					}
                 }
             }
         }
 	`);
 
 	const [selectedLocation, setSelectedIndex] = useState(0);
-	const [kmlData, setKmlData] = useState(null);
-
-	useEffect(() => {
-		Axios
-			.get(markdownRemark.frontmatter.kmlSource, {
-				headers: { "Content-Type": "application/xml" }
-			})
-			.then(response => {
-				const parser = new DOMParser();
-				const parsedXml = parser.parseFromString(response.data, "text/xml");
-				setKmlData(parsedXml);
-			});
-	}, []);
 
 	// aggregate location data from kml data
-	const locations = kmlData ? getLocations(kmlData) : [];
+	const locations = markdownRemark.frontmatter.locations;
 
 	return (
 		<Interferer
@@ -152,8 +106,7 @@ const Map = () => {
 				<Column className={ Styles.tile }>
 
 					{ locations.length &&
-						<GoogleMap
-							kmlSource={ markdownRemark.frontmatter.kmlSource }
+						<Mapbox
 							onSelect={ setSelectedIndex }
 							selectedLocationIndex={ selectedLocation }
 							defaultLocation={ markdownRemark.frontmatter.defaultLocation }

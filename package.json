@@ -5,8 +5,6 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "@googlemaps/js-api-loader": "^1.11.1",
-    "@googlemaps/markerclustererplus": "^1.0.3",
     "axios": "^0.21.1",
     "bulma": "^0.9.1",
     "gatsby": "^2.26.1",
@@ -20,12 +18,14 @@
     "gatsby-source-filesystem": "^2.9.0",
     "gatsby-transformer-remark": "^2.14.0",
     "gatsby-transformer-sharp": "^2.6.0",
+    "mapbox-gl": "1.12.0",
     "node-sass": "4.14.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-bulma-components": "^3.4.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
+    "react-mapbox-gl": "5.0.0",
     "reusable-components": "Coderwelsch/reusable-components",
     "smooth-scroll-into-view-if-needed": "^1.1.29"
   },
