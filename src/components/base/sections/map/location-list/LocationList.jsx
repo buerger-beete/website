@@ -50,7 +50,7 @@ export default class LocationList extends React.Component {
 
 		return (
 			<ul className={ Styles.list }>
-				{ locations.map((location, index) =>
+				{ locations.map(({ title, description, color }, index) =>
 					<li
 						key={ index }
 						ref={ this._itemRefs[index] }
@@ -58,20 +58,25 @@ export default class LocationList extends React.Component {
 						className={ cn(
 							Styles.item,
 							selectedLocation === index && Styles.active
-						) }>
+						) }
+						style={ {
+							backgroundColor: color
+						} }
+					>
+						{ console.log(title, color) }
 
 						<Heading
 							size={ 5 }
 							className={ Styles.title }>
-							{ location.title }
+							{ title }
 						</Heading>
 
-						{ location.description &&
+						{ description &&
 							<Content
 								renderAs={ "p" }
 								textSize={ 6 }
 								className={ Styles.content }>
-								{ location.description }
+								{ description }
 							</Content>
 						}
 					</li>

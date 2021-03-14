@@ -13,11 +13,13 @@
 
 	.item {
 		margin: 1.5rem 1.5rem 0.25rem;
-		padding: 1rem;
-		padding-left: 1.3rem;
+		padding: 1rem 1rem 1rem 1.3rem;
 
-		border: 1px solid rgba($primary, 0.25);
 		border-radius: 0.75rem;
+
+		overflow: hidden;
+
+		color: rgba($dark, 0.8);
 
 		cursor: pointer;
 
@@ -43,11 +45,33 @@
 			background: rgba($primary, 0.05);
 		}
 
+		&:after {
+			position: absolute;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			z-index: 1;
+
+			content: "";
+
+			width: 0.75rem;
+
+			background: rgba($dark, 0.8);
+
+			transform: translateX(100%);
+
+			transition: transform 200ms ease-in-out;
+		}
 
 		&:hover,
 		&.active {
-			color: $white;
+			position: relative;
+
 			background: rgba($primary, 1);
+
+			&:after {
+				transform: translateX(0);
+			}
 
 			.content {
 				opacity: 0.9;
@@ -59,6 +83,8 @@
 		}
 
 		.title {
+			color: inherit;
+
 			margin-bottom: 0;
 
 			@include until($tablet) {

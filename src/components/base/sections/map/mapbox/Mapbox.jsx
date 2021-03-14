@@ -28,6 +28,7 @@ export default class Mapbox extends Component {
 			title: PropTypes.string.isRequired,
 			description: PropTypes.string.isRequired,
 			location: PropTypes.array.isRequired,
+			color: PropTypes.string
 		})).isRequired
 	}
 
@@ -47,11 +48,17 @@ export default class Mapbox extends Component {
 			prevProps.selectedLocationIndex !== this.props.selectedLocationIndex &&
 			this.mapInstance !== null
 		) {
-			this.setState({
-				...this.state,
-				zoom: 20
-			});
+			const { location } = this.props.locations[this.props.selectedLocationIndex];
+			this.jumpToLocation(location);
 		}
+	}
+
+	jumpToLocation (location) {
+		this.mapInstance.flyTo({
+			center: location,
+			zoom: 19,
+			essential: true
+		});
 	}
 
 	renderClusterMarker (coordinates, pointsCount) {
@@ -108,11 +115,12 @@ export default class Mapbox extends Component {
 						{ left: 500, right: 30 }
 					}
 				>
-					{ this.props.locations.map(({ title, location }, index) =>
+					{ this.props.locations.map(({ title, location, color }, index) =>
 						<DotMarker
 							key={ location.join("-") }
 							coordinates={ location }
 							label={ title }
+							color={ color }
 							selected={ this.props.selectedLocationIndex === index }
 							onClick={ () => this.onMarkerClick(index) }
 						/>
@@ -129,33 +137,44 @@ const DotMarker = ({
 	coordinates,
 	dotLabel,
 	label,
+	color,
 	isClusterer,
 	selected,
 	onClick
-}) =>
-	<Marker coordinates={ coordinates }>
-		<div
-			className={ cn(
-				Styles.markerContainer,
-				isClusterer && Styles.clusterer,
-				selected && Styles.selected
-			) }
-			onClick={ onClick }
-		>
-			<div className={ Styles.marker }>
-				{ dotLabel &&
-					<h4 className={ Styles.dotLabel }>
-						{ dotLabel }
-					</h4>
-				}
+}) => {
+	const style = {
+		backgroundColor: color
+	};
 
-				{ label &&
-					<p className={ Styles.label }>
-						{ label }
-					</p>
-				}
+	return (
+		<Marker coordinates={ coordinates }>
+			<div
+				className={ cn(
+					Styles.markerContainer,
+					isClusterer && Styles.clusterer,
+					selected && Styles.selected
+				) }
+				onClick={ onClick }
+			>
+				<div
+					className={ Styles.marker }
+					style={ style }
+				>
+					{ dotLabel &&
+						<h4 className={ Styles.dotLabel }>
+							{ dotLabel }
+						</h4>
+					}
+
+					{ label &&
+						<p className={ Styles.label }>
+							{ label }
+						</p>
+					}
+				</div>
+
+				<div className={ Styles.pulsate } />
 			</div>
-
-			<div className={ Styles.pulsate } />
-		</div>
-	</Marker>;
+		</Marker>
+	);
+};
