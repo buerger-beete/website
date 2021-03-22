@@ -45,7 +45,7 @@ const Footer = () => {
                                     href={ "https://www.coderwelsch.com" }
                                     target={ "_blank" }
                                     rel={ "noreferrer noopener" }>
-                                    Ⓒ Coderwelsch – Codin & Design
+                                    Ⓒ Coderwelsch – Coding & Design
                                 </a>
                             </Column>
                         </Columns>
