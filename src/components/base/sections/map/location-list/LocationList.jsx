@@ -63,8 +63,6 @@ export default class LocationList extends React.Component {
 							backgroundColor: color
 						} }
 					>
-						{ console.log(title, color) }
-
 						<Heading
 							size={ 5 }
 							className={ Styles.title }>

@@ -98,6 +98,7 @@ export default class Mapbox extends Component {
 					undefined
 				}
 				onStyleLoad={ map => this.onMapLoaded(map) }
+				onClick={ (_, map) => console.log(`[${ map.lngLat.lng }, ${ map.lngLat.lat }]`) }
 				renderChildrenInPortal={ true }
 				fitBounds={ selectedLocationCenter ?
 					undefined :
