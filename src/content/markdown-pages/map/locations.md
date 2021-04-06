@@ -173,10 +173,10 @@ locations:
       location: [13.05913065469096, 52.401765078015586]
       color: "#aaa6ff"
 
-    - title: "Baumscheibe Re:Ne"
+    - title: "Blühwiese"
       description: "Bepflanzung: Mager-Blühwiese"
       location: [13.021441542286908, 52.39380382818484]
-      color: "#aaa6ff"
+      color: "#ff8859"
 
     - title: "Pilotprojekt »Essbare Stadt« #1"
       description: "Bepflanzung: Gurken, Tomaten, Zwiebeln, Möhren, Salate, Kräuter, Blumen und vieles mehr!"
