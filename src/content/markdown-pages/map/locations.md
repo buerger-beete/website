@@ -105,7 +105,7 @@ locations:
 
     - title: "Baumscheibe Ch:De"
       description: "Bepflanzung: Ringelblumen, Erdbeeren, Borretsch, Katzenminze und Topinambur"
-      location: [13.059037131219554, 52.40158295477812] 
+      location: [13.05938989788109, 52.4017857418047] 
       color: "#6cd6ff"
 
     - title: "Baumscheibe St:Bo"
@@ -187,3 +187,8 @@ locations:
       description: "Bepflanzung: Gurken, Tomaten, Zwiebeln, Möhren, Salate, Kräuter, Blumen und vieles mehr!"
       location: [13.070597, 52.398860] 
       color: "#ff8859"
+
+    - title: "Baumscheibe Mo:Ra"
+      description: "Bepflanzung: –"
+      location: [13.059111525427909, 52.401829477593935] 
+      color: "#ff6c6c"
