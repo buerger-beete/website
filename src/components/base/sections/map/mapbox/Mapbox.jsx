@@ -53,6 +53,10 @@ export default class Mapbox extends Component {
 		}
 	}
 
+	getColor (position) {
+		return `hsl(${ Math.floor(255 * position) }, 100%, 50%)`
+	}
+
 	jumpToLocation (location) {
 		this.mapInstance.flyTo({
 			center: location,
@@ -121,7 +125,7 @@ export default class Mapbox extends Component {
 							key={ location.join("-") }
 							coordinates={ location }
 							label={ title }
-							color={ color }
+							color={ this.getColor(index / this.props.locations.length) }
 							selected={ this.props.selectedLocationIndex === index }
 							onClick={ () => this.onMarkerClick(index) }
 						/>

@@ -32,7 +32,6 @@ const Map = () => {
 						title
 						description
 						location
-						color
 					}
                 }
             }

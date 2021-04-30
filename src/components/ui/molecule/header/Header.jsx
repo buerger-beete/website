@@ -50,8 +50,8 @@ const Header = () => {
 
                         <Tags className={ Styles.tags }>
                             <Tag
-                                backgroundColor={ "dark" }
-                                textColor={ "white" }
+                                backgroundColor={ "white" }
+                                textColor={ "dark" }
                                 textWeight={ "bold" }
                                 size={ "large" }>
                                 Bürger:innen begrünen Potsdam
