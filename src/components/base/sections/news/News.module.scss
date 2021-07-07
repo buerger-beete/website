@@ -1,0 +1,61 @@
+@import "src/styles/variables";
+
+
+.columns {
+	@include from($desktop) {
+		min-height: 40rem;
+	}
+}
+
+.image {
+	padding-top: 60%;
+
+	border-radius: 1.5rem;
+
+	box-shadow: $shadow-huge;
+}
+
+.newsContainer {
+	margin-top: 2rem;
+	margin-bottom: 10rem;
+
+	@include from ($tablet) {
+		margin-top: 5rem;
+	}
+
+	.newsItem {
+		overflow: hidden;
+		border-radius: 1.5rem;
+
+		background: $white;
+
+		box-shadow: $shadow-huge;
+
+		transition: transform 100ms ease-in-out;
+
+		&:hover {
+			transform: scale(1.02);
+		}
+
+		.image {
+			@include from($tablet) {
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+			}
+
+			padding-top: 0;
+
+			box-shadow: none;
+		}
+
+		.content {
+			padding: 2rem;
+
+			color: $dark;
+		}
+
+		.button {
+			padding: 1.3rem !important;
+		}
+	}
+}
