@@ -54,6 +54,10 @@ const Navigation = () => (
                         className={ Styles.navItems }>
 
                         <div className={ Styles.linksContainer }>
+                            <NavLink id={ "news" }>
+                                Aktuelles
+                            </NavLink>
+
                             <NavLink id={ "about" }>
                                 ???
                             </NavLink>

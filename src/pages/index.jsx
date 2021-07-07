@@ -5,6 +5,7 @@ import Map from "../components/base/sections/map/Map";
 import SEO from "../components/base/seo/SEO"
 import Header from "../components/ui/molecule/header/Header";
 
+import News from "../components/base/sections/news/News";
 import About from "../components/base/sections/about/About";
 import Join from "../components/base/sections/join/Join";
 import Contact from "../components/base/sections/contact/Contact";
@@ -17,6 +18,7 @@ const IndexPage = () => {
             <SEO title="Willkommen" />
             <Header />
 
+            <News />
             <About />
             <Join />
             <Map />

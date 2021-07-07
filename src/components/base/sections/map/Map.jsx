@@ -79,8 +79,11 @@ const Map = () => {
 						Karte <br/>
 					</Heading>
 
-					<Content textAlignment={ "centered" }>
-						Hier siehst du die bereits belegten Baumscheiben und Beete auf dem Bassinplatz. Und was ist mit deinem Beet? ;-)
+					<Content
+						textAlignment={ "centered" }
+						textColor={ "dark" }
+					>
+						Wir haben bereits <b>{ locations.length } Beete und Baumscheiben</b> in Potsdam vergeben 😍! Wir warten sehnsüchtig auf deine Anfrage&nbsp;😋.
 					</Content>
 				</Column>
 

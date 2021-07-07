@@ -1,0 +1,11 @@
+@import "src/styles/variables";
+
+
+.awssld__container {
+    --slider-height-percentage: 56%;
+}
+
+.awssld__timer {
+    --timer-background-color: $primary !important;
+    --timer-height: 0.5rem;
+}

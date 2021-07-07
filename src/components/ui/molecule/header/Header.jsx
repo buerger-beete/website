@@ -4,44 +4,84 @@ import GatsbyImage from "gatsby-image";
 
 import Columns from "react-bulma-components/lib/components/columns/columns";
 import Column from "react-bulma-components/lib/components/columns/components/column";
-
 import Tags from "react-bulma-components/lib/components/tag/components/tag-group";
 import Tag from "react-bulma-components/lib/components/tag/tag";
-
 import Heading from "react-bulma-components/lib/components/heading/heading";
-
 import ButtonGroup from "react-bulma-components/lib/components/button/components/button-group";
 import Button from "react-bulma-components/lib/components/button/button";
-
 import Hero from "react-bulma-components/lib/components/hero/hero";
 import Body from "react-bulma-components/lib/components/hero/components/hero-body";
 
+// awesome styles
+import AwesomeSlider from "react-awesome-slider";
+import withAutoplay from "react-awesome-slider/dist/autoplay";
+import "react-awesome-slider/dist/styles.css";
+
 import Styles from "./Header.module.scss";
+import "./Header.scss"
 
 
-const Header = () => {
+const AutoplaySlider = withAutoplay(AwesomeSlider);
+
+const Slideshow = () => {
     const query = useStaticQuery(graphql`
         query {
-            fileName: file(relativePath: { eq: "images/teaser/Mandy + Lisa beim buddeln.jpeg" }) {
-                childImageSharp {
-                    fluid(maxWidth: 1920, maxHeight: 1080) {
-                        ...GatsbyImageSharpFluid
+            allFile(
+                filter: {
+                    relativePath: {
+                        glob: "images/teaser/*.*"
+                    }
+                }
+                sort: {
+                    order: ASC, 
+                    fields: name
+                }
+            ) {
+                nodes {
+                    id
+                    childImageSharp {
+                        fluid(maxWidth: 1920, maxHeight: 1080) {
+                            ...GatsbyImageSharpFluid
+                        }
                     }
                 }
             }
-        } 
+        }
     `);
 
+    return (
+        <AutoplaySlider
+            play={ true }
+            bullets={ false }
+            organicArrows={ false }
+            cancelOnInteraction={ false } // should stop playing on user interaction
+            interval={ 6000 }
+            loop={ true }
+            className={ Styles.slideshow }
+        >
+           { query.allFile.nodes.map(file =>
+               <div
+                   key={ file.id }
+                   className={ Styles.slide }
+               >
+                   <GatsbyImage
+                       fluid={ file.childImageSharp.fluid }
+                   />
+               </div>
+           ) }
+        </AutoplaySlider>
+    );
+};
+
+
+const Header = () => {
     return (
         <Hero
             size={"medium"}
             className={ Styles.hero }>
 
             <Body className={ Styles.body }>
-                <GatsbyImage
-                    className={ Styles.image }
-                    fluid={ query.fileName.childImageSharp.fluid }
-                />
+                <Slideshow/>
 
                 <Columns className={ Styles.overlay }>
                     <Column
