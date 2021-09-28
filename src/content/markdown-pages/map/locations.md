@@ -171,3 +171,53 @@ locations:
     - title: "Blühinsel Vogelbeerenweg"
       description: "Bepflanzung: Rieger-Hofmann Saatgut"
       location: [12.990843, 52.411520]
+    
+    - title: "Blühinsel Vogelbeerenweg"
+      description: "Bepflanzung: Rieger-Hofmann Saatgut"
+      location: [12.990843, 52.411520]
+
+
+    
+    - title: "Baumscheibe An:Schö"
+      description: "Bepflanzung: –"
+      location: [13.106948969138491, 52.39538085689853] 
+
+    - title: "Baumscheibe Da:Bal"
+      description: "Bepflanzung: –"
+      location: [13.084348223013128, 52.41201151697111] 
+
+    - title: "Baumscheibe An:Hei #1"
+      description: "Bepflanzung: –"
+      location: [13.055332215674612, 52.39939652597008]
+
+    - title: "Baumscheibe An:Hei #2"
+      description: "Bepflanzung: –"
+      location: [13.055656872198005, 52.39944172127335]
+
+    - title: "Baumscheibe Ha:El"
+      description: "Bepflanzung: –"
+      location: [13.1347276379853, 52.378697795860916]
+
+    - title: "Baumscheibe Im:Pa"
+      description: "Bepflanzung: –"
+      location: [13.069957966935936, 52.398968759701326]
+
+    - title: "Baumscheibe To:Wo"
+      description: "Bepflanzung: –"
+      location: [13.059567975310117, 52.40181455385539]
+
+    - title: "Baumscheibe Je-Pe:Gra"
+      description: "Bepflanzung: –"
+      location: [13.065360376731192, 52.39659112228862]
+
+    - title: "Baumscheibe Ker:Blo & Ra #1"
+      description: "Bepflanzung: –"
+      location: [13.050923203331736, 52.39758282139292]
+
+    - title: "Baumscheibe Ker:Blo & Ra #2"
+      description: "Bepflanzung: –"
+      location: [13.050948931783244, 52.39764158544733]
+
+    - title: "Baumscheibe Na:Lö"
+      description: "Bepflanzung: –"
+      location: [13.097839, 52.393672]
