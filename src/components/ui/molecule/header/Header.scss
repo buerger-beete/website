@@ -1,8 +1,19 @@
 @import "src/styles/variables";
 
 
+.awssld__wrapper {
+    z-index: 0;
+}
+
 .awssld__container {
     --slider-height-percentage: 56%;
+    padding-bottom: 0;
+    height: 80vh;
+
+
+    .gatsby-image-wrapper {
+        height: 80vh;
+    }
 }
 
 .awssld__timer {
