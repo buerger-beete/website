@@ -16,9 +16,91 @@ import Styles from "./News.module.scss";
 
 
 const News = () => {
+    return (
+        <Interferer id={ "news" }>
+            <Heading
+                size={ 1 }
+                textAlignment={ "centered" }
+            >
+                Aktuelles
+            </Heading>
+
+            <NewsList />
+
+            <hr/>
+        </Interferer>
+    )
+}
+
+const NewsItem = ({
+    href,
+    title,
+    buttonTitle,
+    children,
+    image,
+}) => {
+    return (
+        <Columns
+            renderAs={ "a" }
+            href={ href }
+            target={ "_blank" }
+            paddingless
+            vCentered
+            className={ Styles.newsItem }>
+
+            <Column
+                paddingless
+                tablet={ {
+                    size: 6
+                } }
+                desktop={ {
+                    size: 7
+                } }
+            >
+                <GatsbyImage
+                    className={ Styles.image }
+                    objectFit="cover"
+                    objectPosition="50% 50%"
+                    fluid={ image.childImageSharp.fluid }
+                />
+            </Column>
+
+            <Column className={ Styles.content }>
+                <Heading
+                    size={ 2 }
+                >
+                    { title }
+                </Heading>
+
+                <Content>{ children }</Content>
+
+                <ButtonGroup>
+                    <Button
+                        className={ Styles.button }
+                        color={ "primary" }
+                        renderAs={ "a" }
+                        target={ "_blank" }
+                        href={ href }>
+                        { buttonTitle }
+                    </Button>
+                </ButtonGroup>
+            </Column>
+        </Columns>
+    )
+}
+
+function NewsList () {
     const query = useStaticQuery(graphql`
         query {
-            fileName: file(relativePath: { eq: "images/news/hauptstadt-tv.jpg" }) {
+            tvImage: file(relativePath: { eq: "images/news/hauptstadt-tv.jpg" }) {
+                childImageSharp {
+                    fluid(maxWidth: 1920, maxHeight: 1080) {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
+
+            priceImage: file(relativePath: { eq: "images/news/klimapreis.jpg" }) {
                 childImageSharp {
                     fluid(maxWidth: 1920, maxHeight: 1080) {
                         ...GatsbyImageSharpFluid
@@ -29,73 +111,24 @@ const News = () => {
     `);
 
     return (
-        <Interferer id={ "news" }>
-            <Heading
-                size={ 1 }
-                textAlignment={ "centered" }
-            >
-                Aktuelles
-            </Heading>
-
-            <NewsList
-                imageFile={ query.fileName }
-            />
-
-            <hr/>
-        </Interferer>
-    )
-}
-
-function NewsList ({ imageFile }) {
-    return (
         <div className={ Styles.newsContainer }>
-            <Columns
-                renderAs={ "a" }
+            <NewsItem
+                href={ "https://www.pnn.de/potsdam/potsdamer-klimapreis-auf-dem-umweltfest-verliehen-regenwasser-pflanzprojekte-und-kunst-aus-muell/27627492.html" }
+                title={ "👑 Kleiner König Zukunft – Klimapreis 2021" }
+                buttonTitle={ "Mehr lesen" }
+                image={ query.priceImage }
+            >
+                Am 19.09. wurde der diesjährige Klimapreis an insgesamt sechs coole Projekte verliehen – Bürger:Beete war unter den Gewinnern! 😍🏆🌹
+            </NewsItem>
+
+            <NewsItem
                 href={ "https://hauptstadt.tv/mediathek/stadtleben/bluehbeete-gegen-insektensterben/" }
-                target={ "_blank" }
-                paddingless
-                vCentered
-                className={ Styles.newsItem }>
-
-                <Column
-                    paddingless
-                    tablet={ {
-                        size: 6
-                    } }
-                    desktop={ {
-                        size: 8
-                    } }
-                >
-                    <GatsbyImage
-                        className={ Styles.image }
-                        objectFit="cover"
-                        objectPosition="50% 50%"
-                        fluid={ imageFile.childImageSharp.fluid }
-                    />
-                </Column>
-
-                <Column className={ Styles.content }>
-                    <Heading
-                        size={ 2 }
-                    >
-                        Interview mit <u>hauptstadt.tv</u>!
-                    </Heading>
-
-                    <Content>Am 6. April gab es ein kleines Interview mit einem super netten Kamerateam vom Hauptstadt.tv! Vielen Dank an Mandy und Lisa für euren Einsatz vor der Kamera! Es hat echt Spaß gemacht 😍!</Content>
-
-                    <ButtonGroup>
-                        <Button
-                            className={ Styles.button }
-                            color={ "primary" }
-                            renderAs={ "a" }
-                            target={ "_blank" }
-                            href={ "https://hauptstadt.tv/mediathek/stadtleben/bluehbeete-gegen-insektensterben/" }>
-                            Zum Interview
-                        </Button>
-                    </ButtonGroup>
-                </Column>
-
-            </Columns>
+                title={ "🎬 Interview mit hauptstadt.tv" }
+                buttonTitle={ "Zum Interview" }
+                image={ query.tvImage }
+            >
+                Am 6. April gab es ein kleines Interview mit einem super netten Kamerateam vom Hauptstadt.tv! Vielen Dank an Mandy und Lisa für euren Einsatz vor der Kamera! Es hat echt Spaß gemacht 😍!
+            </NewsItem>
         </div>
     )
 }
