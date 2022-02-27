@@ -8,14 +8,20 @@
 }
 
 .image {
-	padding-top: 60%;
+	height: 100%;
 
 	border-radius: 1.5rem;
-
 	box-shadow: $shadow-huge;
+
+	@include until($tablet) {
+		padding-top: 60%;
+	}
 }
 
 .newsContainer {
+	max-width: 70rem;
+
+	margin: 0 auto;
 	margin-top: 2rem;
 	margin-bottom: 10rem;
 
@@ -31,11 +37,15 @@
 
 		background: $white;
 
-		box-shadow: $shadow-huge;
+		box-shadow: 0 0.25rem 0.5rem rgba($black, 0.25);
 
-		transition: transform 100ms ease-in-out;
+		transition:
+			box-shadow 250ms ease-in-out,
+			transform 250ms ease-in-out;
 
 		&:hover {
+			box-shadow: 0 0.5rem 3.5rem rgba($black, 0.25);
+
 			transform: scale(1.02);
 		}
 

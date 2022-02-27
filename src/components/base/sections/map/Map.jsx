@@ -1,71 +1,70 @@
-import { graphql, useStaticQuery } from "gatsby";
-import React, { useState } from "react";
+import { graphql, useStaticQuery } from "gatsby"
+import React, { useState } from "react"
+import { Columns, Heading, Content } from "react-bulma-components"
+import { cn } from "reusable-components/dist/helper"
 
-import Columns from "react-bulma-components/lib/components/columns/columns";
-import Column from "react-bulma-components/lib/components/columns/components/column";
-import Heading from "react-bulma-components/lib/components/heading/heading";
-import Content from "react-bulma-components/lib/components/content/content";
-import { cn } from "reusable-components/dist/helper";
+import MAP_ICON_SRC from "../../../../assets/icons/map.svg"
 
-import MAP_ICON_SRC from "../../../../assets/icons/map.svg";
+import Interferer from "../../../ui/molecule/interferer/Interferer"
+import LocationList from "./location-list/LocationList"
+import Mapbox from "./mapbox/Mapbox"
 
-import Interferer from "../../../ui/molecule/interferer/Interferer";
-import LocationList from "./location-list/LocationList";
-import Mapbox from "./mapbox/Mapbox";
-
-import Styles from "./Map.module.scss";
+import * as Styles from "./Map.module.scss"
 
 
 const Map = () => {
 	const { markdownRemark } = useStaticQuery(graphql`
 		query {
-            markdownRemark(fileAbsolutePath: {regex: "//content/markdown-pages/map/locations.md/"}) {
-                frontmatter {
-                    title
-                    
-                    defaultLocation {
-	                    lat
-	                    lng
-                    }
-					
+			markdownRemark(fileAbsolutePath: {regex: "//content/markdown-pages/map/locations.md/"}) {
+				frontmatter {
+					title
+
+					defaultLocation {
+						lat
+						lng
+					}
+
 					locations {
 						title
 						description
 						location
 					}
-                }
-            }
-        }
-	`);
+				}
+			}
+		}
+	`)
 
-	const [selectedLocation, setSelectedIndex] = useState(0);
+	const [ selectedLocation, setSelectedIndex ] = useState(0)
 
 	// aggregate location data from kml data
-	const locations = markdownRemark.frontmatter.locations;
+	const locations = markdownRemark.frontmatter.locations
 
 	return (
 		<Interferer
 			id={ "map" }
 			containerClassName={ Styles.wrapper }
-			className={ Styles.section }>
+			className={ Styles.section }
+		>
 
 			<Columns
 				centered
 				vCentered
-				className={ Styles.columns }>
+				className={ Styles.columns }
+			>
 
-				<Column
+				<Columns.Column
 					className={ Styles.description }
 					size={ 6 }
 					tablet={ {
-						size: 8
+						size: 8,
 					} }
 					desktop={ {
-						size: 5
+						size: 5,
 					} }
 					fullhd={ {
-						size: 3
-					} }>
+						size: 3,
+					} }
+				>
 
 					<img
 						src={ MAP_ICON_SRC }
@@ -75,28 +74,32 @@ const Map = () => {
 
 					<Heading
 						size={ 1 }
-						textAlignment={ "centered" }>
-						Karte <br/>
+						textAlign={ "centered" }
+					>
+						Karte <br />
 					</Heading>
 
 					<Content
-						textAlignment={ "centered" }
+						textAlign={ "centered" }
 						textColor={ "dark" }
 					>
-						Wir haben bereits <b>{ locations.length } Beete und Baumscheiben</b> in Potsdam vergeben 😍! Wir warten sehnsüchtig auf deine Anfrage&nbsp;😋.
+						Wir haben bereits <b>{ locations.length } Beete und Baumscheiben</b> in Potsdam vergeben 😍! Wir
+						warten sehnsüchtig auf deine Anfrage&nbsp;😋.
 					</Content>
-				</Column>
+				</Columns.Column>
 
 			</Columns>
 
 			<Columns
-				className={ Styles.container }>
+				className={ Styles.container }
+			>
 
-				<Column
+				<Columns.Column
 					className={ cn(
 						Styles.tile,
-						Styles.locationList
-					) }>
+						Styles.locationList,
+					) }
+				>
 
 					<LocationList
 						selectedLocation={ selectedLocation }
@@ -104,9 +107,9 @@ const Map = () => {
 						locations={ locations }
 					/>
 
-				</Column>
+				</Columns.Column>
 
-				<Column className={ Styles.tile }>
+				<Columns.Column className={ Styles.tile }>
 
 					{ locations.length &&
 						<Mapbox
@@ -117,13 +120,13 @@ const Map = () => {
 						/>
 					}
 
-				</Column>
+				</Columns.Column>
 			</Columns>
 		</Interferer>
-	);
-};
+	)
+}
 
-Map.propTypes = {};
-Map.defaultProps = {};
+Map.propTypes = {}
+Map.defaultProps = {}
 
-export default Map;
+export default Map

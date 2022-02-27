@@ -1,92 +1,113 @@
 import React from "react"
+import { Container, Navbar, Menu, Button } from "react-bulma-components"
+import scrollIntoView from "smooth-scroll-into-view-if-needed"
 
-import Container from "react-bulma-components/lib/components/container/container";
-import Navbar from "react-bulma-components/lib/components/navbar/navbar";
-import Brand from "react-bulma-components/lib/components/navbar/components/brand";
-import Item from "react-bulma-components/lib/components/navbar/components/item";
-import Menu from "react-bulma-components/lib/components/navbar/components/menu";
-import NavContainer from "react-bulma-components/lib/components/navbar/components/container";
-import scrollIntoView from "smooth-scroll-into-view-if-needed";
-
-import LOGO_SRC from "../../../../assets/logos/buerger-beete.svg";
-import Styles from "./Navigation.module.scss"
-import ContactButton from "../../atom/contact-button/ContactButton";
+import LOGO_SRC from "../../../../assets/logos/buerger-beete.svg"
+import * as Styles from "./Navigation.module.scss"
+import ContactButton from "../../atom/contact-button/ContactButton"
 
 
 const NavLink = ({ id, children }) => {
-    return (
-        <Item
-            textWeight={ "bold" }
-            textSize={ 5 }
-            hoverable={ false }
-            renderAs={ "a" }
-            textColor={ "white" }
-            className={ Styles.navLink }
-            onClick={ () => scrollIntoView(document.getElementById(id)) }>
+	return (
+		<Navbar.Item
+			textWeight={ "bold" }
+			textSize={ 5 }
+			hoverable={ false }
+			renderAs={ "a" }
+			textColor={ "white" }
+			className={ Styles.navLink }
+			onClick={ () => scrollIntoView(document.getElementById(id), { block: "start" }) }
+		>
 
-            <span>
-                { children }
-            </span>
+			<span>
+				{ children }
+			</span>
 
-        </Item>
-    );
-};
+		</Navbar.Item>
+	)
+}
 
-const Navigation = () => (
-    <div className={ Styles.navContainer }>
-        <Container>
-            <Navbar className={ Styles.nav }>
-                <Brand>
-                    <Item
-                        renderAs={ "a" }
-                        href={ "/" }>
-                        <img
-                            src={ LOGO_SRC }
-                            className={ Styles.logo }
-                            alt="Logo Bürger:Beete"
-                        />
-                    </Item>
-                </Brand>
+const Navigation = ({ type }) => {
 
-                <Menu>
-                    <NavContainer
-                        position={ "end" }
-                        className={ Styles.navItems }>
+	return (
+		<div className={ Styles.navContainer }>
+			<Container
+				alignItems={ "stretch" }
+				justifyContent={ "space-between" }
+			>
+				<Navbar
+					className={ Styles.nav }
+					alignItems={ "stretch" }
+					justifyContent={"center"}
+				>
+					{ type === "simple-page" ? (
+						<Button.Group align={ "center" }>
+							<Button
+								color={ "white" }
+								outlined={ true }
+								renderAs={ "a" }
+								href={ "/" }
+							>
+								Zurück zur Startseite
+							</Button>
+						</Button.Group>
+					) : (
+						<>
+							<Navbar.Brand>
+								<Navbar.Item
+									renderAs={ "a" }
+									href={ "/" }
+								>
+									<img
+										src={ LOGO_SRC }
+										className={ Styles.logo }
+										alt="Logo Bürger:Beete"
+									/>
+								</Navbar.Item>
+							</Navbar.Brand>
 
-                        <div className={ Styles.linksContainer }>
-                            <NavLink id={ "news" }>
-                                Aktuelles
-                            </NavLink>
+							<Navbar.Menu>
+								<Navbar.Container
+									align={ "right" }
+									className={ Styles.navItems }
+								>
 
-                            <NavLink id={ "about" }>
-                                ???
-                            </NavLink>
+									<div className={ Styles.linksContainer }>
+										<NavLink id={ "news" }>
+											Aktuelles
+										</NavLink>
 
-                            <NavLink id={ "join" }>
-                                Dein Beet
-                            </NavLink>
+										<NavLink id={ "about" }>
+											???
+										</NavLink>
 
-                            <NavLink id={ "map" }>
-                                Karte
-                            </NavLink>
-                        </div>
+										<NavLink id={ "join" }>
+											Dein Beet
+										</NavLink>
 
-                        <ContactButton
-                            outlined
-                            size={ "normal" }
-                            label={ "Mail schreiben" }
-                            color={ "white" }
-                        />
+										<NavLink id={ "map" }>
+											Karte
+										</NavLink>
+									</div>
 
-                    </NavContainer>
-                </Menu>
-            </Navbar>
-        </Container>
-    </div>
-)
+									<ContactButton
+										outlined
+										size={ "normal" }
+										label={ "Mail schreiben" }
+										color={ "white" }
+									/>
 
-Navigation.propTypes = {};
+								</Navbar.Container>
+							</Navbar.Menu>
+						</>
+					) }
+				</Navbar>
+			</Container>
+		</div> )
+}
 
-Navigation.defaultProps = {};
+Navigation.propTypes = {}
+
+Navigation.defaultProps = {}
 
 export default Navigation

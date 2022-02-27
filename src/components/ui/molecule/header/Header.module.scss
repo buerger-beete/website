@@ -1,6 +1,13 @@
 @import "src/styles/variables";
 
 
+$height: 90vh;
+
+.root {
+	position: relative;
+	width: 100%;
+}
+
 .hero,
 .body {
 	position: relative;
@@ -11,36 +18,50 @@
 
 .hero {
 	@include until($tablet) {
-		min-height: 80vh;
+		min-height: $height;
+	}
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 5;
+
+	pointer-events: none;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	flex-direction: row;
+
+	.tags {
+		pointer-events: none;
+
+		margin-bottom: 0;
+		justify-content: center;
+
+		.tag {
+			border: 2px solid $primary !important;
+		}
 	}
 
-	.body {
-		.overlay {
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
+	.heading {
+		margin-bottom: 3rem;
 
-			display: flex;
-			align-items: center;
-			justify-content: center;
+		text-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.8);
 
-			.tags {
-				margin-bottom: 0;
-				
-				justify-content: center;
-			}
-
-			.heading {
-				margin-bottom: 3rem;
-
-				@include from($tablet) {
-					margin-top: 0.5rem;
-					font-size: 4.5rem;
-				}
-			}
+		@include from($tablet) {
+			margin-top: 0.5rem;
+			font-size: 4.5rem;
 		}
+	}
+
+	.button {
+		box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
 	}
 }
 
@@ -48,7 +69,7 @@
 	position: relative;
 	z-index: 0;
 
-	height: 80vh;
+	height: $height;
 
 	&:before,
 	&:after {
@@ -59,6 +80,8 @@
 
 		width: 100%;
 		height: 100%;
+
+		pointer-events: none;
 
 		content: "";
 		display: block;
@@ -76,5 +99,13 @@
 	.slide {
 		width: 100%;
 		height: 100%;
+
+		* {
+			height: 100% !important;
+
+			padding: 0 !important;
+			margin: 0 !important;
+		}
+
 	}
 }

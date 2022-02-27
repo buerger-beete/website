@@ -32,7 +32,9 @@ $body-family: $family-secondary;
 
 $title-color: #344A3F;
 $title-family: $family-primary;
+
 $subtitle-family: $family-secondary;
+$subtitle-color: darken($title-color, 8%);
 
 // IMPORT BULMA
 @import "~bulma/sass/utilities/all";

@@ -1,25 +1,25 @@
-import React from "react";
+import React from "react"
+import { Button } from "react-bulma-components"
 
-import Button from "react-bulma-components/lib/components/button/button";
-import {getMailLink} from "../../../../helper";
+import { getMailLink } from "../../../../helper"
 
 
 const ContactButton = ({ label = "Mehr Infos", size, ...props }) => {
-    let _size = size === "normal" ? undefined : size;
+	let _size = size === "normal" ? undefined : size
 
-    return (
-        <Button
-            color={ "primary" }
-            size={ _size }
-            textSize={ 5 }
-            renderAs={ "a" }
-            href={ getMailLink() }
-            { ...props }>
+	return (
+		<Button
+			color={ "primary" }
+			size={ _size }
+			textSize={ 5 }
+			renderAs={ "a" }
+			href={ getMailLink() }
+			{ ...props }>
 
-            { label }
+			{ label }
 
-        </Button>
-    );
+		</Button>
+	)
 }
 
-export default  ContactButton;
+export default ContactButton

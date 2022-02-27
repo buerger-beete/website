@@ -3,13 +3,9 @@ import { cn } from "reusable-components/dist/helper";
 import PropTypes from "prop-types";
 
 import "mapbox-gl/dist/mapbox-gl.css";
-import ReactMapboxGl, {
-	Marker,
-	Cluster,
-	ZoomControl
-} from "react-mapbox-gl";
+import ReactMapboxGl, { Marker, Cluster, ZoomControl } from "react-mapbox-gl";
 
-import Styles from "./Mapbox.module.scss";
+import * as Styles from "./Mapbox.module.scss";
 
 
 const MAP_STYLE_URL = "mapbox://styles/buergerbeete/ckm7ocbrw2dxm18rwh8x4f7sn";
