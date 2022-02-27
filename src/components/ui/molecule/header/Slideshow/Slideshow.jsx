@@ -38,7 +38,7 @@ const Slideshow = ({
 				loop={ true }
 				className={ cn(
 					Styles.slideshow,
-					className
+					className,
 				) }
 			>
 				{ mediaFiles.map((file, index) => {

@@ -8,11 +8,16 @@ module.exports = {
 	extends: [
 		"plugin:react/recommended",
 	],
+	settings: {
+		react: {
+			version: "detect"
+		}
+	},
 	parserOptions: {
 		sourceType: "module",
 		allowImportExportEverywhere: true,
 		ecmaFeatures: {
-			jsx: true,
+			jsx: true
 		},
 		ecmaVersion: "latest",
 	},

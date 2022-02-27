@@ -4,13 +4,12 @@ title: "Karte"
 description: "Diese Areale sind bereits an unsere Helfer:innen ❤ vergeben:"
 
 defaultLocation:
-    lat: 52.40117
-    lng: 13.06061
+lat: 52.40117 lng: 13.06061
 
 locations:
-    - title: "Baumscheibe So:Ha"
-      description: "Bepflanzung: Wildblumen, Lavendel und Salbei"
-      location: [13.06062207629438, 52.40153826357397]
+- title: "Baumscheibe So:Ha"
+description: "Bepflanzung: Wildblumen, Lavendel und Salbei"
+location: [13.06062207629438, 52.40153826357397]
 
     - title: "Baumscheibe El:Po:Lu"
       description: "Himbeere und rote Johannisbeere, Zarte Gräser, Herbstaster, Tulpen / Frühblüher, Storchschnabel / Bodendecker, Rosmarin, Gartensalbei, Oregano, Wildblumensamen, Schattengräser"

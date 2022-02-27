@@ -2,21 +2,21 @@
 
 
 .awssld__wrapper {
-    z-index: 0;
+	z-index: 0;
 }
 
 .awssld__container {
-    --slider-height-percentage: 56%;
-    padding-bottom: 0;
-    height: 80vh;
+	--slider-height-percentage: 56%;
+	padding-bottom: 0;
+	height: 80vh;
 
 
-    .gatsby-image-wrapper {
-        height: 80vh;
-    }
+	.gatsby-image-wrapper {
+		height: 80vh;
+	}
 }
 
 .awssld__timer {
-    --timer-background-color: $primary !important;
-    --timer-height: 0.5rem;
+	--timer-background-color: $primary !important;
+	--timer-height: 0.5rem;
 }

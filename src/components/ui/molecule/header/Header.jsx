@@ -1,5 +1,5 @@
 import React from "react"
-import { Columns, Tag, Heading, Button, Hero, } from "react-bulma-components"
+import { Columns, Tag, Heading, Button, Hero } from "react-bulma-components"
 
 import Slideshow from "./Slideshow/Slideshow"
 import * as Styles from "./Header.module.scss"

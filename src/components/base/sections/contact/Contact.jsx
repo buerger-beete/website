@@ -53,7 +53,7 @@ const Contact = () => {
 						<p><strong>Wir freuen uns auf dich!</strong></p>
 					</Content>
 
-					<Button.Group align={"center"}>
+					<Button.Group align={ "center" }>
 						<ContactButton
 							label={ "Unverb. E-Mail schreiben" }
 						/>

@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import { cn } from "reusable-components/dist/helper";
-import PropTypes from "prop-types";
+import React, { Component } from "react"
+import { cn } from "reusable-components/dist/helper"
+import PropTypes from "prop-types"
 
-import "mapbox-gl/dist/mapbox-gl.css";
-import ReactMapboxGl, { Marker, Cluster, ZoomControl } from "react-mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css"
+import ReactMapboxGl, { Marker, Cluster, ZoomControl } from "react-mapbox-gl"
 
-import * as Styles from "./Mapbox.module.scss";
+import * as Styles from "./Mapbox.module.scss"
 
 
-const MAP_STYLE_URL = "mapbox://styles/buergerbeete/ckm7ocbrw2dxm18rwh8x4f7sn";
+const MAP_STYLE_URL = "mapbox://styles/buergerbeete/ckm7ocbrw2dxm18rwh8x4f7sn"
 
 const Map = ReactMapboxGl({
 	accessToken:
-		'pk.eyJ1IjoiYnVlcmdlcmJlZXRlIiwiYSI6ImNra2l1M2VjdTFxbHcycHF0NjJ2ZWw4OG4ifQ.KV1348L3w2Tn5QIsJ1ct-g'
-});
+		"pk.eyJ1IjoiYnVlcmdlcmJlZXRlIiwiYSI6ImNra2l1M2VjdTFxbHcycHF0NjJ2ZWw4OG4ifQ.KV1348L3w2Tn5QIsJ1ct-g",
+})
 
 export default class Mapbox extends Component {
 	static propTypes = {
@@ -24,18 +24,18 @@ export default class Mapbox extends Component {
 			title: PropTypes.string.isRequired,
 			description: PropTypes.string.isRequired,
 			location: PropTypes.array.isRequired,
-			color: PropTypes.string
-		})).isRequired
+			color: PropTypes.string,
+		})).isRequired,
 	}
 
-	mapInstance = null;
+	mapInstance = null
 
 	constructor(props) {
-		super(props);
+		super(props)
 
 		this.state = {
 			center: props.defaultLocation,
-			zoom: undefined
+			zoom: undefined,
 		}
 	}
 
@@ -44,24 +44,24 @@ export default class Mapbox extends Component {
 			prevProps.selectedLocationIndex !== this.props.selectedLocationIndex &&
 			this.mapInstance !== null
 		) {
-			const { location } = this.props.locations[this.props.selectedLocationIndex];
-			this.jumpToLocation(location);
+			const { location } = this.props.locations[this.props.selectedLocationIndex]
+			this.jumpToLocation(location)
 		}
 	}
 
-	getColor (position) {
+	getColor(position) {
 		return `hsl(${ Math.floor(255 * position) }, 100%, 50%)`
 	}
 
-	jumpToLocation (location) {
+	jumpToLocation(location) {
 		this.mapInstance.flyTo({
 			center: location,
 			zoom: 19,
-			essential: true
-		});
+			essential: true,
+		})
 	}
 
-	renderClusterMarker (coordinates, pointsCount) {
+	renderClusterMarker(coordinates, pointsCount) {
 		return (
 			<DotMarker
 				key={ `${ coordinates[0] }-${ coordinates[1] }` }
@@ -72,21 +72,21 @@ export default class Mapbox extends Component {
 		)
 	}
 
-	onMarkerClick (index) {
-		this.props.onSelect(index);
+	onMarkerClick(index) {
+		this.props.onSelect(index)
 	}
 
-	onMapLoaded (map) {
-		this.mapInstance = map;
+	onMapLoaded(map) {
+		this.mapInstance = map
 	}
 
-	render () {
-		const fitBounds = this.props.locations.map(({ location }) => location);
+	render() {
+		const fitBounds = this.props.locations.map(({ location }) => location)
 
-		const selectedLocationCenter = this.props.locations[this.props.selectedLocationIndex]?.location;
-		const center = selectedLocationCenter || this.state.center;
+		const selectedLocationCenter = this.props.locations[this.props.selectedLocationIndex]?.location
+		const center = selectedLocationCenter || this.state.center
 
-		const windowWidth = typeof window !== "undefined" && window.innerWidth;
+		const windowWidth = typeof window !== "undefined" && window.innerWidth
 
 		return (
 			<Map
@@ -124,13 +124,13 @@ export default class Mapbox extends Component {
 							color={ this.getColor(index / this.props.locations.length) }
 							selected={ this.props.selectedLocationIndex === index }
 							onClick={ () => this.onMarkerClick(index) }
-						/>
+						/>,
 					) }
 				</Cluster>
 
 				<ZoomControl />
 			</Map>
-		);
+		)
 	}
 }
 
@@ -141,11 +141,11 @@ const DotMarker = ({
 	color,
 	isClusterer,
 	selected,
-	onClick
+	onClick,
 }) => {
 	const style = {
-		backgroundColor: color
-	};
+		backgroundColor: color,
+	}
 
 	return (
 		<Marker coordinates={ coordinates }>
@@ -153,7 +153,7 @@ const DotMarker = ({
 				className={ cn(
 					Styles.markerContainer,
 					isClusterer && Styles.clusterer,
-					selected && Styles.selected
+					selected && Styles.selected,
 				) }
 				onClick={ onClick }
 			>
@@ -177,5 +177,5 @@ const DotMarker = ({
 				<div className={ Styles.pulsate } />
 			</div>
 		</Marker>
-	);
-};
+	)
+}

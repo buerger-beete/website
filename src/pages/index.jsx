@@ -38,7 +38,7 @@ const IndexPage = () => {
 		}
 	`)
 
-	const images = imagesQuery.allFile.edges.map(({node}) => node)
+	const images = imagesQuery.allFile.edges.map(({ node }) => node)
 
 	return (
 		<Layout>

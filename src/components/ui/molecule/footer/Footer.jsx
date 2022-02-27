@@ -1,18 +1,19 @@
-import React from "react";
-import { Link } from "gatsby";
+import React from "react"
+import { Link } from "gatsby"
 
 import { Container, Columns, Hero } from "react-bulma-components"
-import { cn } from "reusable-components/dist/helper";
+import { cn } from "reusable-components/dist/helper"
 
-import * as Styles from "./Footer.module.scss";
-import Interferer from "../interferer/Interferer";
+import * as Styles from "./Footer.module.scss"
+import Interferer from "../interferer/Interferer"
 
 
 const Footer = () => {
 	return (
 		<Interferer
 			hasTransitionTop
-			backgroundColor={ "primary-light" }>
+			backgroundColor={ "primary-light" }
+		>
 			<Hero>
 				<Hero.Footer>
 					<Container>
@@ -20,9 +21,10 @@ const Footer = () => {
 							<Columns.Column
 								size={ 6 }
 								tablet={ {
-									size: 6
+									size: 6,
 								} }
-								className={ Styles.links }>
+								className={ Styles.links }
+							>
 
 								<Link to={ "/impressum" }>Impressum</Link>
 								<Link to={ "/datenschutz" }>Datenschutzhinweise</Link>
@@ -33,13 +35,15 @@ const Footer = () => {
 								className={ cn(Styles.links, Styles.copyright) }
 								size={ 6 }
 								tablet={ {
-									size: 6
-								} }>
+									size: 6,
+								} }
+							>
 								<a
 									href={ "https://www.coderwelsch.com" }
 									target={ "_blank" }
-									rel={ "noreferrer noopener" }>
-                                    Ⓒ Coderwelsch – Coding & Design
+									rel={ "noreferrer noopener" }
+								>
+									Ⓒ Coderwelsch – Coding & Design
 								</a>
 							</Columns.Column>
 						</Columns>
@@ -47,7 +51,7 @@ const Footer = () => {
 				</Hero.Footer>
 			</Hero>
 		</Interferer>
-	);
+	)
 }
 
-export default Footer;
+export default Footer

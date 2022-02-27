@@ -38,7 +38,7 @@ const Navigation = ({ type }) => {
 				<Navbar
 					className={ Styles.nav }
 					alignItems={ "stretch" }
-					justifyContent={"center"}
+					justifyContent={ "center" }
 				>
 					{ type === "simple-page" ? (
 						<Button.Group align={ "center" }>
