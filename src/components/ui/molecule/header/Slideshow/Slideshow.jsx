@@ -29,7 +29,7 @@ const Slideshow = ({
 				</div>
 			}
 
-			<AwesomeSlider
+			<AutoplaySlider
 				play={ true }
 				bullets={ false }
 				organicArrows={ organicArrows }
@@ -51,7 +51,7 @@ const Slideshow = ({
 						</div>
 					)
 				}) }
-			</AwesomeSlider>
+			</AutoplaySlider>
 		</div>
 	)
 }

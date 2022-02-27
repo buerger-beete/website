@@ -23,7 +23,7 @@ const IndexPage = () => {
 				}
 				sort: {
 					order: ASC,
-					fields: name
+					fields: relativePath
 				}
 			) {
 				edges {

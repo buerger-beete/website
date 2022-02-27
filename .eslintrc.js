@@ -8,6 +8,9 @@ module.exports = {
 	extends: [
 		"plugin:react/recommended",
 	],
+	ignorePatterns: [
+		"**/*.md"
+	],
 	settings: {
 		react: {
 			version: "detect"
