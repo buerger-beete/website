@@ -3,30 +3,30 @@ import { cn } from "reusable-components/dist/helper"
 import PropTypes from "prop-types"
 
 import "mapbox-gl/dist/mapbox-gl.css"
-import ReactMapboxGl, { Marker, Cluster, ZoomControl } from "react-mapbox-gl"
+import { Marker, Cluster, ZoomControl, Map as Factory } from "react-mapbox-gl"
 
 import * as Styles from "./Mapbox.module.scss"
 
 
 const MAP_STYLE_URL = "mapbox://styles/buergerbeete/ckm7ocbrw2dxm18rwh8x4f7sn"
 
-const Map = ReactMapboxGl({
+const Map = Factory({
 	accessToken:
 		"pk.eyJ1IjoiYnVlcmdlcmJlZXRlIiwiYSI6ImNra2l1M2VjdTFxbHcycHF0NjJ2ZWw4OG4ifQ.KV1348L3w2Tn5QIsJ1ct-g",
 })
 
 export default class Mapbox extends Component {
-	static propTypes = {
+	static propTypes = ({
 		selectedLocationIndex: PropTypes.number,
 		onSelect: PropTypes.func.isRequired,
-		defaultLocation: PropTypes.object.isRequired,
+		defaultLocation: PropTypes.array.isRequired,
 		locations: PropTypes.arrayOf(PropTypes.shape({
 			title: PropTypes.string.isRequired,
 			description: PropTypes.string.isRequired,
 			location: PropTypes.array.isRequired,
 			color: PropTypes.string,
 		})).isRequired,
-	}
+	})
 
 	mapInstance = null
 
@@ -77,6 +77,7 @@ export default class Mapbox extends Component {
 	}
 
 	onMapLoaded(map) {
+		console.log("LOADED", map)
 		this.mapInstance = map
 	}
 

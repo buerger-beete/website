@@ -19,10 +19,7 @@ const Map = () => {
 				frontmatter {
 					title
 
-					defaultLocation {
-						lat
-						lng
-					}
+					defaultLocation
 
 					locations {
 						title
@@ -37,7 +34,8 @@ const Map = () => {
 	const [ selectedLocation, setSelectedIndex ] = useState(0)
 
 	// aggregate location data from kml data
-	const locations = markdownRemark.frontmatter.locations
+	const locations = markdownRemark?.frontmatter?.locations || []
+	const defaultLocation = markdownRemark?.frontmatter?.defaultLocation
 
 	return (
 		<Interferer
@@ -115,7 +113,7 @@ const Map = () => {
 						<Mapbox
 							onSelect={ setSelectedIndex }
 							selectedLocationIndex={ selectedLocation }
-							defaultLocation={ markdownRemark.frontmatter.defaultLocation }
+							defaultLocation={ defaultLocation }
 							locations={ locations }
 						/>
 					}
@@ -125,8 +123,5 @@ const Map = () => {
 		</Interferer>
 	)
 }
-
-Map.propTypes = {}
-Map.defaultProps = {}
 
 export default Map

@@ -3,9 +3,7 @@
 title: "Karte"
 description: "Diese Areale sind bereits an unsere Helfer:innen ❤ vergeben:"
 
-defaultLocation: 
-  lat: 52.40117 
-  lng: 13.06061
+defaultLocation: [52.40117, 13.06061]
 
 locations:
 

@@ -19,14 +19,14 @@
     "gatsby-source-filesystem": "^4.8.1",
     "gatsby-transformer-remark": "^5.8.1",
     "gatsby-transformer-sharp": "^4.8.0",
-    "mapbox-gl": "2.7.0",
+    "mapbox-gl": "^2.7.0",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-awesome-slider": "^4.1.0",
     "react-bulma-components": "^4.1.0",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
-    "react-mapbox-gl": "5.1.1",
+    "react-mapbox-gl": "^5.1.1",
     "reusable-components": "Coderwelsch/reusable-components",
     "sass": "^1.49.9",
     "smooth-scroll-into-view-if-needed": "^1.1.33"
@@ -52,6 +52,9 @@
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
+  "browserslist": [
+    ">0.2% and supports es6-class"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/gatsbyjs/gatsby-starter-default"
