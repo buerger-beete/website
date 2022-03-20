@@ -77,7 +77,6 @@ export default class Mapbox extends Component {
 	}
 
 	onMapLoaded(map) {
-		console.log("LOADED", map)
 		this.mapInstance = map
 	}
 

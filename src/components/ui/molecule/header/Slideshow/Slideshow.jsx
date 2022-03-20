@@ -47,6 +47,9 @@ const Slideshow = ({
 							key={ file.id }
 							className={ Styles.slide }
 						>
+							{ file.author &&
+								<p className={ Styles.author }>© Foto/Beet von { file.author }</p>
+							}
 							<Image data={ file } />
 						</div>
 					)

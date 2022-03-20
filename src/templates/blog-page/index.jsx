@@ -44,8 +44,7 @@ const BlogEntryPage = ({ pageContext }) => {
 						<Tag
 							color={ "primary" }
 							textWeight={ "bold" }
-							textTransform={ "uppercase" }
-							style={ { letterSpacing: "3px" } }
+							style={ { letterSpacing: "0.5px" } }
 							textSize={ 6 }
 						>
 							{ subtitle }
@@ -58,9 +57,8 @@ const BlogEntryPage = ({ pageContext }) => {
 						renderAs={ "h1" }
 						textColor={ "white" }
 						size={ 1 }
-					>
-						{ title }
-					</Heading>
+						dangerouslySetInnerHTML={ { __html: title } }
+					/>
 
 					<Heading
 						textAlign={ "center" }

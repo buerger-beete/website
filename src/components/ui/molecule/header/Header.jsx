@@ -29,7 +29,7 @@ const Header = (props) => {
 
 						<Tag.Group className={ Styles.tags }>
 							<Tag
-								backgroundColor={ "dark" }
+								backgroundColor={ "primary" }
 								textColor={ "light" }
 								textWeight={ "bold" }
 								size={ "large" }
@@ -45,7 +45,7 @@ const Header = (props) => {
 							size={ 1 }
 							className={ Styles.heading }
 						>
-							Bürger:Beete 2022 🌻:<br />
+							Bürger:Beete ’22 🌻:<br />
 							Ab ins Beet mit euch! 😋
 						</Heading>
 					</Columns.Column>

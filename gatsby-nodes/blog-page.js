@@ -5,13 +5,29 @@ const blogPages = async (createPage, graphql, reporter) => {
 	const mdTemplate = path.resolve("src/templates/blog-page/index.jsx")
 	const blogEntriesResult = await graphql(`
 		{
-			allFile(filter: {relativePath: {glob: "blog/**/*.md"}}) {
+			allFile(
+				filter: {
+					relativePath: {
+						glob: "blog/**/*.md"
+					}
+					childrenMarkdownRemark: {
+						elemMatch: {
+							frontmatter: {
+								published: {
+									eq: true
+								}
+							}
+						}
+					}
+				}
+			) {
 				edges {
 					node {
 						relativePath
 						relativeDirectory
 						childMarkdownRemark {
 							frontmatter {
+								published
 								title
 								subtitle
 								description

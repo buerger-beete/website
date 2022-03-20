@@ -28,10 +28,13 @@ const News = () => {
 const NewsItem = ({
 	href,
 	title,
+	subtitle,
+	date,
 	target = "_blank",
 	buttonTitle,
 	description,
 	image,
+	author,
 }) => {
 	return (
 		<Columns
@@ -65,9 +68,31 @@ const NewsItem = ({
 
 			<Columns.Column className={ Styles.content }>
 				<Heading
+					size={ 5 }
+					mb={ 1 }
+					dangerouslySetInnerHTML={ { __html: subtitle } }
+				/>
+
+				<Heading
 					size={ 2 }
+					mb={2}
+					dangerouslySetInnerHTML={ { __html: title } }
+				/>
+
+				<Heading
+					size={ 6 }
+					mt={ 1 }
+					spaced={ true }
+					italic={ true }
+					textFamily={ "secondary" }
+					textWeight={ "light" }
 				>
-					{ title }
+					vom {new Date(date).toLocaleDateString(undefined, {
+						year: "2-digit",
+						month: "2-digit",
+						day: "2-digit",
+					})}
+					{ author && ` · ${ author }` }
 				</Heading>
 
 				<Content>
@@ -96,6 +121,15 @@ function NewsList() {
 			allFile(
 				filter: {
 					relativePath: { glob: "blog/**/*.md" }
+					childrenMarkdownRemark: {
+						elemMatch: {
+							frontmatter: {
+								published: {
+									eq: true
+								}
+							}
+						}
+					}
 				}
 				sort: {
 					order: DESC,
@@ -108,6 +142,7 @@ function NewsList() {
 						relativeDirectory
 						childMarkdownRemark {
 							frontmatter {
+								published
 								title
 								subtitle
 								description
@@ -138,13 +173,11 @@ function NewsList() {
 				({
 					childMarkdownRemark: {
 						frontmatter: {
-							title,
-							subtitle,
 							teaserImg,
 							isExternal,
 							buttonTitle,
-							description,
 							link,
+							...frontmatter
 						},
 					},
 					relativeDirectory,
@@ -155,11 +188,9 @@ function NewsList() {
 						key={ relativePath }
 						href={ isExternal ? link : relativeDirectory }
 						target={ isExternal ? "_blank" : "_self" }
-						title={ title }
-						subtitle={ subtitle }
-						description={ description }
 						image={ teaserImg }
 						buttonTitle={ buttonTitle || "Mehr lesen" }
+						{ ...frontmatter }
 					/>
 				),
 			) }

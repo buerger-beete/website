@@ -13,19 +13,28 @@ import * as Styles from "./Map.module.scss"
 
 
 const Map = () => {
-	const { markdownRemark } = useStaticQuery(graphql`
+	const {
+		participants,
+		mapConfig,
+	} = useStaticQuery(graphql`
 		query {
-			markdownRemark(fileAbsolutePath: {regex: "//content/markdown-pages/map/locations.md/"}) {
+			participants: markdownRemark(fileAbsolutePath: {regex: "//content/markdown-pages/data/participants/index.md/"}) {
 				frontmatter {
-					title
-
-					defaultLocation
-
-					locations {
-						title
-						description
-						location
+					participants {
+						name
+						flowerbeds {
+							title
+							imagesDir
+							description
+							location
+						}
 					}
+				}
+			}
+
+			mapConfig: markdownRemark(fileAbsolutePath: {regex: "//content/markdown-pages/map/index.md/"}) {
+				frontmatter {
+					defaultLocation
 				}
 			}
 		}
@@ -34,8 +43,15 @@ const Map = () => {
 	const [ selectedLocation, setSelectedIndex ] = useState(0)
 
 	// aggregate location data from kml data
-	const locations = markdownRemark?.frontmatter?.locations || []
-	const defaultLocation = markdownRemark?.frontmatter?.defaultLocation
+	const locations = participants?.frontmatter?.participants?.reduce((aggr, next) => {
+		for (const flowerbed of next.flowerbeds) {
+			aggr.push(flowerbed)
+		}
+
+		return aggr
+	}, []) || []
+
+	const defaultLocation = mapConfig?.frontmatter?.defaultLocation || [52, 11]
 
 	return (
 		<Interferer

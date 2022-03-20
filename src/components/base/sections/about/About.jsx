@@ -19,8 +19,6 @@ const About = () => {
 		}
 	`)
 
-	console.log(query.file)
-
 	return (
 		<Interferer id={ "about" }>
 			<Columns
@@ -28,6 +26,17 @@ const About = () => {
 				vCentered
 				className={ Styles.columns }
 			>
+				<Columns.Column size={ 12 } mb={ 6 }>
+					<Heading
+						style={ {
+							fontSize: "6rem",
+							letterSpacing: "0.1rem"
+						} }
+						textAlign={ "center" }
+					>
+						???
+					</Heading>
+				</Columns.Column>
 
 				<Columns.Column
 					tablet={ {
@@ -54,16 +63,18 @@ const About = () => {
 					} }
 					className={ Styles.description }
 				>
-
-					<Heading size={ 1 }>
-						Wie im Intro von <br />
-						Peter Lustig 🌻
+					<Heading
+						size={ 3 }
+						renderAs={ "h2" }
+					>
+						Samen säen. Kiez verschönern.<br />
+						Connecten. Insekten retten 🌻
 					</Heading>
 
 					<Content>
 						<p>
-							… möchten wir, die Initiative Bürger:Beete, unsere graue Stadt Potsdam in ein blühendes
-							Blumenparadies verwandeln. Dafür brauchen wir deine Hilfe. Je mehr mitmachen, desto besser!
+							… möchten wir, die Initiative Bürger:Beete, unsere Stadt Potsdam in ein blühendes
+							Paradies verwandeln. Für den kiez. Für die BienenDafür brauchen wir deine Hilfe. Je mehr mitmachen, desto besser!
 						</p>
 
 						<p>

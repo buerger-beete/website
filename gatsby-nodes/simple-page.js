@@ -8,7 +8,7 @@ const simplePages = async (createPage, graphql, reporter) => {
 			allFile(
 				filter: {
 					relativePath: {
-						glob: "*.md"
+						glob: "legal/*.md"
 					}
 				}
 			) {
@@ -37,6 +37,11 @@ const simplePages = async (createPage, graphql, reporter) => {
 	// Handle errors
 	if (result.errors) {
 		reporter.panicOnBuild("Couldn’t generate pages from markdown files.")
+		return
+	}
+
+	if (!result.data.allFile.edges.length) {
+		reporter.panicOnBuild("Couldn’t find legal pages or equivalent markdown files.")
 		return
 	}
 
