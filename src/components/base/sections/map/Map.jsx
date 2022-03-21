@@ -18,7 +18,7 @@ const Map = () => {
 		mapConfig,
 	} = useStaticQuery(graphql`
 		query {
-			participants: markdownRemark(fileAbsolutePath: {regex: "//content/markdown-pages/data/participants/index.md/"}) {
+			participants: markdownRemark(fileAbsolutePath: {regex: "//content/data/participants/index.md/"}) {
 				frontmatter {
 					participants {
 						name
@@ -32,7 +32,7 @@ const Map = () => {
 				}
 			}
 
-			mapConfig: markdownRemark(fileAbsolutePath: {regex: "//content/markdown-pages/map/index.md/"}) {
+			mapConfig: markdownRemark(fileAbsolutePath: {regex: "//content/map/index.md/"}) {
 				frontmatter {
 					defaultLocation
 				}

@@ -7,6 +7,7 @@ import SEO from "../components/base/seo/SEO"
 import Header from "../components/ui/molecule/header/Header"
 
 import News from "../components/base/sections/news/News"
+import JoinOurMailGroup from "../components/base/sections/join-us/JoinUs"
 import About from "../components/base/sections/about/About"
 import Join from "../components/base/sections/join/Join"
 import Contact from "../components/base/sections/contact/Contact"
@@ -14,7 +15,7 @@ import {shuffleArray} from "../helper";
 
 export const query = graphql`
 	query {
-		participants: markdownRemark(fileAbsolutePath: {regex: "//content/markdown-pages/data/participants/index.md/"}) {
+		participants: markdownRemark(fileAbsolutePath: {regex: "//content/data/participants/index.md/"}) {
 			frontmatter {
 				participants {
 					name
@@ -86,12 +87,14 @@ const IndexPage = ({ data }) => {
 
 	return (
 		<Layout>
-s
+
 			<SEO title="Willkommen" />
 
 			<Header
 				images={ imagesWithAuthors }
 			/>
+
+			<JoinOurMailGroup/>
 
 			<News />
 			<About />

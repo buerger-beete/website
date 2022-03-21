@@ -12,7 +12,6 @@ const NavLink = ({ id, children }) => {
 		<Navbar.Item
 			textWeight={ "bold" }
 			textSize={ 5 }
-			hoverable={ false }
 			renderAs={ "a" }
 			textColor={ "white" }
 			className={ Styles.navLink }
@@ -73,20 +72,24 @@ const Navigation = ({ type }) => {
 								>
 
 									<div className={ Styles.linksContainer }>
+										<NavLink id={ "join-us" }>
+											📧&nbsp;&nbsp;Mail Verteiler
+										</NavLink>
+
 										<NavLink id={ "news" }>
-											Aktuelles
+											🗞 Aktuelles
 										</NavLink>
 
 										<NavLink id={ "about" }>
-											???
+											? ? ?
 										</NavLink>
 
 										<NavLink id={ "join" }>
-											Dein Beet
+											🪴&nbsp;&nbsp;Dein Beet
 										</NavLink>
 
 										<NavLink id={ "map" }>
-											Karte
+											🗺&nbsp;&nbsp;Karte
 										</NavLink>
 									</div>
 
