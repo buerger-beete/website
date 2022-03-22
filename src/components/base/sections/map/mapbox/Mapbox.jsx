@@ -6,6 +6,7 @@ import "mapbox-gl/dist/mapbox-gl.css"
 import { Marker, Cluster, ZoomControl, Map as Factory } from "react-mapbox-gl"
 
 import * as Styles from "./Mapbox.module.scss"
+import colors from "../location-list/colors";
 
 
 const MAP_STYLE_URL = "mapbox://styles/buergerbeete/ckm7ocbrw2dxm18rwh8x4f7sn"
@@ -50,7 +51,7 @@ export default class Mapbox extends Component {
 	}
 
 	getColor(position) {
-		return `hsl(${ Math.floor(255 * position) }, 100%, 50%)`
+		return colors[Math.floor(position * colors.length)]
 	}
 
 	jumpToLocation(location) {

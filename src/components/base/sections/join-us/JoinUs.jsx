@@ -1,6 +1,8 @@
 import React, {useMemo} from "react"
 import {Button, Columns, Content, Heading} from "react-bulma-components";
+
 import Interferer from "../../../ui/molecule/interferer/Interferer";
+
 
 export default function JoinUs() {
 	return (
@@ -16,7 +18,7 @@ export default function JoinUs() {
 
 			<Columns
 				centered
-				mb={ 6 }
+				mb={6}
 			>
 				<Columns.Column
 					style={{
@@ -34,11 +36,11 @@ export default function JoinUs() {
 					<Button.Group align={"center"}>
 						<Button
 							color={"primary"}
-							renderAs={ "a" }
-							target={ "_blank" }
+							renderAs={"a"}
+							target={"_blank"}
 							href="https://gaggle.email/join/beetgefluester@buerger-beete.de"
 						>
-                            &nbsp;&nbsp;&nbsp;Zur »Beetgeflüster« Gruppe →
+                            &nbsp;&nbsp;&nbsp;Gruppe beitreten →
 						</Button>
 					</Button.Group>
 

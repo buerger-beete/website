@@ -1,5 +1,5 @@
 import React from "react"
-import { Container, Navbar, Menu, Button } from "react-bulma-components"
+import { Container, Navbar, Button } from "react-bulma-components"
 import scrollIntoView from "smooth-scroll-into-view-if-needed"
 
 import LOGO_SRC from "../../../../assets/logos/buerger-beete.svg"
@@ -27,7 +27,6 @@ const NavLink = ({ id, children }) => {
 }
 
 const Navigation = ({ type }) => {
-
 	return (
 		<div className={ Styles.navContainer }>
 			<Container
@@ -108,9 +107,5 @@ const Navigation = ({ type }) => {
 			</Container>
 		</div> )
 }
-
-Navigation.propTypes = {}
-
-Navigation.defaultProps = {}
 
 export default Navigation

@@ -7,24 +7,26 @@
 	display: flex;
 	flex-direction: column;
 
+	background: $grey-dark;
+
 	@include until($tablet) {
 		display: none;
 	}
 
 	.item {
+		position: relative;
+
 		margin: 1.5rem 1.5rem 0.25rem;
 		padding: 1rem 1rem 1rem 1.3rem;
 
 		border-radius: 0.75rem;
+		border: 3px solid transparent;
 
 		overflow: hidden;
-
 		color: rgba($dark, 0.8);
-
 		cursor: pointer;
 
-		box-shadow: 0 0.1rem 0.5rem rgba($black, 0.1),
-		0 2px 4px rgba($black, 0.2);
+		box-shadow: 0 0.1rem 0.5rem rgba($black, 0.1), 0 2px 4px rgba($black, 0.2);
 
 		@include until($tablet) {
 			padding: 0.75rem;
@@ -46,38 +48,36 @@
 
 		&:after {
 			position: absolute;
-			right: 0;
 			top: 0;
-			bottom: 0;
-			z-index: 1;
+			left: 0;
+			z-index: 0;
 
+			width: 100%;
+			height: 100%;
 			content: "";
 
-			width: 0.75rem;
+			background: rgba($dark, 0.7);
 
-			background: rgba($dark, 0.8);
-
-			transform: translateX(100%);
+			transform: translateY(100%);
 
 			transition: transform 200ms ease-in-out;
 		}
 
 		&:hover,
 		&.active {
-			position: relative;
+			color: $white !important;
+			border: 3px solid $white;
 
 			background: rgba($primary, 1);
 
 			&:after {
-				transform: translateX(0);
-			}
-
-			.content {
-				opacity: 0.9;
+				transform: translateY(0);
 			}
 
 			* {
-				color: inherit;
+				position: relative;
+				z-index: 2;
+				color: $white !important;
 			}
 		}
 
@@ -92,11 +92,10 @@
 		}
 
 		.content {
+			color: inherit;
 			margin-top: 1rem;
 
 			hyphens: auto;
-
-			opacity: 0.7;
 
 			@include until($desktop) {
 				display: none;

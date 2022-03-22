@@ -1,6 +1,4 @@
-export function getContrast(hslColor) {
-	let hexColor = hslToHex(hslColor)
-
+export function getContrast(hexColor) {
 	// If a leading # is provided, remove it
 	if (hexColor.slice(0, 1) === "#") {
 		hexColor = hexColor.slice(1)

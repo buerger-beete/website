@@ -8,6 +8,7 @@ import { cn } from "reusable-components/dist/helper"
 import { getContrast } from "../../../../../helper/colors"
 
 import * as Styles from "./LocationList.module.scss"
+import colors from "./colors";
 
 
 export default class LocationList extends React.Component {
@@ -41,8 +42,8 @@ export default class LocationList extends React.Component {
 		this.scrollIntoView(this.props.selectedLocation)
 	}
 
-	getColor(position, luminance) {
-		return `hsl(${ Math.floor(255 * position) }, 100%, ${ luminance }%)`
+	getColor(position) {
+		return colors[Math.floor(position * colors.length)]
 	}
 
 	render() {
@@ -60,7 +61,6 @@ export default class LocationList extends React.Component {
 
 					const color = this.getColor(
 						index / locations.length,
-						isActive ? 30 : 50,
 					)
 
 					const textColor = getContrast(color)
@@ -72,7 +72,7 @@ export default class LocationList extends React.Component {
 							onClick={ () => this.handleItemClick(index) }
 							className={ cn(
 								Styles.item,
-								selectedLocation === index && Styles.active,
+								isActive && Styles.active,
 							) }
 							style={ {
 								backgroundColor: color,
@@ -80,8 +80,10 @@ export default class LocationList extends React.Component {
 						>
 							<Heading
 								size={ 5 }
-								style={ { color: textColor } }
 								className={ Styles.title }
+								style={ {
+									color: textColor,
+								} }
 							>
 								{ title }
 							</Heading>
@@ -90,8 +92,10 @@ export default class LocationList extends React.Component {
 								<Content
 									renderAs={ "p" }
 									textSize={ 6 }
-									style={ { color: textColor } }
 									className={ Styles.content }
+									style={ {
+										color: textColor,
+									} }
 								>
 									{ description }
 								</Content>
