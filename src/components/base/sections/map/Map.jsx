@@ -106,7 +106,6 @@ const Map = () => {
 			<Columns
 				className={ Styles.container }
 			>
-
 				<Columns.Column
 					className={ cn(
 						Styles.tile,

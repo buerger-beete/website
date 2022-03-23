@@ -88,7 +88,7 @@ const Join = () => {
 						<Button
 							renderAs={"a"}
 							target={"_blank"}
-							href={"/files/pdf/Baumscheiben-Pflegetipps.pdf"}
+							href={"/files/pdf/Baumscheiben-Pflegetipps-BUND.pdf"}
 							style={{paddingRight: "2.25rem"}}
 							color={"dark"}
 						>
