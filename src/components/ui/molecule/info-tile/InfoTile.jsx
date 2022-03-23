@@ -27,13 +27,13 @@ const InfoTile = ({ icon, iconAlt, title, className, primary, children, ...props
 
 			<Heading
 				size={ 5 }
-				textAlign={ "centered" }
+				textAlign={ "left" }
 			>
 				{ title }
 			</Heading>
 
 			<Content
-				textAlign={ "centered" }
+				textAlign={ "left" }
 			>
 				{ children }
 			</Content>

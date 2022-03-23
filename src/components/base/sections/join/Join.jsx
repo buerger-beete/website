@@ -1,5 +1,5 @@
 import React from "react"
-import { Columns, Heading } from "react-bulma-components"
+import {Button, Columns, Heading} from "react-bulma-components"
 
 import PATCH_FLOWERED_ICON_SRC from "../../../../assets/icons/patch-flowered.svg"
 
@@ -8,26 +8,26 @@ import Interferer from "../../../ui/molecule/interferer/Interferer"
 import InfoTile from "../../../ui/molecule/info-tile/InfoTile"
 
 
-const Tile = ({ title, icon, primary, children }) =>
+const Tile = ({title, icon, primary, children}) =>
 	<InfoTile
-		title={ title }
-		icon={ icon }
-		primary={ primary }
-		desktop={ {
+		title={title}
+		icon={icon}
+		primary={primary}
+		desktop={{
 			size: 3,
-		} }
-		tablet={ {
+		}}
+		tablet={{
 			size: 4,
-		} }
+		}}
 	>
-		{ children }
+		{children}
 	</InfoTile>
 
 const Join = () => {
 	return (
 		<Interferer
-			id={ "join" }
-			backgroundColor={ "primary-light" }
+			id={"join"}
+			backgroundColor={"primary-light"}
 			hasTransitionTop
 			hasTransitionBottom
 			fullSize
@@ -36,80 +36,111 @@ const Join = () => {
 			<Columns
 				centered
 				vCentered
-				className={ Styles.columns }
+				className={Styles.columns}
 			>
 
 				<Columns.Column
-					className={ Styles.description }
-					tablet={ {
+					className={Styles.description}
+					tablet={{
 						size: 8,
-					} }
-					desktop={ {
+					}}
+					desktop={{
 						size: 6,
-					} }
+					}}
 				>
 
 					<img
-						src={ PATCH_FLOWERED_ICON_SRC }
+						src={PATCH_FLOWERED_ICON_SRC}
 						alt="Icon: Blumenbeet"
-						className={ Styles.icon }
+						className={Styles.icon}
 					/>
 
 					<Heading
-						size={ 1 }
-						textAlign={ "centered" }
+						size={1}
+						textAlign={"centered"}
 					>
-						In 4 Schritten zum <br />
-						eigenem Beet
+                        In 4 Schritten zum <br/>
+                        eigenem Beet
 					</Heading>
 				</Columns.Column>
 
 			</Columns>
 
 			<Columns
-				className={ Styles.columns }
+				className={Styles.columns}
 				multiline
 				centered
 			>
 
 				<Tile
-					title={ "Samen & Areal" }
-					icon={ "seed-bag" }
-				>
-					<p>Spreche mit uns über E-Mail ab, was und wo du gerne säen möchtest. Der <i>Bereich
-					                                                                             Grünflächen</i> sponsert
-					   dir nach Absprache auch Samen.
-					</p>
-				</Tile>
-
-				<Tile
-					title={ "Pflegevereinbarung" }
-					icon={ "contract" }
+					title={"1. Samen & Areal"}
+					icon={"seed-bag"}
 				>
 					<p>
-						Unterschreibe die von uns zugeschickte Vereinbarung. Sie berechtigt dich zum Begrünen des
-						Areals&nbsp;
-						<a href={ "/files/pdf/Pflegevereinbarung-Muster.pdf" } download>→ <strong>Mustervertrag</strong></a>
+                        Spreche mit uns über E-Mail deine Wunschareal ab. Wir treffen uns nach Absprache gemeinsam mit
+                        dem <i>Bereich&nbsp;Grünflächen</i> an deinem Wunsch&shy;areal und besprechen mit dir die
+                        indi&shy;vidu&shy;ellen Pflege&shy;tipps deiner Baum&shy;scheibe / Wiese / deinem&nbsp;Beet.
 					</p>
+
+					<Button.Group
+						align={"center"}
+					>
+						<Button
+							renderAs={"a"}
+							target={"_blank"}
+							href={"/files/pdf/Baumscheiben-Pflegetipps.pdf"}
+							style={{paddingRight: "2.25rem"}}
+							color={"dark"}
+						>
+							💡&nbsp;&nbsp;Baumscheiben Pflegetipps (PDF)
+						</Button>
+					</Button.Group>
 				</Tile>
 
 				<Tile
-					title={ "Beet Aufbereitung" }
-					icon={ "potsdam" }
+					title={"2. Pflegevereinbarung"}
+					icon={"contract"}
 				>
-					<p>Der <i>Bereich Grünflächen</i> bereitet deine gewählte Brachfläche auf und baut eine kleine
-					   Beetbegrenzung für dich – du kannst dir auch ein eigenes Zäunchen bauen!
+					<p>
+                        Unterschreibe die von uns zugeschickte Verein&shy;barung. Keine Sorge, du kannst diese binnen 30
+                        Tagen kündigen, wenn du es dir anders überlegst. Hier ist ein Beispiel hinterlegt:
+					</p>
+
+					<Button.Group
+						align={"center"}
+					>
+						<Button
+							renderAs={"a"}
+							target={"_blank"}
+							href={"/files/pdf/Pflegevereinbarung-Muster.pdf"}
+							style={{paddingRight: "2.25rem"}}
+							color={"dark"}
+						>
+                            🔖&nbsp;&nbsp;Mustervertrag (PDF)
+						</Button>
+					</Button.Group>
+				</Tile>
+
+				<Tile
+					title={"3. Beet Aufbereitung"}
+					icon={"potsdam"}
+				>
+					<p>
+                        Der <i>Bereich Grünflächen</i> bereitet dein gewähltes Areal auf und baut nach Bedarf
+                        Begrenzung für dich (z.B. Beeteinfassungen). Erde kann meist binnen 2 Tagen auf deiner Fläche
+						aufgebracht werden.
 					</p>
 				</Tile>
 
 				<Tile
-					title={ "Säe und Staune!" }
-					icon={ "sow" }
+					title={"4. Säe und Staune!"}
+					icon={"sow"}
 					primary
 				>
 					<p>
-						<strong>Ende März/April { new Date().getFullYear() }:</strong><br />
-						Der beste Zeitpunkt deine Pflanzen und Samen auf deinem Beet einzupflanzen 🌻
+                        Im <strong>März / April</strong> ist die beste Zeit, dein Beet bzw. deine
+                        Wiese zu bepflanzen 🌻. Wenn du dich mit uns und anderen Bürger:&shy;Beetler:&shy;innen austauschen
+                        möchtest, solltest du am besten unserer <a href={"#join-us"}>E-Mail-Gruppe</a> beitreten ☺️
 					</p>
 				</Tile>
 			</Columns>

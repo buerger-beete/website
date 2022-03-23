@@ -23,7 +23,6 @@ const About = () => {
 		<Interferer id={ "about" }>
 			<Columns
 				centered
-				vCentered
 				className={ Styles.columns }
 			>
 				<Columns.Column size={ 12 } mb={ 6 }>
@@ -73,27 +72,37 @@ const About = () => {
 
 					<Content>
 						<p>
-							… möchten wir, die Initiative Bürger:Beete, unsere Stadt Potsdam in ein blühendes
-							Paradies verwandeln. Für den kiez. Für die BienenDafür brauchen wir deine Hilfe. Je mehr mitmachen, desto besser!
+							Wir, die Initiative <em>Bürger:Beete</em>, verwandeln die Stadt Potsdam in ein blühendes Paradies.
+							Wir machen das für einen grüneren Kiez. Für&nbsp;Insekten. Gegen das Aufheizen der Städte und
+							hitziger Gemüte, welche ihre Köpfe mit ein wenig Gartenarbeit abkühlen&nbsp;können&nbsp;❄️
 						</p>
 
 						<p>
-							Wir haben einen Deal mit der Stadt ausgehandelt und bekommen von ihnen Brachflächen und
-							Baumareale aufbereitet, die wir an interessierte Bürger:innen zur freien Bepflanzung
+							Wir haben einen Deal mit der Stadt ausgehandelt und bekommen von ihnen Brachflächen, Wiesen
+							und Baumareale aufbereitet, die wir an interessierte Bürger:innen zur freien Bepflanzung
 							vergeben.
 						</p>
 
 						<p>
-							<strong>Das wird soo cool! ☺️</strong>
+							🤬 Dich regt eine kahle graue Fläche vor deinem Haus auf? — Begrüne sie doch ganz
+							einfach mit unserer Hilfe!
 						</p>
 
-						<Button.Group className={ Styles.button }>
+						<p>
+							🛍 Du hast einen Shop in Potsdam? Zeige Engagement und kümmere dich
+							mit deinen Mitarbeiter:innen um ein bisschen Grün vor deinem Laden&nbsp;😋
+						</p>
+
+						<Button.Group
+							mt={ 6 }
+							mb={ 6 }
+						>
 							<Button
 								color={ "primary" }
 								renderAs={ "a" }
 								href={ "#join" }
 							>
-								Die 4 Schritte zu deinem Beet
+								&nbsp;&nbsp;Die 4 Schritte zum Beet →
 							</Button>
 						</Button.Group>
 					</Content>
