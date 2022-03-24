@@ -34,7 +34,7 @@ const Slideshow = ({
 				bullets={ false }
 				organicArrows={ organicArrows }
 				cancelOnInteraction={ false } // should stop playing on user interaction
-				interval={ 4500 }
+				interval={ 5500 }
 				loop={ true }
 				className={ cn(
 					Styles.slideshow,

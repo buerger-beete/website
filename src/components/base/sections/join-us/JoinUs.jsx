@@ -25,7 +25,10 @@ export default function JoinUs() {
 						maxWidth: "38rem",
 						width: "100%"
 					}}>
-					<Content size={"large"}>
+					<Content
+						size={"large"}
+						textAlign={ "center" }
+					>
 						<p>
                             Trete ganz einfach unserer Mailgruppe bei,
                             um dich mit anderen Bürger:Beetler:innen rund

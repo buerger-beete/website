@@ -33,6 +33,9 @@ const Header = (props) => {
 								textColor={ "light" }
 								textWeight={ "bold" }
 								size={ "large" }
+								mobile={ {
+									textSize: 5
+								} }
 								className={ Styles.tag }
 							>
 								Bürger:innen begrünen Potsdam
@@ -42,11 +45,11 @@ const Header = (props) => {
 						<Heading
 							textAlign={ "centered" }
 							textColor={ "white" }
-							size={ 1 }
+							size={ 3 }
 							className={ Styles.heading }
 						>
-							Bürger:Beete ’22 🌻:<br />
-							Ab ins Beet mit euch! 😋
+							Bürger:Beete ’22: <br/>
+							Ab ins Beet! 😋
 						</Heading>
 					</Columns.Column>
 				</Columns>

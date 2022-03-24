@@ -76,6 +76,7 @@ const BlogEntryPage = ({ pageContext }) => {
 				<Columns centered>
 					<Columns.Column size={ 6 }>
 						<Content
+							mb={ 6 }
 							dangerouslySetInnerHTML={ { __html: html } }
 						/>
 					</Columns.Column>
