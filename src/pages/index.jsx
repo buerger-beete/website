@@ -1,5 +1,6 @@
 import { graphql } from "gatsby"
 import React, {useMemo} from "react"
+import { Element } from "react-bulma-components"
 
 import Layout from "../components/base/layout/Layout"
 import Map from "../components/base/sections/map/Map"
@@ -12,6 +13,7 @@ import About from "../components/base/sections/about/About"
 import Join from "../components/base/sections/join/Join"
 import Contact from "../components/base/sections/contact/Contact"
 import {shuffleArray} from "../helper";
+
 
 export const query = graphql`
 	query {
@@ -100,7 +102,12 @@ const IndexPage = ({ data }) => {
 			<About />
 			<Join />
 			<Map />
-			<Contact />
+
+			{/* SPACING */}
+			<Element p={ 6 } />
+			<Element p={ 6 } />
+
+			{/*<Contact />*/}
 
 		</Layout>
 	)

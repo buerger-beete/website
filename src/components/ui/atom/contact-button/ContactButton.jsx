@@ -13,7 +13,7 @@ const ContactButton = ({ label = "Mehr Infos", size, ...props }) => {
 			size={ _size }
 			textSize={ 5 }
 			renderAs={ "a" }
-			href={ getMailLink() }
+			href={ props.disabled ? undefined : getMailLink() }
 			{ ...props }>
 
 			{ label }

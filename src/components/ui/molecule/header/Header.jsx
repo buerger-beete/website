@@ -29,7 +29,7 @@ const Header = (props) => {
 
 						<Tag.Group className={ Styles.tags }>
 							<Tag
-								backgroundColor={ "primary" }
+								backgroundColor={ "dark" }
 								textColor={ "light" }
 								textWeight={ "bold" }
 								size={ "large" }
@@ -48,9 +48,19 @@ const Header = (props) => {
 							size={ 3 }
 							className={ Styles.heading }
 						>
-							Bürger:Beete ’22: <br/>
-							Ab ins Beet! 😋
+							Info: Derzeitig keine weiteren<br/>
+							Bearbeitungen möglich ❌
 						</Heading>
+
+						<Button.Group align={ "center" }>
+							<Button
+								renderAs={ "a" }
+								href={ "#news" }
+								color={ "primary" }
+							>
+								Aktuelles
+							</Button>
+						</Button.Group>
 					</Columns.Column>
 				</Columns>
 			</Hero.Body>

@@ -33,6 +33,7 @@ const NewsItem = ({
 	target = "_blank",
 	buttonTitle,
 	description,
+	disableButton,
 	image,
 	author,
 }) => {
@@ -99,17 +100,19 @@ const NewsItem = ({
 					{ description }
 				</Content>
 
-				<Button.Group>
-					<Button
-						className={ Styles.button }
-						color={ "primary" }
-						renderAs={ "a" }
-						target={ target }
-						href={ href }
-					>
-						{ buttonTitle }
-					</Button>
-				</Button.Group>
+				{ !disableButton &&
+					<Button.Group>
+						<Button
+							className={ Styles.button }
+							color={ "primary" }
+							renderAs={ "a" }
+							target={ target }
+							href={ href }
+						>
+							{ buttonTitle }
+						</Button>
+					</Button.Group>
+				}
 			</Columns.Column>
 		</Columns>
 	)
@@ -147,6 +150,7 @@ function NewsList() {
 								subtitle
 								description
 								isExternal
+								disableButton
 								link
 								buttonTitle
 								author
@@ -175,6 +179,7 @@ function NewsList() {
 						frontmatter: {
 							teaserImg,
 							isExternal,
+							disableButton,
 							buttonTitle,
 							link,
 							...frontmatter
@@ -188,6 +193,7 @@ function NewsList() {
 						key={ relativePath }
 						href={ isExternal ? link : relativeDirectory }
 						target={ isExternal ? "_blank" : "_self" }
+						disableButton={ disableButton }
 						image={ teaserImg }
 						buttonTitle={ buttonTitle || "Mehr lesen" }
 						{ ...frontmatter }

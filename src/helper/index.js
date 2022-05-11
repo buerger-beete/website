@@ -2,7 +2,7 @@ import body from "./body.js"
 
 
 function getMailLink() {
-	const subject = "👋 Ahoi! – Anmeldung Bürger:Beete"
+	const subject = "👋 Ahoi! – Warteliste Bürger:Beete"
 
 	return `mailto:info@buerger-beete.de?subject=${ encodeURIComponent(subject) }&body=${ encodeURIComponent(body) }`
 }

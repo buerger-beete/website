@@ -3,7 +3,8 @@
 published: true
 title: "Der Frühling steht vor der&nbsp;Tür&nbsp;🌱" 
 description: "Eeeendlich ist es soweit: der Frühling steht vür der Tür. Der Winterschlaf ist vorbei, die ersten Bäume und Pflänzchen bilden bereits ihre Knospen aus und läuten allmählich den Frühling ein. Und auch wir bei Bürger:Beete bereiten uns auf die Saision vor."
-subtitle: "Planung ’22 / Feedback ’21" 
+subtitle: "Planung ’22 / Feedback ’21"
+isExternal: false
 teaserImg: "teaser.jpg" 
 author: "Joseph R. & Marc S."
 date: "2022-02-26 12:00"

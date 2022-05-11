@@ -25,12 +25,10 @@ $height: 90vh;
 .overlay {
 	position: absolute;
 	top: 0;
-	left: 0;
-	right: 0;
+	left: 10rem;
+	right: 10rem;
 	bottom: 0;
 	z-index: 5;
-
-	pointer-events: none;
 
 	display: flex;
 	align-items: center;
@@ -45,7 +43,7 @@ $height: 90vh;
 		justify-content: center;
 
 		.tag {
-			border: 2px solid $primary !important;
+			//border: 2px solid $primary !important;
 		}
 	}
 

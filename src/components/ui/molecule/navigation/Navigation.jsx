@@ -95,7 +95,7 @@ const Navigation = ({ type }) => {
 									<ContactButton
 										outlined
 										size={ "normal" }
-										label={ "Mail schreiben" }
+										label={ "Auf die Warteliste" }
 										color={ "white" }
 									/>
 
