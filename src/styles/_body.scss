@@ -7,7 +7,7 @@
 	transition: box-shadow 250ms ease-in-out,
 	transform 250ms ease-in-out;
 
-	&:hover {
+	&:not([disabled]):hover {
 		box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.15) !important;
 		transform: translateY(-0.15rem);
 	}
