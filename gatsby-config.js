@@ -31,8 +31,8 @@ module.exports = {
 				name: "gatsby-starter-default",
 				short_name: "starter",
 				start_url: "/",
-				background_color: "#663399",
-				theme_color: "#663399",
+				background_color: "#05A054",
+				theme_color: "#05A054",
 				display: "minimal-ui",
 				icon: "src/assets/logos/buerger-beete-favicon.svg",
 			},
@@ -45,6 +45,6 @@ module.exports = {
 				siteUrl: "https://buerger-beete.de",
 			},
 		},
-		// `gatsby-plugin-offline`,
+		"gatsby-plugin-offline",
 	],
 }
