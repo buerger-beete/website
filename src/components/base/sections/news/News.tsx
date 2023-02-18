@@ -2,6 +2,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import { ImageDataLike } from "gatsby-plugin-image"
 import React, { SyntheticEvent } from "react"
 import { Button, Columns, Content, Heading } from "react-bulma-components"
+import { cn } from "reusable-components/dist/helper"
 import Image from "../../../ui/atom/image/Image"
 
 import Interferer from "../../../ui/molecule/interferer/Interferer"
@@ -27,7 +28,7 @@ const News = () => {
 
 
 interface NewsItemProps {
-	href: string,
+	href?: string,
 	title: string,
 	subtitle: string,
 	date: string,
@@ -60,14 +61,17 @@ const NewsItem = ({
 		<Columns
 			paddingless
 			vCentered
-			className={ Styles.newsItem }
+			className={ cn(
+				Styles.newsItem,
+				!disableButton && Styles.interactive
+			) }
 			alignItems={ "stretch" }
-			onClick={ (event: SyntheticEvent<HTMLElement, MouseEvent>) => {
+			onClick={ href ? (event: SyntheticEvent<HTMLElement, MouseEvent>) => {
 				// @ts-ignore
 				if (event.target.tagName.toLowerCase() !== "a") {
 					window.open(href, target)
 				}
-			} }
+			} : undefined }
 		>
 
 			<Columns.Column
@@ -96,7 +100,7 @@ const NewsItem = ({
 				/>
 
 				<Heading
-					size={ 2 }
+					size={ 3 }
 					mb={ 2 }
 					dangerouslySetInnerHTML={ { __html: title } }
 				/>
@@ -130,7 +134,7 @@ const NewsItem = ({
 							target={ target }
 							href={ href }
 						>
-							{ buttonTitle }
+							{ buttonTitle } →
 						</Button>
 					</Button.Group>
 				}
@@ -241,7 +245,10 @@ function NewsList () {
 				}) => (
 					<NewsItem
 						key={ relativePath }
-						href={ isExternal ? link : relativeDirectory }
+						href={ disableButton ?
+							undefined :
+							(isExternal ? link : relativeDirectory)
+						}
 						target={ isExternal ? "_blank" : "_self" }
 						disableButton={ disableButton }
 						image={ teaserImg }

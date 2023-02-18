@@ -35,8 +35,6 @@
 
 		margin-bottom: 4rem;
 
-		cursor: pointer;
-
 		background: $white;
 
 		box-shadow: 0 0.25rem 0.5rem rgba($black, 0.25);
@@ -44,13 +42,19 @@
 		transition: box-shadow 250ms ease-in-out,
 		transform 250ms ease-in-out;
 
-		&:hover {
-			box-shadow: 0 0.5rem 3.5rem rgba($black, 0.25);
+		&.interactive {
+			cursor: pointer;
 
-			transform: scale(1.02);
+			&:hover {
+				box-shadow: 0 0.5rem 3.5rem rgba($black, 0.25);
+
+				transform: scale(1.02);
+			}
 		}
 
 		.image {
+			border-radius: 0;
+
 			@include from($tablet) {
 				border-top-right-radius: 0;
 				border-bottom-right-radius: 0;
