@@ -1,13 +1,19 @@
-import React from "react"
-import { Container, Navbar, Button } from "react-bulma-components"
+import { ReactNode } from "react"
+import { Button, Container, Navbar } from "react-bulma-components"
 import scrollIntoView from "smooth-scroll-into-view-if-needed"
 
 import LOGO_SRC from "../../../../assets/logos/buerger-beete.svg"
-import * as Styles from "./Navigation.module.scss"
 import ContactButton from "../../atom/contact-button/ContactButton"
+import * as Styles from "./Navigation.module.scss"
 
 
-const NavLink = ({ id, children }) => {
+interface NavLinkProps {
+	id: string,
+	children: ReactNode
+}
+
+
+const NavLink = ({ id, children }: NavLinkProps) => {
 	return (
 		<Navbar.Item
 			textWeight={ "bold" }
@@ -15,7 +21,7 @@ const NavLink = ({ id, children }) => {
 			renderAs={ "a" }
 			textColor={ "white" }
 			className={ Styles.navLink }
-			onClick={ () => scrollIntoView(document.getElementById(id), { block: "start" }) }
+			onClick={ () => scrollIntoView(document.getElementById(id)!, { block: "start" }) }
 		>
 
 			<span>
@@ -26,7 +32,15 @@ const NavLink = ({ id, children }) => {
 	)
 }
 
-const Navigation = ({ type }) => {
+export type NavigationType = "simple-page"
+
+
+interface NavigationProps {
+	type?: NavigationType
+}
+
+
+const Navigation = ({ type }: NavigationProps) => {
 	return (
 		<div className={ Styles.navContainer }>
 			<Container
@@ -59,7 +73,7 @@ const Navigation = ({ type }) => {
 									<img
 										src={ LOGO_SRC }
 										className={ Styles.logo }
-										alt="Logo Bürger:Beete"
+										alt={ "Logo Bürger:Beete" }
 									/>
 								</Navbar.Item>
 							</Navbar.Brand>
@@ -80,7 +94,7 @@ const Navigation = ({ type }) => {
 										</NavLink>
 
 										<NavLink id={ "about" }>
-											? ? ?
+											? ? ?
 										</NavLink>
 
 										<NavLink id={ "join" }>
@@ -105,7 +119,7 @@ const Navigation = ({ type }) => {
 					) }
 				</Navbar>
 			</Container>
-		</div> )
+		</div>)
 }
 
 export default Navigation

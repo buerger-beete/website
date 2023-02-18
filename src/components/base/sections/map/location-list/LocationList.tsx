@@ -1,31 +1,32 @@
-import React from "react"
-import PropTypes from "prop-types"
-import scrollIntoView from "smooth-scroll-into-view-if-needed"
+import React, { RefObject } from "react"
 
-import { Heading, Content } from "react-bulma-components"
+import { Content, Heading } from "react-bulma-components"
 
 import { cn } from "reusable-components/dist/helper"
+import scrollIntoView from "smooth-scroll-into-view-if-needed"
 import { getContrast } from "../../../../../helper/colors"
+import { Flowerbed } from "../../../../../pages"
+import colors from "./colors"
 
 import * as Styles from "./LocationList.module.scss"
-import colors from "./colors";
 
 
-export default class LocationList extends React.Component {
-	static propTypes = {
-		onSelect: PropTypes.func.isRequired,
-		selectedLocation: PropTypes.number.isRequired,
-		locations: PropTypes.array.isRequired,
-	}
+interface LocationListProps {
+	onSelect: (index: number) => void,
+	selectedLocation: number,
+	locations: Flowerbed[],
+}
 
-	_itemRefs = []
 
-	handleItemClick(index) {
+export default class LocationList extends React.Component<LocationListProps> {
+	_itemRefs: Array<RefObject<HTMLLIElement>> = []
+
+	handleItemClick (index: number) {
 		this.scrollIntoView(index)
 		this.props.onSelect(index)
 	}
 
-	scrollIntoView(index) {
+	scrollIntoView (index: number) {
 		const current = this._itemRefs[index]?.current
 
 		if (current) {
@@ -38,15 +39,15 @@ export default class LocationList extends React.Component {
 		}
 	}
 
-	componentDidUpdate(prevProps, prevState, snapshot) {
+	componentDidUpdate () {
 		this.scrollIntoView(this.props.selectedLocation)
 	}
 
-	getColor(position) {
+	getColor (position: number) {
 		return colors[Math.floor(position * colors.length)]
 	}
 
-	render() {
+	render () {
 		const {
 			selectedLocation,
 			locations,

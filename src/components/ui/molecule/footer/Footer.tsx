@@ -1,11 +1,11 @@
-import React from "react"
 import { Link } from "gatsby"
+import React from "react"
 
-import { Container, Columns, Hero } from "react-bulma-components"
+import { Columns, Container, Hero } from "react-bulma-components"
 import { cn } from "reusable-components/dist/helper"
+import Interferer from "../interferer/Interferer"
 
 import * as Styles from "./Footer.module.scss"
-import Interferer from "../interferer/Interferer"
 
 
 const Footer = () => {

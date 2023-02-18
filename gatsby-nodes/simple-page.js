@@ -2,7 +2,7 @@ const path = require("path")
 
 
 const simplePages = async (createPage, graphql, reporter) => {
-	const mdTemplate = path.resolve("src/templates/simple-page/index.jsx")
+	const mdTemplate = path.resolve("src/templates/simple-page/index.tsx")
 	const result = await graphql(`
 		{
 			allFile(

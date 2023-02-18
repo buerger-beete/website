@@ -1,15 +1,34 @@
+import { ImageDataLike } from "gatsby-plugin-image"
 import React from "react"
 
-import { Columns, Section, Content, Heading, Tag, Element } from "react-bulma-components"
+import { Columns, Content, Heading, Section, Tag } from "react-bulma-components"
 
 import Layout from "../../components/base/layout/Layout"
-import SEO from "../../components/base/seo/SEO"
+import Seo from "../../components/base/seo/Seo"
 import Slideshow from "../../components/ui/molecule/header/Slideshow/Slideshow"
 
 import * as Styles from "./index.module.scss"
 
 
-const BlogEntryPage = ({ pageContext }) => {
+interface BlogEntryPageProps {
+	pageContext: {
+		html: string,
+		frontmatter: {
+			title: string,
+			subtitle: string,
+			author: string,
+			date: string,
+			teaserImg: ImageDataLike & {
+				author: string,
+				id: string,
+				relativePath: string,
+			}
+		}
+	}
+}
+
+
+const BlogEntryPage = ({ pageContext }: BlogEntryPageProps) => {
 	const { html } = pageContext
 
 	const {
@@ -17,7 +36,7 @@ const BlogEntryPage = ({ pageContext }) => {
 		subtitle,
 		author,
 		date,
-		teaserImg,
+		teaserImg
 	} = pageContext.frontmatter
 
 	const creationDate = new Date(date).toLocaleString(
@@ -25,13 +44,13 @@ const BlogEntryPage = ({ pageContext }) => {
 		{
 			day: "numeric",
 			month: "short",
-			year: "numeric",
+			year: "numeric"
 		})
 
 	return (
 		<Layout type={ "simple-page" }>
 
-			<SEO title={ title } />
+			<Seo title={ title } />
 
 			<Section paddingless={ true }>
 				<Slideshow

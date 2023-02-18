@@ -1,9 +1,21 @@
-import React from "react"
+import { ReactNode } from "react"
 
-import { Section, Container } from "react-bulma-components"
+import { Container, Section } from "react-bulma-components"
 import { cn } from "reusable-components/dist/helper"
 
 import * as Styles from "./Interferer.module.scss"
+
+
+interface InterfererProps {
+	id?: string,
+	hasTransitionTop?: boolean,
+	hasTransitionBottom?: boolean,
+	fullSize?: boolean,
+	children?: ReactNode,
+	backgroundColor?: string,
+	containerClassName?: string,
+	className?: string
+}
 
 
 const Interferer = ({
@@ -14,8 +26,8 @@ const Interferer = ({
 	children,
 	containerClassName,
 	className,
-	...props
-}) => {
+	backgroundColor,
+}: InterfererProps) => {
 	return (
 		<Section
 			id={ id }
@@ -25,7 +37,8 @@ const Interferer = ({
 				hasTransitionBottom && Styles.hasTransitionBottom,
 				className,
 			) }
-			{ ...props }>
+			backgroundColor={ backgroundColor }
+		>
 			{ fullSize ?
 				children :
 				<Container className={ containerClassName }>

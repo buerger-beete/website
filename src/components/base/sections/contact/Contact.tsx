@@ -1,11 +1,11 @@
 import React from "react"
-import { Columns, Heading, Content, Button } from "react-bulma-components"
-
-import * as Styles from "./Contact.module.scss"
-import Interferer from "../../../ui/molecule/interferer/Interferer"
+import { Button, Columns, Content, Heading } from "react-bulma-components"
 import ICONS from "../../../../constants/Icons"
 import { getMailLink } from "../../../../helper"
 import ContactButton from "../../../ui/atom/contact-button/ContactButton"
+import Interferer from "../../../ui/molecule/interferer/Interferer"
+
+import * as Styles from "./Contact.module.scss"
 
 
 const Contact = () => {
@@ -30,7 +30,7 @@ const Contact = () => {
 
 					<img
 						src={ ICONS.join }
-						alt="Icon: Kontaktiere uns!"
+						alt={ "Icon: Kontaktiere uns!" }
 						className={ Styles.icon }
 					/>
 

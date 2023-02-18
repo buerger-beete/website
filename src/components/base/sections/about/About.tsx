@@ -1,7 +1,7 @@
-import React from "react"
-import GatsbyImage from "gatsby-image"
 import { graphql, useStaticQuery } from "gatsby"
-import { Columns, Heading, Content, Button } from "react-bulma-components"
+import { ImageDataLike } from "gatsby-plugin-image"
+import React from "react"
+import { Button, Columns, Content, Heading } from "react-bulma-components"
 import Image from "../../../ui/atom/image/Image"
 
 import Interferer from "../../../ui/molecule/interferer/Interferer"
@@ -9,7 +9,9 @@ import * as Styles from "./About.module.scss"
 
 
 const About = () => {
-	const query = useStaticQuery(graphql`
+	const query: {
+		file: ImageDataLike
+	} = useStaticQuery(graphql`
 		query {
 			file(relativePath: { eq: "about/flower-pots.png" }) {
 				childImageSharp {
@@ -29,7 +31,7 @@ const About = () => {
 					<Heading
 						style={ {
 							fontSize: "6rem",
-							letterSpacing: "0.1rem"
+							letterSpacing: "0.1rem",
 						} }
 						textAlign={ "center" }
 					>
@@ -47,8 +49,9 @@ const About = () => {
 				>
 					<Image
 						className={ Styles.image }
-						objectFit="cover"
-						objectPosition="50% 50%"
+						objectFit={ "cover" }
+						objectPosition={ "50% 50%" }
+						alt={ "Angezogene Pflanzen" }
 						data={ query.file }
 					/>
 				</Columns.Column>

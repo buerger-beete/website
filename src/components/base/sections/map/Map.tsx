@@ -1,22 +1,32 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React, { useState } from "react"
-import { Columns, Heading, Content } from "react-bulma-components"
+import { Columns, Content, Heading } from "react-bulma-components"
 import { cn } from "reusable-components/dist/helper"
 
 import MAP_ICON_SRC from "../../../../assets/icons/map.svg"
+import { Flowerbed, PageData } from "../../../../pages"
 
 import Interferer from "../../../ui/molecule/interferer/Interferer"
 import LocationList from "./location-list/LocationList"
-import Mapbox from "./mapbox/Mapbox"
 
 import * as Styles from "./Map.module.scss"
+import Mapbox from "./mapbox/Mapbox"
+
+
+interface MapQuery extends PageData {
+	mapConfig: {
+		frontmatter: {
+			defaultLocation: [ number, number ]
+		}
+	}
+}
 
 
 const Map = () => {
 	const {
 		participants,
 		mapConfig,
-	} = useStaticQuery(graphql`
+	}: MapQuery = useStaticQuery(graphql`
 		query {
 			participants: markdownRemark(fileAbsolutePath: {regex: "//content/data/participants/index.md/"}) {
 				frontmatter {
@@ -43,15 +53,15 @@ const Map = () => {
 	const [ selectedLocation, setSelectedIndex ] = useState(0)
 
 	// aggregate location data from kml data
-	const locations = participants?.frontmatter?.participants?.reduce((aggr, next) => {
+	const locations = participants.frontmatter.participants.reduce((aggr: Array<Flowerbed>, next) => {
 		for (const flowerbed of next.flowerbeds) {
 			aggr.push(flowerbed)
 		}
 
 		return aggr
-	}, []) || []
+	}, [])
 
-	const defaultLocation = mapConfig?.frontmatter?.defaultLocation || [52, 11]
+	const defaultLocation = mapConfig?.frontmatter?.defaultLocation || [ 52, 11 ]
 
 	return (
 		<Interferer
@@ -82,7 +92,7 @@ const Map = () => {
 
 					<img
 						src={ MAP_ICON_SRC }
-						alt="Icon: Blumenbeet"
+						alt={ "Icon: Blumenbeet" }
 						className={ Styles.icon }
 					/>
 

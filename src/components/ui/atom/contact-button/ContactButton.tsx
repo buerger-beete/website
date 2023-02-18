@@ -4,8 +4,17 @@ import { Button } from "react-bulma-components"
 import { getMailLink } from "../../../../helper"
 
 
-const ContactButton = ({ label = "Mehr Infos", size, ...props }) => {
-	let _size = size === "normal" ? undefined : size
+interface ContactButtonProps {
+	label: string,
+	size?: "small" | "normal" | "medium" | "large",
+	disabled?: boolean,
+	outlined?: boolean,
+	color?: string,
+}
+
+
+const ContactButton = ({ label = "Mehr Infos", size, ...props }: ContactButtonProps) => {
+	const _size = size === "normal" ? undefined : size
 
 	return (
 		<Button

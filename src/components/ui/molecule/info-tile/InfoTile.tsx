@@ -1,14 +1,30 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React, { ReactNode } from "react"
 
-import { Columns, Heading, Content } from "react-bulma-components"
+import { Columns, Content, Heading } from "react-bulma-components"
+import { cn } from "reusable-components/dist/helper"
+import { ColumnProps } from "../../../../../bulma-components"
 
 import ICONS from "../../../../constants/Icons"
 import * as Styles from "./InfoTile.module.scss"
-import { cn } from "reusable-components/dist/helper"
 
 
-const InfoTile = ({ icon, iconAlt, title, className, primary, children, ...props }) => {
+interface InfoTileProps extends ColumnProps {
+	icon: keyof typeof ICONS,
+	title: string,
+	className?: string,
+	primary?: boolean,
+	children: ReactNode,
+}
+
+
+const InfoTile = ({
+	icon,
+	title,
+	className,
+	primary,
+	children,
+	...props
+}: InfoTileProps) => {
 	return (
 		<Columns.Column
 			className={ cn(
@@ -16,7 +32,8 @@ const InfoTile = ({ icon, iconAlt, title, className, primary, children, ...props
 				primary && Styles.primary,
 				className,
 			) }
-			{ ...props }>
+			{ ...props }
+		>
 
 			<div
 				className={ Styles.icon }
@@ -40,19 +57,6 @@ const InfoTile = ({ icon, iconAlt, title, className, primary, children, ...props
 
 		</Columns.Column>
 	)
-}
-
-InfoTile.propTypes = {
-	icon: PropTypes.oneOf([
-		"contract",
-		"join",
-		"patch-flowered",
-		"patch-raw",
-		"seed-bag",
-		"sow",
-		"potsdam",
-	]).isRequired,
-	title: PropTypes.string.isRequired,
 }
 
 export default InfoTile

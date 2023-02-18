@@ -1,7 +1,7 @@
-import React from "react"
-import GatsbyImage from "gatsby-image"
 import { graphql, useStaticQuery } from "gatsby"
-import { Columns, Heading, Content, Button } from "react-bulma-components"
+import { ImageDataLike } from "gatsby-plugin-image"
+import React, { SyntheticEvent } from "react"
+import { Button, Columns, Content, Heading } from "react-bulma-components"
 import Image from "../../../ui/atom/image/Image"
 
 import Interferer from "../../../ui/molecule/interferer/Interferer"
@@ -25,6 +25,25 @@ const News = () => {
 	)
 }
 
+
+interface NewsItemProps {
+	href: string,
+	title: string,
+	subtitle: string,
+	date: string,
+	target: string,
+	buttonTitle: string,
+	description?: string,
+	disableButton: string,
+	image: ImageDataLike & {
+		author: string,
+		id: string,
+		relativePath: string,
+	},
+	author: string,
+}
+
+
 const NewsItem = ({
 	href,
 	title,
@@ -36,14 +55,15 @@ const NewsItem = ({
 	disableButton,
 	image,
 	author,
-}) => {
+}: NewsItemProps) => {
 	return (
 		<Columns
 			paddingless
 			vCentered
 			className={ Styles.newsItem }
 			alignItems={ "stretch" }
-			onClick={ (event) => {
+			onClick={ (event: SyntheticEvent<HTMLElement, MouseEvent>) => {
+				// @ts-ignore
 				if (event.target.tagName.toLowerCase() !== "a") {
 					window.open(href, target)
 				}
@@ -61,9 +81,10 @@ const NewsItem = ({
 			>
 				<Image
 					data={ image }
+					alt={ image.author }
 					className={ Styles.image }
-					objectFit="cover"
-					objectPosition="50% 50%"
+					objectFit={ "cover" }
+					objectPosition={ "50% 50%" }
 				/>
 			</Columns.Column>
 
@@ -76,7 +97,7 @@ const NewsItem = ({
 
 				<Heading
 					size={ 2 }
-					mb={2}
+					mb={ 2 }
 					dangerouslySetInnerHTML={ { __html: title } }
 				/>
 
@@ -88,11 +109,11 @@ const NewsItem = ({
 					textFamily={ "secondary" }
 					textWeight={ "light" }
 				>
-					vom {new Date(date).toLocaleDateString(undefined, {
+					vom { new Date(date).toLocaleDateString(undefined, {
 						year: "2-digit",
 						month: "2-digit",
 						day: "2-digit",
-					})}
+					}) }
 					{ author && ` · ${ author }` }
 				</Heading>
 
@@ -118,8 +139,38 @@ const NewsItem = ({
 	)
 }
 
-function NewsList() {
-	const query = useStaticQuery(graphql`
+
+interface NewsMarkdownEntryData {
+	childMarkdownRemark: {
+		frontmatter: {
+			teaserImg: ImageDataLike & {
+				author: string,
+				id: string,
+				relativePath: string,
+			},
+			isExternal: string,
+			disableButton: string,
+			buttonTitle: string,
+			link: string,
+			title: string,
+			subtitle: string,
+			date: string,
+			author: string,
+		},
+	},
+	relativeDirectory: string,
+	relativePath: string,
+}
+
+
+function NewsList () {
+	const query: {
+		allFile: {
+			edges: {
+				node: NewsMarkdownEntryData
+			}[]
+		}
+	} = useStaticQuery(graphql`
 		query {
 			allFile(
 				filter: {
@@ -169,7 +220,7 @@ function NewsList() {
 		}
 	`)
 
-	const blogEntries = query.allFile.edges.map(({ node }) => node)
+	const blogEntries: NewsMarkdownEntryData[] = query.allFile.edges.map(({ node }) => node)
 
 	return (
 		<div className={ Styles.newsContainer }>
@@ -187,7 +238,6 @@ function NewsList() {
 					},
 					relativeDirectory,
 					relativePath,
-					...entry
 				}) => (
 					<NewsItem
 						key={ relativePath }

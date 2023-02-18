@@ -1,12 +1,22 @@
+import { ImageDataLike } from "gatsby-plugin-image"
 import React from "react"
-import { Columns, Tag, Heading, Button, Hero } from "react-bulma-components"
-
-import Slideshow from "./Slideshow/Slideshow"
+import { Button, Columns, Heading, Hero, Tag } from "react-bulma-components"
 import * as Styles from "./Header.module.scss"
 import "./Header.scss"
 
+import Slideshow from "./Slideshow/Slideshow"
 
-const Header = (props) => {
+
+interface HeaderProps {
+	images: Array<ImageDataLike & {
+		author: string,
+		id: string,
+		relativePath: string,
+	}>
+}
+
+
+const Header = (props: HeaderProps) => {
 	return (
 		<Hero
 			size={ "medium" }
@@ -34,9 +44,8 @@ const Header = (props) => {
 								textWeight={ "bold" }
 								size={ "large" }
 								mobile={ {
-									textSize: 5
+									textSize: 5,
 								} }
-								className={ Styles.tag }
 							>
 								Bürger:innen begrünen Potsdam
 							</Tag>
@@ -48,7 +57,7 @@ const Header = (props) => {
 							size={ 3 }
 							className={ Styles.heading }
 						>
-							Info: Derzeitig keine weiteren<br/>
+							Info: Derzeitig keine weiteren<br />
 							Bearbeitungen möglich ❌
 						</Heading>
 

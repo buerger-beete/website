@@ -1,18 +1,47 @@
-import { graphql } from "gatsby"
-import React, {useMemo} from "react"
+import { graphql, PageProps } from "gatsby"
+import { useMemo } from "react"
 import { Element } from "react-bulma-components"
 
 import Layout from "../components/base/layout/Layout"
+import About from "../components/base/sections/about/About"
+import JoinOurMailGroup from "../components/base/sections/join-us/JoinUs"
+import Join from "../components/base/sections/join/Join"
 import Map from "../components/base/sections/map/Map"
-import SEO from "../components/base/seo/SEO"
-import Header from "../components/ui/molecule/header/Header"
 
 import News from "../components/base/sections/news/News"
-import JoinOurMailGroup from "../components/base/sections/join-us/JoinUs"
-import About from "../components/base/sections/about/About"
-import Join from "../components/base/sections/join/Join"
-import Contact from "../components/base/sections/contact/Contact"
-import {shuffleArray} from "../helper";
+import Seo from "../components/base/seo/Seo"
+import Header from "../components/ui/molecule/header/Header"
+import { shuffleArray } from "../helper"
+
+
+export interface Flowerbed {
+	title: string,
+	imagesDir?: string,
+	location: [ number, number ],
+	description: string,
+	color?: string
+}
+
+
+export interface PageData {
+	participants: {
+		frontmatter: {
+			participants: {
+				name: string,
+				flowerbeds: Flowerbed[]
+			}[]
+		}
+	}
+	images: {
+		edges: {
+			node: {
+				id: string,
+				relativePath: string,
+				childImageSharp: Record<string, unknown>
+			}
+		}[]
+	}
+}
 
 
 export const query = graphql`
@@ -53,13 +82,14 @@ export const query = graphql`
 	}
 `
 
-const IndexPage = ({ data }) => {
-	const images = data.images?.edges?.map(({ node }) => node)
+const IndexPage = ({ data }: PageProps<PageData>) => {
+	const images = data.images.edges.map(({ node }) => node)
+
 	const imagesWithAuthors = useMemo(() => {
 		const mapped = images.map((image) => {
-			let author = null
+			let author: string | null = null
 
-			for (const participant of data.participants?.frontmatter?.participants) {
+			for (const participant of data.participants.frontmatter.participants) {
 				let found = false
 
 				for (const flowerbed of participant.flowerbeds) {
@@ -69,45 +99,45 @@ const IndexPage = ({ data }) => {
 					) {
 						author = participant.name
 						found = true
-						break;
+						break
 					}
 				}
 
 				if (found) {
-					break;
+					break
 				}
 			}
 
 			return {
 				author,
-				...image
+				...image,
 			}
 		})
 
 		return shuffleArray(mapped)
-	})
+	}, [ images ])
 
 	return (
 		<Layout>
 
-			<SEO title="Willkommen" />
+			<Seo title={ "Willkommen" } />
 
 			<Header
 				images={ imagesWithAuthors }
 			/>
 
-			<JoinOurMailGroup/>
+			<JoinOurMailGroup />
 
 			<News />
 			<About />
 			<Join />
 			<Map />
 
-			{/* SPACING */}
+			{/* SPACING */ }
 			<Element p={ 6 } />
 			<Element p={ 6 } />
 
-			{/*<Contact />*/}
+			{/*<Contact />*/ }
 
 		</Layout>
 	)

@@ -1,17 +1,30 @@
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import React from "react"
+import { ImageDataLike } from "gatsby-plugin-image"
+import React, { ReactNode } from "react"
 
-// awesome styles
 import AwesomeSlider from "react-awesome-slider"
 import withAutoplay from "react-awesome-slider/dist/autoplay"
 import "react-awesome-slider/dist/styles.css"
 import { cn } from "reusable-components/dist/helper"
-import Image from "../../../atom/image/Image"
 
+import Image from "../../../atom/image/Image"
 import * as Styles from "../Header.module.scss"
 
 
 const AutoplaySlider = withAutoplay(AwesomeSlider)
+
+
+interface SlideshowProps {
+	organicArrows?: boolean,
+	mediaFiles: Array<ImageDataLike & {
+		author: string,
+		id: string,
+		relativePath: string,
+	}>,
+	children?: ReactNode,
+	className?: string,
+	contentClassName?: string,
+}
+
 
 const Slideshow = ({
 	organicArrows = false,
@@ -19,8 +32,7 @@ const Slideshow = ({
 	children,
 	className,
 	contentClassName,
-	...props
-}) => {
+}: SlideshowProps) => {
 	return (
 		<div className={ Styles.root }>
 			{ children &&
@@ -41,7 +53,7 @@ const Slideshow = ({
 					className,
 				) }
 			>
-				{ mediaFiles.map((file, index) => {
+				{ mediaFiles.map((file) => {
 					return (
 						<div
 							key={ file.id }
@@ -50,7 +62,11 @@ const Slideshow = ({
 							{ file.author &&
 								<p className={ Styles.author }>© Foto/Beet von { file.author }</p>
 							}
-							<Image data={ file } />
+
+							<Image
+								data={ file }
+								alt={ `© Foto/Beet von ${ file.author }` }
+							/>
 						</div>
 					)
 				}) }

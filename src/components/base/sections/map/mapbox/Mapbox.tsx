@@ -1,12 +1,12 @@
-import React, { Component } from "react"
-import { cn } from "reusable-components/dist/helper"
-import PropTypes from "prop-types"
+import mapboxgl from "mapbox-gl"
 
 import "mapbox-gl/dist/mapbox-gl.css"
-import { Marker, Cluster, ZoomControl, Map as Factory } from "react-mapbox-gl"
+import React, { Component, ReactElement } from "react"
+import { Cluster, Map as Factory, Marker, ZoomControl } from "react-mapbox-gl"
+import { cn } from "reusable-components/dist/helper"
+import colors from "../location-list/colors"
 
 import * as Styles from "./Mapbox.module.scss"
-import colors from "../location-list/colors";
 
 
 const MAP_STYLE_URL = "mapbox://styles/buergerbeete/ckm7ocbrw2dxm18rwh8x4f7sn"
@@ -16,22 +16,31 @@ const Map = Factory({
 		"pk.eyJ1IjoiYnVlcmdlcmJlZXRlIiwiYSI6ImNra2l1M2VjdTFxbHcycHF0NjJ2ZWw4OG4ifQ.KV1348L3w2Tn5QIsJ1ct-g",
 })
 
-export default class Mapbox extends Component {
-	static propTypes = ({
-		selectedLocationIndex: PropTypes.number,
-		onSelect: PropTypes.func.isRequired,
-		defaultLocation: PropTypes.array.isRequired,
-		locations: PropTypes.arrayOf(PropTypes.shape({
-			title: PropTypes.string.isRequired,
-			description: PropTypes.string.isRequired,
-			location: PropTypes.array.isRequired,
-			color: PropTypes.string,
-		})).isRequired,
-	})
 
-	mapInstance = null
+interface MapboxProps {
+	selectedLocationIndex: number,
+	onSelect: (index: number) => void,
+	defaultLocation: [ number, number ],
+	locations: {
+		title: string,
+		description: string,
+		imagesDir?: string,
+		location: [ number, number ],
+		color?: string,
+	}[],
+}
 
-	constructor(props) {
+
+interface MapboxState {
+	center: [ number, number ],
+	zoom?: number,
+}
+
+
+export default class Mapbox extends Component<MapboxProps, MapboxState> {
+	mapInstance: mapboxgl.Map | null = null
+
+	constructor (props: MapboxProps) {
 		super(props)
 
 		this.state = {
@@ -40,7 +49,7 @@ export default class Mapbox extends Component {
 		}
 	}
 
-	componentDidUpdate(prevProps, prevState, snapshot) {
+	componentDidUpdate (prevProps: MapboxProps, prevState: MapboxState) {
 		if (
 			prevProps.selectedLocationIndex !== this.props.selectedLocationIndex &&
 			this.mapInstance !== null
@@ -50,19 +59,19 @@ export default class Mapbox extends Component {
 		}
 	}
 
-	getColor(position) {
+	getColor (position: number) {
 		return colors[Math.floor(position * colors.length)]
 	}
 
-	jumpToLocation(location) {
-		this.mapInstance.flyTo({
+	jumpToLocation (location: [ number, number ]) {
+		this.mapInstance!.flyTo({
 			center: location,
 			zoom: 19,
 			essential: true,
 		})
 	}
 
-	renderClusterMarker(coordinates, pointsCount) {
+	renderClusterMarker (coordinates: [ number, number ], pointsCount: number) {
 		return (
 			<DotMarker
 				key={ `${ coordinates[0] }-${ coordinates[1] }` }
@@ -73,16 +82,16 @@ export default class Mapbox extends Component {
 		)
 	}
 
-	onMarkerClick(index) {
+	onMarkerClick (index: number) {
 		this.props.onSelect(index)
 	}
 
-	onMapLoaded(map) {
+	onMapLoaded (map: mapboxgl.Map) {
 		this.mapInstance = map
 	}
 
-	render() {
-		const fitBounds = this.props.locations.map(({ location }) => location)
+	render () {
+		const fitBounds: [ number, number ][] = this.props.locations.map(({ location }) => location)
 
 		const selectedLocationCenter = this.props.locations[this.props.selectedLocationIndex]?.location
 		const center = selectedLocationCenter || this.state.center
@@ -99,8 +108,9 @@ export default class Mapbox extends Component {
 					undefined
 				}
 				onStyleLoad={ map => this.onMapLoaded(map) }
-				onClick={ (_, map) => console.log(`[${ map.lngLat.lng }, ${ map.lngLat.lat }]`) }
 				renderChildrenInPortal={ true }
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
 				fitBounds={ selectedLocationCenter ?
 					undefined :
 					fitBounds
@@ -122,7 +132,7 @@ export default class Mapbox extends Component {
 							key={ location.join("-") }
 							coordinates={ location }
 							label={ title }
-							color={ this.getColor(index / this.props.locations.length) }
+							color={ color || this.getColor(index / this.props.locations.length) }
 							selected={ this.props.selectedLocationIndex === index }
 							onClick={ () => this.onMarkerClick(index) }
 						/>,
@@ -135,6 +145,18 @@ export default class Mapbox extends Component {
 	}
 }
 
+
+interface DotMarkerProps {
+	coordinates: [ number, number ],
+	dotLabel?: ReactElement | number | string,
+	label?: string,
+	color?: string,
+	isClusterer?: boolean,
+	selected?: boolean,
+	onClick?: () => void,
+}
+
+
 const DotMarker = ({
 	coordinates,
 	dotLabel,
@@ -143,7 +165,7 @@ const DotMarker = ({
 	isClusterer,
 	selected,
 	onClick,
-}) => {
+}: DotMarkerProps) => {
 	const style = {
 		backgroundColor: color,
 	}

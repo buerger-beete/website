@@ -2,7 +2,7 @@ const path = require("path")
 
 
 const blogPages = async (createPage, graphql, reporter) => {
-	const mdTemplate = path.resolve("src/templates/blog-page/index.jsx")
+	const mdTemplate = path.resolve("src/templates/blog-page/index.tsx")
 	const blogEntriesResult = await graphql(`
 		{
 			allFile(
@@ -15,6 +15,9 @@ const blogPages = async (createPage, graphql, reporter) => {
 							frontmatter: {
 								published: {
 									eq: true
+								}
+								isExternal: {
+									eq: false
 								}
 							}
 						}
@@ -33,6 +36,8 @@ const blogPages = async (createPage, graphql, reporter) => {
 								description
 								author
 								date
+								isExternal
+								disableButton
 								teaserImg {
 									childImageSharp {
 										gatsbyImageData(layout: FULL_WIDTH)
