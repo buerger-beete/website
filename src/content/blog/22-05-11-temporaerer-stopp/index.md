@@ -10,6 +10,6 @@ isExternal: true
 disableButton: true
 teaserImg: "teaser.jpg"
 author: "Joseph R. & Marc S."
-date: "2022-05-11 9:00"
+date: "2022-05-11 09:00"
 
 ---
