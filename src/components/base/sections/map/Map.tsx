@@ -18,7 +18,7 @@ interface MapQuery extends PageData {
 		frontmatter: {
 			defaultLocation: [ number, number ]
 		}
-	}
+	};
 }
 
 
