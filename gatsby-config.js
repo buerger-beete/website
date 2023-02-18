@@ -45,6 +45,7 @@ module.exports = {
 				siteUrl: "https://buerger-beete.de",
 			},
 		},
+		"gatsby-plugin-provide-react",
 		"gatsby-plugin-offline",
 	],
 }
