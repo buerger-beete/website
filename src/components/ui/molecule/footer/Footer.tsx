@@ -29,6 +29,8 @@ const Footer = () => {
 								<Link to={ "/impressum" }>Impressum</Link>
 								<Link to={ "/datenschutz" }>Datenschutzhinweise</Link>
 
+								<Link to={ "https://github.com/buerger-beete/website" } target={ "_blank" }>Github</Link>
+
 							</Columns.Column>
 
 							<Columns.Column
