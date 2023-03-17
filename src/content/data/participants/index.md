@@ -1,5 +1,13 @@
 ---
 
+freeFlowerbeds:
+- title: "Baumscheibe"
+  location: [13.058974037334679, 52.40181633991847]
+  log: 
+  - text: "Schwierigkeiten mit der Ansaht (Krähen/Müll)"
+    
+
+
 participants:
 
 - name: "Sonja H."
@@ -15,13 +23,6 @@ participants:
       Tulpen / Frühblüher, Storchschnabel / Bodendecker, Rosmarin, Gartensalbei,
       Oregano, Wildblumensamen, Schattengräser"
       location: [13.060640889077234, 52.40146785319641]
-
-- name: "Sabine R."
-  flowerbeds:
-    - title: "Baumscheibe Sa:Ri"
-      description: "Bepflanzung: Frühblüher Tulpen, Osterglocken,
-      steingartenähnliche Pflanzen, Studentenblumen, …"
-      location: [13.058974037334679, 52.40181633991847]
 
 - name: "Familie Henkel"
   flowerbeds:
