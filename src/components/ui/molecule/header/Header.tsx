@@ -67,7 +67,7 @@ const Header = (props: HeaderProps) => {
 								href={ "#news" }
 								color={ "primary" }
 							>
-								Aktuelles
+								Zu den Neuigkeiten
 							</Button>
 						</Button.Group>
 					</Columns.Column>

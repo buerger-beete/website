@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React, { useState } from "react"
-import { Columns, Content, Heading } from "react-bulma-components"
+import { Button, Columns, Content, Heading } from "react-bulma-components"
 import { cn } from "reusable-components/dist/helper"
 
 import MAP_ICON_SRC from "../../../../assets/icons/map.svg"
@@ -51,6 +51,7 @@ const Map = () => {
 	`)
 
 	const [ selectedLocation, setSelectedIndex ] = useState(0)
+	const [ isScrollZoomEnabled, setScrollZoomEnabled ] = useState(false)
 
 	// aggregate location data from kml data
 	const locations = participants.frontmatter.participants.reduce((aggr: Array<Flowerbed>, next) => {
@@ -132,9 +133,26 @@ const Map = () => {
 				</Columns.Column>
 
 				<Columns.Column className={ Styles.tile }>
+					<Button
+						color={ !isScrollZoomEnabled ? "primary" : "danger" }
+						size={ "small"}
+						style={ {
+							position: "absolute",
+							zIndex: 100,
+							top: "1rem",
+							left: "50%",
+							transform: "translateX(-50%)",
+						} }
+						onClick={ () => {
+							setScrollZoomEnabled(!isScrollZoomEnabled)
+						} }
+					>
+						Scroll-Zoom { !isScrollZoomEnabled ? "erlauben" : "verbieten" }
+					</Button>
 
 					{ locations.length &&
 						<Mapbox
+							isScrollZoomEnabled={ isScrollZoomEnabled }
 							onSelect={ setSelectedIndex }
 							selectedLocationIndex={ selectedLocation }
 							defaultLocation={ defaultLocation }

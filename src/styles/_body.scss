@@ -1,4 +1,11 @@
+html, body {
+	scroll-behavior: smooth;
+
+}
+
+
 .button {
+	height: auto !important;
 	font-weight: bold;
 
 	border-radius: 0.5rem !important;

@@ -2,6 +2,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import { ImageDataLike } from "gatsby-plugin-image"
 import React, { SyntheticEvent } from "react"
 import { Button, Columns, Content, Heading } from "react-bulma-components"
+import ReactMarkdown from "react-markdown"
 import { cn } from "reusable-components/dist/helper"
 import Image from "../../../ui/atom/image/Image"
 
@@ -63,12 +64,11 @@ const NewsItem = ({
 			vCentered
 			className={ cn(
 				Styles.newsItem,
-				!disableButton && Styles.interactive
+				!disableButton && Styles.interactive,
 			) }
 			alignItems={ "stretch" }
 			onClick={ href ? (event: SyntheticEvent<HTMLElement, MouseEvent>) => {
-				// @ts-ignore
-				if (event.target.tagName.toLowerCase() !== "a") {
+				if (event.currentTarget.tagName.toLowerCase() !== "a") {
 					window.open(href, target)
 				}
 			} : undefined }
@@ -94,13 +94,13 @@ const NewsItem = ({
 
 			<Columns.Column className={ Styles.content }>
 				<Heading
-					size={ 5 }
+					size={ 6 }
 					mb={ 1 }
 					dangerouslySetInnerHTML={ { __html: subtitle } }
 				/>
 
 				<Heading
-					size={ 3 }
+					size={ 4 }
 					mb={ 2 }
 					dangerouslySetInnerHTML={ { __html: title } }
 				/>
@@ -121,9 +121,13 @@ const NewsItem = ({
 					{ author && ` · ${ author }` }
 				</Heading>
 
-				<Content>
-					{ description }
-				</Content>
+				{ description ? (
+					<Content>
+						<ReactMarkdown>
+							{ description }
+						</ReactMarkdown>
+					</Content>
+				) : null }
 
 				{ !disableButton &&
 					<Button.Group>

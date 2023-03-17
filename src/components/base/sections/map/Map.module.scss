@@ -20,6 +20,8 @@
 		box-shadow: $shadow-huge;
 
 		.tile {
+			position: relative;
+
 			max-height: 80vh;
 			overflow-y: scroll;
 			overflow-x: hidden;

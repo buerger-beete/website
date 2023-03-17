@@ -18,6 +18,7 @@ const Map = Factory({
 
 
 interface MapboxProps {
+	isScrollZoomEnabled?: boolean,
 	selectedLocationIndex: number,
 	onSelect: (index: number) => void,
 	defaultLocation: [ number, number ],
@@ -34,6 +35,13 @@ interface MapboxProps {
 interface MapboxState {
 	center: [ number, number ],
 	zoom?: number,
+}
+
+const MAP_DESKTOP_PADDING = {
+	left: 400,
+	right: 40,
+	top: 40,
+	bottom: 40,
 }
 
 
@@ -57,6 +65,20 @@ export default class Mapbox extends Component<MapboxProps, MapboxState> {
 			const { location } = this.props.locations[this.props.selectedLocationIndex]
 			this.jumpToLocation(location)
 		}
+
+		this.updateControlStates()
+	}
+
+	private updateControlStates () {
+		if (!this.mapInstance) {
+			return
+		}
+
+		if (this.props.isScrollZoomEnabled) {
+			this.mapInstance?.scrollZoom.enable()
+		} else {
+			this.mapInstance?.scrollZoom.disable()
+		}
 	}
 
 	getColor (position: number) {
@@ -64,10 +86,15 @@ export default class Mapbox extends Component<MapboxProps, MapboxState> {
 	}
 
 	jumpToLocation (location: [ number, number ]) {
+		const windowWidth = typeof window !== "undefined" && window.innerWidth
+
 		this.mapInstance!.flyTo({
 			center: location,
 			zoom: 19,
 			essential: true,
+			padding: windowWidth < 769
+				? 30
+				: MAP_DESKTOP_PADDING
 		})
 	}
 
@@ -88,6 +115,8 @@ export default class Mapbox extends Component<MapboxProps, MapboxState> {
 
 	onMapLoaded (map: mapboxgl.Map) {
 		this.mapInstance = map
+
+		this.updateControlStates()
 	}
 
 	render () {
@@ -109,6 +138,10 @@ export default class Mapbox extends Component<MapboxProps, MapboxState> {
 				}
 				onStyleLoad={ map => this.onMapLoaded(map) }
 				renderChildrenInPortal={ true }
+				fitBoundsOptions={ windowWidth < 769
+					? { padding: 20 }
+					: { padding: MAP_DESKTOP_PADDING }
+				}
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
 				fitBounds={ selectedLocationCenter ?
@@ -122,14 +155,14 @@ export default class Mapbox extends Component<MapboxProps, MapboxState> {
 					radius={ 180 }
 					maxZoom={ 17 }
 					zoomOnClick
-					zoomOnClickPadding={ windowWidth < 769 ?
-						30 : // default padding
-						{ left: 500, right: 30 }
+					zoomOnClickPadding={ windowWidth < 769
+						? 30
+						: MAP_DESKTOP_PADDING
 					}
 				>
 					{ this.props.locations.map(({ title, location, color }, index) =>
 						<DotMarker
-							key={ location.join("-") }
+							key={ location.join("-") + index }
 							coordinates={ location }
 							label={ title }
 							color={ color || this.getColor(index / this.props.locations.length) }

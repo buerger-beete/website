@@ -9,7 +9,7 @@ import * as Styles from "./Navigation.module.scss"
 
 interface NavLinkProps {
 	id: string,
-	children: ReactNode
+	children: ReactNode,
 }
 
 
@@ -20,6 +20,7 @@ const NavLink = ({ id, children }: NavLinkProps) => {
 			textSize={ 5 }
 			renderAs={ "a" }
 			textColor={ "white" }
+			href={ `#${ id }` }
 			className={ Styles.navLink }
 			onClick={ () => scrollIntoView(document.getElementById(id)!, { block: "start" }) }
 		>

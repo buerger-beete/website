@@ -154,7 +154,7 @@ const Join = () => {
 					<p>
 						Im <strong>März / April</strong> ist die beste Zeit, dein Beet bzw. deine
 						Wiese zu bepflanzen 🌻. Wenn du dich über die Saison mit uns und anderen Bürger:&shy;Beetler:&shy;innen austauschen
-						möchtest, solltest du am besten unserer <a href={ "#join-us" }>E-Mail-Gruppe</a> beitreten ☺️.
+						möchtest, solltest du am besten unserer <a href={ "#join-us" }>E-Mail-Gruppe</a> beitreten&nbsp;☺️.
 					</p>
 				</Tile>
 			</Columns>

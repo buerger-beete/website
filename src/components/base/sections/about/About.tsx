@@ -75,7 +75,7 @@ const About = () => {
 
 					<Content>
 						<p>
-							Wir, die Initiative <em>Bürger:Beete</em>, verwandeln die Stadt Potsdam in ein blühendes Paradies.
+							Wir, die Initiative <em>Bürger:Beete</em>, verwandeln Potsdam in ein blühendes Paradies.
 							Wir machen das für einen grüneren Kiez. Für&nbsp;Insekten. Gegen das Aufheizen der Städte und
 							hitziger Gemüte, welche ihre Köpfe mit ein wenig Gartenarbeit abkühlen&nbsp;können&nbsp;❄️
 						</p>
