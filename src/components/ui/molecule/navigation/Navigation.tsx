@@ -2,8 +2,8 @@ import { ReactNode } from "react"
 import { Button, Container, Navbar } from "react-bulma-components"
 import scrollIntoView from "smooth-scroll-into-view-if-needed"
 
-import LOGO_SRC from "../../../../assets/logos/buerger-beete.svg"
-import ContactButton from "../../atom/contact-button/ContactButton"
+import LOGO_SRC from "@/assets/logos/buerger-beete.svg"
+import ContactButton from "@/components/ui/atom/contact-button/ContactButton"
 import * as Styles from "./Navigation.module.scss"
 
 
@@ -22,7 +22,15 @@ const NavLink = ({ id, children }: NavLinkProps) => {
 			textColor={ "white" }
 			href={ `#${ id }` }
 			className={ Styles.navLink }
-			onClick={ () => scrollIntoView(document.getElementById(id)!, { block: "start" }) }
+			onClick={ () => {
+				const scrollToElem = document.getElementById(id)
+
+				if (!scrollToElem) {
+					return
+				}
+
+				scrollIntoView(scrollToElem, { block: "start" })
+			}}
 		>
 
 			<span>

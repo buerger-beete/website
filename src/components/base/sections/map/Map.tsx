@@ -2,15 +2,15 @@ import { graphql, useStaticQuery } from "gatsby"
 import React, { useState } from "react"
 import { Button, Columns, Content, Heading } from "react-bulma-components"
 
-import MAP_ICON_SRC from "../../../../assets/icons/map.svg"
-import classNames from "../../../../helper/class-names"
-import { Flowerbed, PageData } from "../../../../pages"
+import MAP_ICON_SRC from "@/assets/icons/map.svg"
+import classNames from "@/helper/class-names"
+import { Flowerbed, PageData } from "@/pages"
 
 import Interferer from "../../../ui/molecule/interferer/Interferer"
 import LocationList from "./location-list/LocationList"
 
 import * as Styles from "./Map.module.scss"
-import Mapbox from "./mapbox/Mapbox"
+import Mapbox from "@/components/ui/molecule/mapbox/Mapbox"
 
 
 interface MapQuery extends PageData {
@@ -93,7 +93,7 @@ const Map = () => {
 
 					<img
 						src={ MAP_ICON_SRC }
-						alt={ "Icon: Blumenbeet" }
+						alt={ "" }
 						className={ Styles.icon }
 					/>
 

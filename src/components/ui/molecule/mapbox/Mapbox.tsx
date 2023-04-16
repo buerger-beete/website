@@ -1,21 +1,19 @@
 import mapboxgl from "mapbox-gl"
-
 import "mapbox-gl/dist/mapbox-gl.css"
 import React, { Component, ReactElement } from "react"
 import { Cluster, Map as Factory, Marker, ZoomControl } from "react-mapbox-gl"
-import classNames from "../../../../../helper/class-names"
-import colors from "../location-list/colors"
 
+import classNames from "@/helper/class-names"
+import { MAPBOX_STYLE_URL, MAPBOX_TOKEN } from "@/helper/constants"
+import colors from "@/components/base/sections/map/location-list/colors"
 import * as Styles from "./Mapbox.module.scss"
 
 
-const MAP_STYLE_URL = "mapbox://styles/buergerbeete/ckm7ocbrw2dxm18rwh8x4f7sn"
+const MAP_STYLE_URL = MAPBOX_STYLE_URL
 
 const Map = Factory({
-	accessToken:
-		"pk.eyJ1IjoiYnVlcmdlcmJlZXRlIiwiYSI6ImNra2l1M2VjdTFxbHcycHF0NjJ2ZWw4OG4ifQ.KV1348L3w2Tn5QIsJ1ct-g",
+	accessToken: MAPBOX_TOKEN,
 })
-
 
 interface MapboxProps {
 	isScrollZoomEnabled?: boolean,
@@ -50,6 +48,8 @@ export default class Mapbox extends Component<MapboxProps, MapboxState> {
 
 	constructor (props: MapboxProps) {
 		super(props)
+
+		console.log("MAP", MAP_STYLE_URL, MAPBOX_TOKEN)
 
 		this.state = {
 			center: props.defaultLocation,

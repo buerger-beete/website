@@ -1,8 +1,7 @@
 import { ReactNode } from "react"
-
 import { Container, Section } from "react-bulma-components"
-import classNames from "../../../../helper/class-names"
 
+import classNames from "@/helper/class-names"
 import * as Styles from "./Interferer.module.scss"
 
 

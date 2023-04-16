@@ -1,10 +1,10 @@
 import React, { ReactNode } from "react"
 import { Button, Columns, Heading } from "react-bulma-components"
 
-import PATCH_FLOWERED_ICON_SRC from "../../../../assets/icons/patch-flowered.svg"
-import ICONS from "../../../../constants/Icons"
-import InfoTile from "../../../ui/molecule/info-tile/InfoTile"
-import Interferer from "../../../ui/molecule/interferer/Interferer"
+import PATCH_FLOWERED_ICON_SRC from "@/assets/icons/patch-flowered.svg"
+import ICONS from "@/constants/Icons"
+import InfoTile from "@/components/ui/molecule/info-tile/InfoTile"
+import Interferer from "@/components/ui/molecule/interferer/Interferer"
 
 import * as Styles from "./Join.module.scss"
 

@@ -2,16 +2,15 @@ import { graphql, PageProps } from "gatsby"
 import { useMemo } from "react"
 import { Element } from "react-bulma-components"
 
-import Layout from "../components/base/layout/Layout"
-import About from "../components/base/sections/about/About"
-import JoinOurMailGroup from "../components/base/sections/join-us/JoinUs"
-import Join from "../components/base/sections/join/Join"
-import Map from "../components/base/sections/map/Map"
-
-import News from "../components/base/sections/news/News"
-import Seo from "../components/base/seo/Seo"
-import Header from "../components/ui/molecule/header/Header"
-import { shuffleArray } from "../helper"
+import Layout from "@/components/base/layout/Layout"
+import About from "@/components/base/sections/about/About"
+import JoinOurMailGroup from "@/components/base/sections/join-us/JoinUs"
+import Join from "@/components/base/sections/join/Join"
+import Map from "@/components/base/sections/map/Map"
+import News from "@/components/base/sections/news/News"
+import Seo from "@/components/base/seo/Seo"
+import Header from "@/components/ui/molecule/header/Header"
+import { shuffleArray } from "@/helper"
 
 
 export interface Flowerbed {

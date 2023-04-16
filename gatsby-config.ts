@@ -1,4 +1,10 @@
-module.exports = {
+import { config } from "dotenv"
+import { GatsbyConfig } from "gatsby"
+
+config({ path: ".env" })
+
+
+const gatsbyConfig: GatsbyConfig = {
 	siteMetadata: {
 		title: "Bürger:Beete – Bürger:innen begrünen den Potsdamer Bassinplatz",
 		description: "Bürger:Beete. Wir verbinden engagierte Potsdamer mit der Begrünung von Brachflächen in der Stadt.",
@@ -49,3 +55,5 @@ module.exports = {
 		"gatsby-plugin-offline",
 	],
 }
+
+export default gatsbyConfig

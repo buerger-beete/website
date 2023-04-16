@@ -1,10 +1,9 @@
 import React, { ReactNode } from "react"
-
 import { Columns, Content, Heading } from "react-bulma-components"
 
-import { ColumnProps } from "../../../../../bulma-components"
-import ICONS from "../../../../constants/Icons"
-import classNames from "../../../../helper/class-names"
+import { ColumnProps } from "@/../bulma-components"
+import ICONS from "@/constants/Icons"
+import classNames from "@/helper/class-names"
 import * as Styles from "./InfoTile.module.scss"
 
 

@@ -1,9 +1,9 @@
 import { Link } from "gatsby"
 import React from "react"
-
 import { Columns, Container, Hero } from "react-bulma-components"
-import classNames from "../../../../helper/class-names"
-import Interferer from "../interferer/Interferer"
+
+import classNames from "@/helper/class-names"
+import Interferer from "@/components/ui/molecule/interferer/Interferer"
 
 import * as Styles from "./Footer.module.scss"
 
@@ -29,7 +29,13 @@ const Footer = () => {
 								<Link to={ "/impressum" }>Impressum</Link>
 								<Link to={ "/datenschutz" }>Datenschutzhinweise</Link>
 
-								<Link to={ "https://github.com/buerger-beete/website" } target={ "_blank" }>Github</Link>
+								<a
+									href={ "https://github.com/buerger-beete/website" }
+									target={ "_blank" }
+									rel={"nofollow noreferrer"}
+								>
+									Github
+								</a>
 
 							</Columns.Column>
 

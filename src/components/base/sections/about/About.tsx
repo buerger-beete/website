@@ -2,9 +2,9 @@ import { graphql, useStaticQuery } from "gatsby"
 import { ImageDataLike } from "gatsby-plugin-image"
 import React from "react"
 import { Button, Columns, Content, Heading } from "react-bulma-components"
-import Image from "../../../ui/atom/image/Image"
+import Image from "@/components/ui/atom/image/Image"
 
-import Interferer from "../../../ui/molecule/interferer/Interferer"
+import Interferer from "@/components/ui/molecule/interferer/Interferer"
 import * as Styles from "./About.module.scss"
 
 

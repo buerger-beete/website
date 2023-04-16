@@ -1,9 +1,9 @@
 import { ImageDataLike } from "gatsby-plugin-image"
 import React from "react"
 import { Button, Columns, Heading, Hero, Tag } from "react-bulma-components"
+
 import * as Styles from "./Header.module.scss"
 import "./Header.scss"
-
 import Slideshow from "./Slideshow/Slideshow"
 
 

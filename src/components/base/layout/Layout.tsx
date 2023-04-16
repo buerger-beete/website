@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 import Footer from "../../ui/molecule/footer/Footer"
 
-import Navigation, { NavigationType } from "../../ui/molecule/navigation/Navigation"
+import Navigation, { NavigationType } from "@/components/ui/molecule/navigation/Navigation"
 
 
 interface LayoutProps {

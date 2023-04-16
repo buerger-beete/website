@@ -3,11 +3,10 @@ import { ImageDataLike } from "gatsby-plugin-image"
 import React, { SyntheticEvent } from "react"
 import { Button, Columns, Content, Heading } from "react-bulma-components"
 import ReactMarkdown from "react-markdown"
-import classNames from "../../../../helper/class-names"
 
-
-import Image from "../../../ui/atom/image/Image"
-import Interferer from "../../../ui/molecule/interferer/Interferer"
+import classNames from "@/helper/class-names"
+import Image from "@/components/ui/atom/image/Image"
+import Interferer from "@/components/ui/molecule/interferer/Interferer"
 import * as Styles from "./News.module.scss"
 
 
@@ -133,7 +132,6 @@ const NewsItem = ({
 				{ !disableButton &&
 					<Button.Group>
 						<Button
-							className={ Styles.button }
 							color={ "primary" }
 							renderAs={ "a" }
 							target={ target }

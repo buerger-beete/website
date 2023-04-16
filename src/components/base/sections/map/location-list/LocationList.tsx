@@ -1,13 +1,11 @@
 import React, { RefObject } from "react"
-
 import { Content, Heading } from "react-bulma-components"
-
 import scrollIntoView from "smooth-scroll-into-view-if-needed"
-import classNames from "../../../../../helper/class-names"
-import { getContrast } from "../../../../../helper/colors"
-import { Flowerbed } from "../../../../../pages"
-import colors from "./colors"
 
+import classNames from "@/helper/class-names"
+import { getContrast } from "@/helper/colors"
+import { Flowerbed } from "@/pages"
+import colors from "./colors"
 import * as Styles from "./LocationList.module.scss"
 
 

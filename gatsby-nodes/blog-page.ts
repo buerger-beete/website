@@ -1,7 +1,11 @@
-const path = require("path")
+import { CreatePagesArgs } from "gatsby"
+import path from "path"
 
 
-const blogPages = async (createPage, graphql, reporter) => {
+const blogPages = async ({ actions, graphql, reporter }: CreatePagesArgs & {
+	traceId: "initial-createPages"
+}) => {
+	const { createPage } = actions
 	const mdTemplate = path.resolve("src/templates/blog-page/index.tsx")
 	const blogEntriesResult = await graphql(`
 		{
@@ -58,11 +62,13 @@ const blogPages = async (createPage, graphql, reporter) => {
 		return
 	}
 
+	// @ts-ignore
 	if (!blogEntriesResult?.data?.allFile?.edges?.length) {
 		console.warn("No blog entries found.")
 		return
 	}
 
+	// @ts-ignore
 	for (const { node } of blogEntriesResult.data.allFile.edges) {
 		// get last dir name
 		const slug = "blog/" + node.relativeDirectory.split("/").reverse()[0]
@@ -77,4 +83,4 @@ const blogPages = async (createPage, graphql, reporter) => {
 	}
 }
 
-module.exports = blogPages
+export default blogPages

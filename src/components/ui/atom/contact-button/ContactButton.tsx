@@ -1,7 +1,7 @@
 import React from "react"
 import { Button } from "react-bulma-components"
 
-import { getMailLink } from "../../../../helper"
+import { getMailLink } from "@/helper"
 
 
 interface ContactButtonProps {

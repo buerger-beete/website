@@ -1,9 +1,10 @@
 import React from "react"
 import { Button, Columns, Content, Heading } from "react-bulma-components"
-import ICONS from "../../../../constants/Icons"
-import { getMailLink } from "../../../../helper"
-import ContactButton from "../../../ui/atom/contact-button/ContactButton"
-import Interferer from "../../../ui/molecule/interferer/Interferer"
+
+import ICONS from "@/constants/Icons"
+import { getMailLink } from "@/helper"
+import ContactButton from "@/components/ui/atom/contact-button/ContactButton"
+import Interferer from "@/components/ui/molecule/interferer/Interferer"
 
 import * as Styles from "./Contact.module.scss"
 

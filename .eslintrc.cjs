@@ -19,6 +19,11 @@ module.exports = {
 	settings: {
 		react: {
 			version: "detect"
+		},
+		"import/resolver": {
+			"alias": [
+				[ "@", "./src" ]
+			]
 		}
 	},
 	parserOptions: {

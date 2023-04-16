@@ -1,7 +1,7 @@
 import React from "react"
 import { Button, Columns, Content, Heading } from "react-bulma-components"
 
-import Interferer from "../../../ui/molecule/interferer/Interferer"
+import Interferer from "@/components/ui/molecule/interferer/Interferer"
 
 
 export default function JoinUs () {
