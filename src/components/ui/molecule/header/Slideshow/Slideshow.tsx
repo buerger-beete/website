@@ -4,7 +4,7 @@ import React, { ReactNode } from "react"
 import AwesomeSlider from "react-awesome-slider"
 import withAutoplay from "react-awesome-slider/dist/autoplay"
 import "react-awesome-slider/dist/styles.css"
-import { cn } from "reusable-components/dist/helper"
+import classNames from "../../../../../helper/class-names"
 
 import Image from "../../../atom/image/Image"
 import * as Styles from "../Header.module.scss"
@@ -36,7 +36,7 @@ const Slideshow = ({
 	return (
 		<div className={ Styles.root }>
 			{ children &&
-				<div className={ cn(Styles.overlay, contentClassName) }>
+				<div className={ classNames(Styles.overlay, contentClassName) }>
 					{ children }
 				</div>
 			}
@@ -48,7 +48,7 @@ const Slideshow = ({
 				cancelOnInteraction={ false } // should stop playing on user interaction
 				interval={ 5500 }
 				loop={ true }
-				className={ cn(
+				className={ classNames(
 					Styles.slideshow,
 					className,
 				) }

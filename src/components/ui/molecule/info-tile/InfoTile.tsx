@@ -1,10 +1,10 @@
 import React, { ReactNode } from "react"
 
 import { Columns, Content, Heading } from "react-bulma-components"
-import { cn } from "reusable-components/dist/helper"
-import { ColumnProps } from "../../../../../bulma-components"
 
+import { ColumnProps } from "../../../../../bulma-components"
 import ICONS from "../../../../constants/Icons"
+import classNames from "../../../../helper/class-names"
 import * as Styles from "./InfoTile.module.scss"
 
 
@@ -27,7 +27,7 @@ const InfoTile = ({
 }: InfoTileProps) => {
 	return (
 		<Columns.Column
-			className={ cn(
+			className={ classNames(
 				Styles.item,
 				primary && Styles.primary,
 				className,

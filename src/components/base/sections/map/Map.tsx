@@ -1,9 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React, { useState } from "react"
 import { Button, Columns, Content, Heading } from "react-bulma-components"
-import { cn } from "reusable-components/dist/helper"
 
 import MAP_ICON_SRC from "../../../../assets/icons/map.svg"
+import classNames from "../../../../helper/class-names"
 import { Flowerbed, PageData } from "../../../../pages"
 
 import Interferer from "../../../ui/molecule/interferer/Interferer"
@@ -118,7 +118,7 @@ const Map = () => {
 				className={ Styles.container }
 			>
 				<Columns.Column
-					className={ cn(
+					className={ classNames(
 						Styles.tile,
 						Styles.locationList,
 					) }

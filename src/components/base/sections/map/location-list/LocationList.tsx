@@ -2,8 +2,8 @@ import React, { RefObject } from "react"
 
 import { Content, Heading } from "react-bulma-components"
 
-import { cn } from "reusable-components/dist/helper"
 import scrollIntoView from "smooth-scroll-into-view-if-needed"
+import classNames from "../../../../../helper/class-names"
 import { getContrast } from "../../../../../helper/colors"
 import { Flowerbed } from "../../../../../pages"
 import colors from "./colors"
@@ -71,7 +71,7 @@ export default class LocationList extends React.Component<LocationListProps> {
 							key={ index }
 							ref={ this._itemRefs[index] }
 							onClick={ () => this.handleItemClick(index) }
-							className={ cn(
+							className={ classNames(
 								Styles.item,
 								isActive && Styles.active,
 							) }

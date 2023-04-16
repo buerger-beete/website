@@ -3,7 +3,7 @@ import mapboxgl from "mapbox-gl"
 import "mapbox-gl/dist/mapbox-gl.css"
 import React, { Component, ReactElement } from "react"
 import { Cluster, Map as Factory, Marker, ZoomControl } from "react-mapbox-gl"
-import { cn } from "reusable-components/dist/helper"
+import classNames from "../../../../../helper/class-names"
 import colors from "../location-list/colors"
 
 import * as Styles from "./Mapbox.module.scss"
@@ -57,7 +57,7 @@ export default class Mapbox extends Component<MapboxProps, MapboxState> {
 		}
 	}
 
-	componentDidUpdate (prevProps: MapboxProps, prevState: MapboxState) {
+	componentDidUpdate (prevProps: MapboxProps) {
 		if (
 			prevProps.selectedLocationIndex !== this.props.selectedLocationIndex &&
 			this.mapInstance !== null
@@ -86,9 +86,19 @@ export default class Mapbox extends Component<MapboxProps, MapboxState> {
 	}
 
 	jumpToLocation (location: [ number, number ]) {
-		const windowWidth = typeof window !== "undefined" && window.innerWidth
+		if (typeof window === "undefined") {
+			console.error("window is not defined")
+			return false;
+		}
 
-		this.mapInstance!.flyTo({
+		if (!this.mapInstance) {
+			console.error("Mapbox instance is not defined")
+			return false;
+		}
+
+		const windowWidth = window.innerWidth
+
+		this.mapInstance.flyTo({
 			center: location,
 			zoom: 19,
 			essential: true,
@@ -125,7 +135,12 @@ export default class Mapbox extends Component<MapboxProps, MapboxState> {
 		const selectedLocationCenter = this.props.locations[this.props.selectedLocationIndex]?.location
 		const center = selectedLocationCenter || this.state.center
 
-		const windowWidth = typeof window !== "undefined" && window.innerWidth
+		if (typeof window === "undefined") {
+			console.error("window is not defined");
+			return null;
+		}
+
+		const windowWidth = window.innerWidth
 
 		return (
 			<Map
@@ -206,7 +221,7 @@ const DotMarker = ({
 	return (
 		<Marker coordinates={ coordinates }>
 			<div
-				className={ cn(
+				className={ classNames(
 					Styles.markerContainer,
 					isClusterer && Styles.clusterer,
 					selected && Styles.selected,

@@ -2,7 +2,7 @@ import { Link } from "gatsby"
 import React from "react"
 
 import { Columns, Container, Hero } from "react-bulma-components"
-import { cn } from "reusable-components/dist/helper"
+import classNames from "../../../../helper/class-names"
 import Interferer from "../interferer/Interferer"
 
 import * as Styles from "./Footer.module.scss"
@@ -34,7 +34,7 @@ const Footer = () => {
 							</Columns.Column>
 
 							<Columns.Column
-								className={ cn(Styles.links, Styles.copyright) }
+								className={ classNames(Styles.links, Styles.copyright) }
 								size={ 6 }
 								tablet={ {
 									size: 6,

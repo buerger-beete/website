@@ -3,9 +3,10 @@ import { ImageDataLike } from "gatsby-plugin-image"
 import React, { SyntheticEvent } from "react"
 import { Button, Columns, Content, Heading } from "react-bulma-components"
 import ReactMarkdown from "react-markdown"
-import { cn } from "reusable-components/dist/helper"
-import Image from "../../../ui/atom/image/Image"
+import classNames from "../../../../helper/class-names"
 
+
+import Image from "../../../ui/atom/image/Image"
 import Interferer from "../../../ui/molecule/interferer/Interferer"
 import * as Styles from "./News.module.scss"
 
@@ -62,7 +63,7 @@ const NewsItem = ({
 		<Columns
 			paddingless
 			vCentered
-			className={ cn(
+			className={ classNames(
 				Styles.newsItem,
 				!disableButton && Styles.interactive,
 			) }

@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 
 import { Container, Section } from "react-bulma-components"
-import { cn } from "reusable-components/dist/helper"
+import classNames from "../../../../helper/class-names"
 
 import * as Styles from "./Interferer.module.scss"
 
@@ -31,7 +31,7 @@ const Interferer = ({
 	return (
 		<Section
 			id={ id }
-			className={ cn(
+			className={ classNames(
 				Styles.section,
 				hasTransitionTop && Styles.hasTransitionTop,
 				hasTransitionBottom && Styles.hasTransitionBottom,
