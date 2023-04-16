@@ -6,14 +6,16 @@ The open source website for our urban gardening initiative in Potsdam. Please fe
 
 ## Contact Us!
 
-For any questions or if you need help to get started please feel free to contact us via [info@buerger-beete.de](mailto:info@buerger-beete.de)
+For any questions or if you need help to get started with this project please feel free to contact us via [info@buerger-beete.de](mailto:info@buerger-beete.de).
 
 
 ## Built with:
 
 - Typescript
-- Reactjs
-- Gatsby Static Site Generator
+- React
+- Gatsby
+- Mapbox
+- Matomo Tracking
 
 
 ## Development

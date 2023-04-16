@@ -102,7 +102,7 @@ const Join = () => {
 						<Button
 							renderAs={ "a" }
 							target={ "_blank" }
-							href={ "/files/pdf/Baumscheiben-Pflegetipps-BUND.pdf" }
+							href={ "/files/pdf/Pflegetipps.pdf" }
 							style={ { paddingRight: "2.25rem" } }
 							color={ "dark" }
 						>
@@ -137,7 +137,7 @@ const Join = () => {
 
 				<Tile
 					title={ "3. Beet Aufbereitung" }
-					icon={ "potsdam" }
+					icon={ "soil" }
 				>
 					<p>
 						Der <i>Bereich Grünflächen</i> bereitet dein gewähltes Areal auf und baut nach Bedarf

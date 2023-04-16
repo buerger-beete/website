@@ -1,3 +1,4 @@
+import { graphql, useStaticQuery } from "gatsby"
 import { ImageDataLike } from "gatsby-plugin-image"
 import React from "react"
 import { Button, Columns, Heading, Hero, Tag } from "react-bulma-components"
@@ -17,6 +18,22 @@ interface HeaderProps {
 
 
 const Header = (props: HeaderProps) => {
+	const response = useStaticQuery(graphql`
+		query {
+			site {
+				siteMetadata {
+					city
+				}
+			}
+
+			teaser: markdownRemark(fileAbsolutePath: {regex: "//content/teaser/index.md/"}) {
+				frontmatter {
+					title
+				}
+			}
+		}
+	`)
+
 	return (
 		<Hero
 			size={ "medium" }
@@ -47,7 +64,7 @@ const Header = (props: HeaderProps) => {
 									textSize: 5,
 								} }
 							>
-								Bürger:innen begrünen Potsdam
+								Bürger:innen begrünen { response.site.siteMetadata.city }
 							</Tag>
 						</Tag.Group>
 
@@ -56,9 +73,10 @@ const Header = (props: HeaderProps) => {
 							textColor={ "white" }
 							size={ 3 }
 							className={ Styles.heading }
+							dangerouslySetInnerHTML={{ 
+								__html: response.teaser.frontmatter.title 
+							}}
 						>
-							Info: Derzeitig keine weiteren<br />
-							Bearbeitungen möglich ❌
 						</Heading>
 
 						<Button.Group align={ "center" }>

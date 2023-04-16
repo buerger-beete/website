@@ -94,12 +94,12 @@ const Navigation = ({ type }: NavigationProps) => {
 								>
 
 									<div className={ Styles.linksContainer }>
-										<NavLink id={ "join-us" }>
-											📧&nbsp;&nbsp;Mail Verteiler
-										</NavLink>
-
 										<NavLink id={ "news" }>
 											🗞 Aktuelles
+										</NavLink>
+
+										<NavLink id={ "join-us" }>
+											📧&nbsp;&nbsp;Mail Verteiler
 										</NavLink>
 
 										<NavLink id={ "about" }>

@@ -1,22 +1,27 @@
 import { graphql, useStaticQuery } from "gatsby"
-import { ImageDataLike } from "gatsby-plugin-image"
 import React from "react"
 import { Button, Columns, Content, Heading } from "react-bulma-components"
 import Image from "@/components/ui/atom/image/Image"
 
 import Interferer from "@/components/ui/molecule/interferer/Interferer"
+import ReactMarkdown from "react-markdown"
 import * as Styles from "./About.module.scss"
 
 
 const About = () => {
-	const query: {
-		file: ImageDataLike
-	} = useStaticQuery(graphql`
+	const query = useStaticQuery(graphql`
 		query {
 			file(relativePath: { eq: "about/flower-pots.png" }) {
 				childImageSharp {
 					gatsbyImageData(layout: FULL_WIDTH)
 				}
+			}
+
+			about: markdownRemark(fileAbsolutePath: {regex: "//content/about/index.md/"}) {
+				frontmatter {
+					title
+				}
+				rawMarkdownBody
 			}
 		}
 	`)
@@ -68,33 +73,13 @@ const About = () => {
 					<Heading
 						size={ 3 }
 						renderAs={ "h2" }
-					>
-						Samen säen. Kiez verschönern.<br />
-						Connecten. Insekten retten 🌻
-					</Heading>
+						dangerouslySetInnerHTML={{ __html: query.about.frontmatter.title }}
+					/>
 
 					<Content>
-						<p>
-							Wir, die Initiative <em>Bürger:Beete</em>, verwandeln Potsdam in ein blühendes Paradies.
-							Wir machen das für einen grüneren Kiez. Für&nbsp;Insekten. Gegen das Aufheizen der Städte und
-							hitziger Gemüte, welche ihre Köpfe mit ein wenig Gartenarbeit abkühlen&nbsp;können&nbsp;❄️
-						</p>
-
-						<p>
-							Wir haben einen Deal mit der Stadt ausgehandelt und bekommen von ihnen Brachflächen, Wiesen
-							und Baumareale aufbereitet, die wir an interessierte Bürger:innen zur freien Bepflanzung
-							vergeben.
-						</p>
-
-						<p>
-							🤬 Dich regt eine kahle graue Fläche vor deinem Haus auf? — Begrüne sie doch ganz
-							einfach mit unserer Hilfe!
-						</p>
-
-						<p>
-							🛍 Du hast einen Shop in Potsdam? Zeige Engagement und kümmere dich
-							mit deinen Mitarbeiter:innen um ein bisschen Grün vor deinem Laden&nbsp;😋
-						</p>
+						<ReactMarkdown>
+							{ query.about.rawMarkdownBody }
+						</ReactMarkdown>
 
 						<Button.Group
 							mt={ 6 }

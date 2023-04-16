@@ -4,6 +4,7 @@ import PATCH_FLOWERED_SRC from "../assets/icons/patch-flowered.svg"
 import PATCH_RAW_SRC from "../assets/icons/patch-raw.svg"
 import SEED_BAG_SRC from "../assets/icons/seed-bag.svg"
 import SOW_SRC from "../assets/icons/sow.svg"
+import SOIL_SRC from "../assets/icons/soil.svg"
 
 import POTSDAM_SRC from "../assets/logos/stadt-potsdam.svg"
 
@@ -15,6 +16,7 @@ const ICONS = {
 	"patch-raw": PATCH_RAW_SRC,
 	"seed-bag": SEED_BAG_SRC,
 	"sow": SOW_SRC,
+	"soil": SOIL_SRC,
 
 	"potsdam": POTSDAM_SRC,
 }

@@ -125,11 +125,14 @@ const IndexPage = ({ data }: PageProps<PageData>) => {
 				images={ imagesWithAuthors }
 			/>
 
+			<News />
+
 			<JoinOurMailGroup />
 
-			<News />
 			<About />
+
 			<Join />
+
 			<Map />
 
 			{/* SPACING */ }

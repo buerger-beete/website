@@ -11,7 +11,7 @@ const NotFoundPage = () => (
 		<p>
 			Hmmm … irgendwas ist schief gelaufen.
 			<br /><br />
-			<a href={ "/" }>Zur Startseite zurück</a>
+			<a href={ "/#" }>Zur Startseite zurück</a>
 		</p>
 	</Layout>
 )

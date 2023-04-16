@@ -12,18 +12,20 @@ import * as Styles from "./News.module.scss"
 
 const News = () => {
 	return (
-		<Interferer id={ "news" }>
-			<Heading
-				size={ 1 }
-				textAlign={ "centered" }
-			>
+		<>
+			<Interferer id={ "news" }>
+				<Heading
+					size={ 1 }
+					textAlign={ "centered" }
+				>
 				Aktuelles
-			</Heading>
+				</Heading>
 
-			<NewsList />
+				<NewsList />
+			</Interferer>
 
 			<hr />
-		</Interferer>
+		</>
 	)
 }
 

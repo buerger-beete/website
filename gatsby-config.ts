@@ -9,6 +9,7 @@ const gatsbyConfig: GatsbyConfig = {
 		title: "Bürger:Beete – Bürger:innen begrünen den Potsdamer Bassinplatz",
 		description: "Bürger:Beete. Wir verbinden engagierte Potsdamer mit der Begrünung von Brachflächen in der Stadt.",
 		author: "@coderwelsch",
+		city: "Potsdam"
 	},
 	plugins: [
 		"gatsby-plugin-react-helmet",

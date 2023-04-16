@@ -1,6 +1,6 @@
 ---
 
-published: true
+published: false
 title: "Derzeitig keine weiteren Beete möglich&nbsp;❌"
 description: "Wir sind leider überlastet und können derzeitig keine weiteren
 Anfragen von euch lieben Pflanzenfreund:innen annehmen. Wir packen euch aber auf
