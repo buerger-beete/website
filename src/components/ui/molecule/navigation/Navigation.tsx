@@ -62,7 +62,10 @@ const Navigation = ({ type }: NavigationProps) => {
 					justifyContent={ "center" }
 				>
 					{ type === "simple-page" ? (
-						<Button.Group align={ "center" }>
+						<Button.Group
+							align={ "center" }
+							className={Styles.navItems}
+						>
 							<Button
 								color={ "white" }
 								outlined={ true }
