@@ -70,7 +70,7 @@ const NewsItem = ({
 			) }
 			alignItems={ "stretch" }
 			onClick={ href ? (event: SyntheticEvent<HTMLElement, MouseEvent>) => {
-				if (event.currentTarget.tagName.toLowerCase() !== "a") {
+				if (event.currentTarget.tagName.toLowerCase() !== "a" && typeof window !== "undefined") {
 					window.open(href, target)
 				}
 			} : undefined }
