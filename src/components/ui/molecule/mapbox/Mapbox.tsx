@@ -49,12 +49,12 @@ export default class Mapbox extends Component<MapboxProps, MapboxState> {
 	constructor (props: MapboxProps) {
 		super(props)
 
-		console.log("MAP", MAP_STYLE_URL, MAPBOX_TOKEN)
-
 		this.state = {
 			center: props.defaultLocation,
 			zoom: undefined,
 		}
+
+		this.onMapClick = this.onMapClick.bind(this)
 	}
 
 	componentDidUpdate (prevProps: MapboxProps) {
@@ -67,6 +67,12 @@ export default class Mapbox extends Component<MapboxProps, MapboxState> {
 		}
 
 		this.updateControlStates()
+	}
+
+	componentWillUnmount () {
+		if (this.mapInstance) {
+			this.mapInstance.off("click", this.onMapClick)
+		}
 	}
 
 	private updateControlStates () {
@@ -123,10 +129,15 @@ export default class Mapbox extends Component<MapboxProps, MapboxState> {
 		this.props.onSelect(index)
 	}
 
+	onMapClick (event: mapboxgl.MapMouseEvent & mapboxgl.EventData) {
+		console.log(event.lngLat)
+	}
+
 	onMapLoaded (map: mapboxgl.Map) {
 		this.mapInstance = map
 
 		this.updateControlStates()
+		this.mapInstance.on("click", this.onMapClick)
 	}
 
 	render () {
