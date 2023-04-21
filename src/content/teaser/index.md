@@ -1,5 +1,5 @@
 ---
 
-title: "Info: Derzeitig keine weiteren<br />Bearbeitungen möglich ❌"
+title: "2023: Wir nehmen<br />wieder Fahrt auf!"
 
 ---

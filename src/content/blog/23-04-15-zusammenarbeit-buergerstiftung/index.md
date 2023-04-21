@@ -1,9 +1,9 @@
 ---
 
 published: true
-title: "Fusion mit der Bürgerstiftung&nbsp;Potsdam&nbsp;❤️"
+title: "Kooperation mit der Bürgerstiftung&nbsp;Potsdam&nbsp;❤️"
 description: "Seit diesem Jahr erhalten wir nun auch tatkräftige Unterstützung von der Bürgerstiftung&nbsp;Potsdam! Wir bedanken uns herzlich und können dieses Jahr wieder endlich Fahrt aufnehmen!"
-subtitle: "Zusammen sind wir stärker!"
+subtitle: "Neuer Wind in den Seegeln"
 isExternal: true
 buttonTitle: "Zur Bürgerstiftung"
 link: "https://www.potsdamer-buergerstiftung.org/projekte/buergerbeete"
