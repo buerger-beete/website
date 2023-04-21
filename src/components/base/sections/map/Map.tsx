@@ -108,7 +108,7 @@ const Map = () => {
 						textAlign={ "centered" }
 						textColor={ "dark" }
 					>
-						Wir haben bereits <b>{ locations.length } Beete und Baumscheiben</b> in Potsdam vergeben 😍!
+						Wir haben bereits <b>{ locations.length }&nbsp;Beete&nbsp;und&nbsp;Baumscheiben</b> in&nbsp;Potsdam&nbsp;vergeben 😍!
 					</Content>
 				</Columns.Column>
 
